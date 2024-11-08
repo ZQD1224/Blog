@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Webpack 插件架构深度讲解 | 前端收集</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/logo.webp">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="blog,react,node,js">
+    
+    <link rel="preload" href="/assets/css/0.styles.b4a844ec.css" as="style"><link rel="preload" href="/assets/js/app.ae400df5.js" as="script"><link rel="preload" href="/assets/js/2.57da4f88.js" as="script"><link rel="preload" href="/assets/js/1.a76cc220.js" as="script"><link rel="preload" href="/assets/js/117.d5fa2588.js" as="script"><link rel="prefetch" href="/assets/js/10.50f73657.js"><link rel="prefetch" href="/assets/js/100.f9ccbc6f.js"><link rel="prefetch" href="/assets/js/101.c20baa36.js"><link rel="prefetch" href="/assets/js/102.4ce575e4.js"><link rel="prefetch" href="/assets/js/103.6ddf9f4a.js"><link rel="prefetch" href="/assets/js/104.e8bd0c3f.js"><link rel="prefetch" href="/assets/js/105.d0a85c47.js"><link rel="prefetch" href="/assets/js/106.4b3aadee.js"><link rel="prefetch" href="/assets/js/107.436e7f8f.js"><link rel="prefetch" href="/assets/js/108.f46692dc.js"><link rel="prefetch" href="/assets/js/109.322908a6.js"><link rel="prefetch" href="/assets/js/11.0390ceee.js"><link rel="prefetch" href="/assets/js/110.9181da82.js"><link rel="prefetch" href="/assets/js/111.c451b4da.js"><link rel="prefetch" href="/assets/js/112.196b195d.js"><link rel="prefetch" href="/assets/js/113.d65148d0.js"><link rel="prefetch" href="/assets/js/114.5566de19.js"><link rel="prefetch" href="/assets/js/115.12d1619e.js"><link rel="prefetch" href="/assets/js/116.d2f23fe7.js"><link rel="prefetch" href="/assets/js/118.79455d12.js"><link rel="prefetch" href="/assets/js/119.b43c99e9.js"><link rel="prefetch" href="/assets/js/12.f88bec36.js"><link rel="prefetch" href="/assets/js/120.f321d53f.js"><link rel="prefetch" href="/assets/js/121.286fed99.js"><link rel="prefetch" href="/assets/js/122.ff0af27d.js"><link rel="prefetch" href="/assets/js/123.00138c02.js"><link rel="prefetch" href="/assets/js/124.25640250.js"><link rel="prefetch" href="/assets/js/125.cb2f28a6.js"><link rel="prefetch" href="/assets/js/126.e8ec0fe7.js"><link rel="prefetch" href="/assets/js/127.0fdd48c2.js"><link rel="prefetch" href="/assets/js/128.38b675a9.js"><link rel="prefetch" href="/assets/js/129.7819df5c.js"><link rel="prefetch" href="/assets/js/13.963ad03b.js"><link rel="prefetch" href="/assets/js/130.a58f0a09.js"><link rel="prefetch" href="/assets/js/131.4a0133b5.js"><link rel="prefetch" href="/assets/js/132.24e842c4.js"><link rel="prefetch" href="/assets/js/133.be3bb854.js"><link rel="prefetch" href="/assets/js/134.8c4662c6.js"><link rel="prefetch" href="/assets/js/135.03d2f395.js"><link rel="prefetch" href="/assets/js/136.acf07647.js"><link rel="prefetch" href="/assets/js/137.f0fa48ad.js"><link rel="prefetch" href="/assets/js/138.843d86f2.js"><link rel="prefetch" href="/assets/js/139.015086b5.js"><link rel="prefetch" href="/assets/js/14.512f15b9.js"><link rel="prefetch" href="/assets/js/140.5468056b.js"><link rel="prefetch" href="/assets/js/141.9bf65de6.js"><link rel="prefetch" href="/assets/js/142.63b38359.js"><link rel="prefetch" href="/assets/js/143.55120954.js"><link rel="prefetch" href="/assets/js/144.e3d71ef2.js"><link rel="prefetch" href="/assets/js/145.470a4869.js"><link rel="prefetch" href="/assets/js/146.574b3929.js"><link rel="prefetch" href="/assets/js/147.28c0b405.js"><link rel="prefetch" href="/assets/js/148.08f963f8.js"><link rel="prefetch" href="/assets/js/149.0b296978.js"><link rel="prefetch" href="/assets/js/15.a674496c.js"><link rel="prefetch" href="/assets/js/150.651bd19a.js"><link rel="prefetch" href="/assets/js/151.d2029876.js"><link rel="prefetch" href="/assets/js/152.32f253ce.js"><link rel="prefetch" href="/assets/js/153.ceb29b56.js"><link rel="prefetch" href="/assets/js/154.6a7f6d29.js"><link rel="prefetch" href="/assets/js/155.50aaf5d9.js"><link rel="prefetch" href="/assets/js/156.036e250b.js"><link rel="prefetch" href="/assets/js/157.c2435840.js"><link rel="prefetch" href="/assets/js/158.242ba411.js"><link rel="prefetch" href="/assets/js/159.136ff0a3.js"><link rel="prefetch" href="/assets/js/16.ed7e507f.js"><link rel="prefetch" href="/assets/js/160.25dcaecf.js"><link rel="prefetch" href="/assets/js/161.ab904d4e.js"><link rel="prefetch" href="/assets/js/162.04b69881.js"><link rel="prefetch" href="/assets/js/163.e7e749f8.js"><link rel="prefetch" href="/assets/js/164.71f53227.js"><link rel="prefetch" href="/assets/js/165.5841cd1a.js"><link rel="prefetch" href="/assets/js/166.28071d6e.js"><link rel="prefetch" href="/assets/js/167.93ce97d2.js"><link rel="prefetch" href="/assets/js/168.f3b2972c.js"><link rel="prefetch" href="/assets/js/169.aa7f77f0.js"><link rel="prefetch" href="/assets/js/17.de667ca5.js"><link rel="prefetch" href="/assets/js/170.cfdf36f3.js"><link rel="prefetch" href="/assets/js/171.e542ad9a.js"><link rel="prefetch" href="/assets/js/172.2101f9ed.js"><link rel="prefetch" href="/assets/js/173.8f875d74.js"><link rel="prefetch" href="/assets/js/174.61572c8b.js"><link rel="prefetch" href="/assets/js/175.2ce966d7.js"><link rel="prefetch" href="/assets/js/176.bf7661ff.js"><link rel="prefetch" href="/assets/js/177.99ab75ff.js"><link rel="prefetch" href="/assets/js/178.8c053eff.js"><link rel="prefetch" href="/assets/js/179.bb56672f.js"><link rel="prefetch" href="/assets/js/18.b44e84af.js"><link rel="prefetch" href="/assets/js/180.44be886d.js"><link rel="prefetch" href="/assets/js/181.a635f8b4.js"><link rel="prefetch" href="/assets/js/182.43ee494e.js"><link rel="prefetch" href="/assets/js/183.7f8013e7.js"><link rel="prefetch" href="/assets/js/184.995eba6d.js"><link rel="prefetch" href="/assets/js/185.ae8dc8fc.js"><link rel="prefetch" href="/assets/js/186.f5f3b8d8.js"><link rel="prefetch" href="/assets/js/187.0b834066.js"><link rel="prefetch" href="/assets/js/188.de0798b4.js"><link rel="prefetch" href="/assets/js/189.bd73bd48.js"><link rel="prefetch" href="/assets/js/19.5b5ad6a1.js"><link rel="prefetch" href="/assets/js/190.3b34618c.js"><link rel="prefetch" href="/assets/js/191.d69ac5ae.js"><link rel="prefetch" href="/assets/js/192.6fb41323.js"><link rel="prefetch" href="/assets/js/193.deec3471.js"><link rel="prefetch" href="/assets/js/194.a936f543.js"><link rel="prefetch" href="/assets/js/195.257a9d86.js"><link rel="prefetch" href="/assets/js/196.b04a1424.js"><link rel="prefetch" href="/assets/js/197.b1b12256.js"><link rel="prefetch" href="/assets/js/198.d3539378.js"><link rel="prefetch" href="/assets/js/199.802facc3.js"><link rel="prefetch" href="/assets/js/20.6800493a.js"><link rel="prefetch" href="/assets/js/200.c2e3da4f.js"><link rel="prefetch" href="/assets/js/201.9b119f49.js"><link rel="prefetch" href="/assets/js/202.283e51cb.js"><link rel="prefetch" href="/assets/js/203.4ebeba02.js"><link rel="prefetch" href="/assets/js/204.a3680104.js"><link rel="prefetch" href="/assets/js/205.e89e1221.js"><link rel="prefetch" href="/assets/js/206.a2159b40.js"><link rel="prefetch" href="/assets/js/207.30aa8a56.js"><link rel="prefetch" href="/assets/js/208.25e87523.js"><link rel="prefetch" href="/assets/js/209.1feb11d6.js"><link rel="prefetch" href="/assets/js/21.6589052c.js"><link rel="prefetch" href="/assets/js/210.3988d49f.js"><link rel="prefetch" href="/assets/js/211.c35b6127.js"><link rel="prefetch" href="/assets/js/212.a47a605d.js"><link rel="prefetch" href="/assets/js/213.e67c2145.js"><link rel="prefetch" href="/assets/js/214.f2adf5ee.js"><link rel="prefetch" href="/assets/js/215.8af7fa44.js"><link rel="prefetch" href="/assets/js/216.c4c02e18.js"><link rel="prefetch" href="/assets/js/217.8a2ed0a4.js"><link rel="prefetch" href="/assets/js/218.5224a21c.js"><link rel="prefetch" href="/assets/js/219.85a23ded.js"><link rel="prefetch" href="/assets/js/22.f648d829.js"><link rel="prefetch" href="/assets/js/220.1a4b37cb.js"><link rel="prefetch" href="/assets/js/221.fd8b42a5.js"><link rel="prefetch" href="/assets/js/222.ab3b9c2e.js"><link rel="prefetch" href="/assets/js/223.7e579d8f.js"><link rel="prefetch" href="/assets/js/224.a9ba827c.js"><link rel="prefetch" href="/assets/js/225.e1612fcc.js"><link rel="prefetch" href="/assets/js/226.9c1af133.js"><link rel="prefetch" href="/assets/js/227.0bc3b51e.js"><link rel="prefetch" href="/assets/js/228.a0eba8af.js"><link rel="prefetch" href="/assets/js/229.5d1c84bb.js"><link rel="prefetch" href="/assets/js/23.79aa69fa.js"><link rel="prefetch" href="/assets/js/230.f83fdc59.js"><link rel="prefetch" href="/assets/js/231.9f82cedb.js"><link rel="prefetch" href="/assets/js/232.f97914ee.js"><link rel="prefetch" href="/assets/js/233.50ac2baa.js"><link rel="prefetch" href="/assets/js/234.d313f866.js"><link rel="prefetch" href="/assets/js/235.f5eb3748.js"><link rel="prefetch" href="/assets/js/236.d452db47.js"><link rel="prefetch" href="/assets/js/237.5199378b.js"><link rel="prefetch" href="/assets/js/238.d1c3107c.js"><link rel="prefetch" href="/assets/js/239.4e2b6d59.js"><link rel="prefetch" href="/assets/js/24.03ffbcca.js"><link rel="prefetch" href="/assets/js/240.b46f5ecd.js"><link rel="prefetch" href="/assets/js/241.7e9311b0.js"><link rel="prefetch" href="/assets/js/242.ede280f9.js"><link rel="prefetch" href="/assets/js/243.71efdf6e.js"><link rel="prefetch" href="/assets/js/244.1b089d77.js"><link rel="prefetch" href="/assets/js/245.47562a1b.js"><link rel="prefetch" href="/assets/js/246.35ce7ccb.js"><link rel="prefetch" href="/assets/js/247.0eea6dda.js"><link rel="prefetch" href="/assets/js/248.d606d51a.js"><link rel="prefetch" href="/assets/js/249.22a9c555.js"><link rel="prefetch" href="/assets/js/25.872464d2.js"><link rel="prefetch" href="/assets/js/250.7cf64a15.js"><link rel="prefetch" href="/assets/js/251.b6f787d7.js"><link rel="prefetch" href="/assets/js/252.8b9bedcd.js"><link rel="prefetch" href="/assets/js/253.5c63ec35.js"><link rel="prefetch" href="/assets/js/254.31ff9dc4.js"><link rel="prefetch" href="/assets/js/255.190e5f80.js"><link rel="prefetch" href="/assets/js/256.e68f87e0.js"><link rel="prefetch" href="/assets/js/257.3095f7a1.js"><link rel="prefetch" href="/assets/js/258.af517699.js"><link rel="prefetch" href="/assets/js/259.f10ece0f.js"><link rel="prefetch" href="/assets/js/26.bd6d2ac2.js"><link rel="prefetch" href="/assets/js/260.e8bbba00.js"><link rel="prefetch" href="/assets/js/261.5d9b1d5e.js"><link rel="prefetch" href="/assets/js/262.950474a9.js"><link rel="prefetch" href="/assets/js/263.3e7dca65.js"><link rel="prefetch" href="/assets/js/264.1017ad1a.js"><link rel="prefetch" href="/assets/js/265.99c4d846.js"><link rel="prefetch" href="/assets/js/266.8d1ea647.js"><link rel="prefetch" href="/assets/js/267.20e69579.js"><link rel="prefetch" href="/assets/js/268.4da84374.js"><link rel="prefetch" href="/assets/js/269.e3ad7859.js"><link rel="prefetch" href="/assets/js/27.814c713d.js"><link rel="prefetch" href="/assets/js/270.c5c4b40b.js"><link rel="prefetch" href="/assets/js/271.9c7294fd.js"><link rel="prefetch" href="/assets/js/272.3d41fdce.js"><link rel="prefetch" href="/assets/js/273.3eaafe8e.js"><link rel="prefetch" href="/assets/js/274.f98d5554.js"><link rel="prefetch" href="/assets/js/275.5ec6a4b8.js"><link rel="prefetch" href="/assets/js/276.0936dd89.js"><link rel="prefetch" href="/assets/js/277.33bd4dff.js"><link rel="prefetch" href="/assets/js/278.c383b31c.js"><link rel="prefetch" href="/assets/js/279.6df8b215.js"><link rel="prefetch" href="/assets/js/28.5229eb08.js"><link rel="prefetch" href="/assets/js/280.07169fc6.js"><link rel="prefetch" href="/assets/js/281.4b28be3f.js"><link rel="prefetch" href="/assets/js/282.79bba86e.js"><link rel="prefetch" href="/assets/js/283.32f592bc.js"><link rel="prefetch" href="/assets/js/284.fd9b6b59.js"><link rel="prefetch" href="/assets/js/285.df1454be.js"><link rel="prefetch" href="/assets/js/286.18b1703e.js"><link rel="prefetch" href="/assets/js/287.94781ca0.js"><link rel="prefetch" href="/assets/js/288.f21493cb.js"><link rel="prefetch" href="/assets/js/289.8fc283e3.js"><link rel="prefetch" href="/assets/js/29.a63c1057.js"><link rel="prefetch" href="/assets/js/290.3346a986.js"><link rel="prefetch" href="/assets/js/291.5fafa49e.js"><link rel="prefetch" href="/assets/js/292.ac874de4.js"><link rel="prefetch" href="/assets/js/293.19730c32.js"><link rel="prefetch" href="/assets/js/294.98ddc6d7.js"><link rel="prefetch" href="/assets/js/295.eae00758.js"><link rel="prefetch" href="/assets/js/296.1d81c552.js"><link rel="prefetch" href="/assets/js/297.5f86f97e.js"><link rel="prefetch" href="/assets/js/298.1bc558ca.js"><link rel="prefetch" href="/assets/js/299.d068c6b6.js"><link rel="prefetch" href="/assets/js/3.13e892f5.js"><link rel="prefetch" href="/assets/js/30.1b884b1b.js"><link rel="prefetch" href="/assets/js/300.c956e204.js"><link rel="prefetch" href="/assets/js/301.77127d95.js"><link rel="prefetch" href="/assets/js/302.1d7c4af3.js"><link rel="prefetch" href="/assets/js/303.2bcbc099.js"><link rel="prefetch" href="/assets/js/304.b2180761.js"><link rel="prefetch" href="/assets/js/305.3ac4a62e.js"><link rel="prefetch" href="/assets/js/306.1ce3e68d.js"><link rel="prefetch" href="/assets/js/307.6c3d9548.js"><link rel="prefetch" href="/assets/js/308.b777fbfa.js"><link rel="prefetch" href="/assets/js/309.e5d32660.js"><link rel="prefetch" href="/assets/js/31.68c1b4eb.js"><link rel="prefetch" href="/assets/js/310.fcda8acc.js"><link rel="prefetch" href="/assets/js/311.cde4dc35.js"><link rel="prefetch" href="/assets/js/312.98a0ee89.js"><link rel="prefetch" href="/assets/js/313.ce02630f.js"><link rel="prefetch" href="/assets/js/314.3883ac39.js"><link rel="prefetch" href="/assets/js/315.b6c9cd37.js"><link rel="prefetch" href="/assets/js/316.6cd33ea7.js"><link rel="prefetch" href="/assets/js/317.eb818350.js"><link rel="prefetch" href="/assets/js/318.e9e7da16.js"><link rel="prefetch" href="/assets/js/319.1edfec0a.js"><link rel="prefetch" href="/assets/js/32.64224241.js"><link rel="prefetch" href="/assets/js/320.f4728475.js"><link rel="prefetch" href="/assets/js/321.799c6e59.js"><link rel="prefetch" href="/assets/js/322.a701407b.js"><link rel="prefetch" href="/assets/js/323.803b7bcc.js"><link rel="prefetch" href="/assets/js/324.a73b88d8.js"><link rel="prefetch" href="/assets/js/325.f08e06ca.js"><link rel="prefetch" href="/assets/js/326.80813d35.js"><link rel="prefetch" href="/assets/js/327.8310d6c8.js"><link rel="prefetch" href="/assets/js/328.68f1b07a.js"><link rel="prefetch" href="/assets/js/329.04be32fe.js"><link rel="prefetch" href="/assets/js/33.b4859866.js"><link rel="prefetch" href="/assets/js/330.fbd486d3.js"><link rel="prefetch" href="/assets/js/331.bc43b814.js"><link rel="prefetch" href="/assets/js/332.838514e5.js"><link rel="prefetch" href="/assets/js/333.c647f10b.js"><link rel="prefetch" href="/assets/js/334.293d7db1.js"><link rel="prefetch" href="/assets/js/335.f60f98c5.js"><link rel="prefetch" href="/assets/js/336.d59a627e.js"><link rel="prefetch" href="/assets/js/337.719cd005.js"><link rel="prefetch" href="/assets/js/338.eb93d4b7.js"><link rel="prefetch" href="/assets/js/339.a38c5695.js"><link rel="prefetch" href="/assets/js/34.69c1bc55.js"><link rel="prefetch" href="/assets/js/340.9a4ce427.js"><link rel="prefetch" href="/assets/js/341.d39b4f2f.js"><link rel="prefetch" href="/assets/js/342.11fbba88.js"><link rel="prefetch" href="/assets/js/343.36030f9c.js"><link rel="prefetch" href="/assets/js/344.94fc0ac0.js"><link rel="prefetch" href="/assets/js/345.c6ef0cd3.js"><link rel="prefetch" href="/assets/js/346.3f3484bf.js"><link rel="prefetch" href="/assets/js/347.f6957922.js"><link rel="prefetch" href="/assets/js/348.df8650b3.js"><link rel="prefetch" href="/assets/js/349.402ca2e1.js"><link rel="prefetch" href="/assets/js/35.d8b00796.js"><link rel="prefetch" href="/assets/js/350.8a48f4c3.js"><link rel="prefetch" href="/assets/js/351.b5356e83.js"><link rel="prefetch" href="/assets/js/352.944301fd.js"><link rel="prefetch" href="/assets/js/353.8b170c06.js"><link rel="prefetch" href="/assets/js/354.97b92290.js"><link rel="prefetch" href="/assets/js/355.948e7095.js"><link rel="prefetch" href="/assets/js/356.5aaf9fe5.js"><link rel="prefetch" href="/assets/js/357.67c88167.js"><link rel="prefetch" href="/assets/js/358.e241fbe2.js"><link rel="prefetch" href="/assets/js/359.15b3166a.js"><link rel="prefetch" href="/assets/js/36.090e85b2.js"><link rel="prefetch" href="/assets/js/360.187f4fe6.js"><link rel="prefetch" href="/assets/js/361.a77fa57f.js"><link rel="prefetch" href="/assets/js/362.30ed8657.js"><link rel="prefetch" href="/assets/js/363.c8caaf0f.js"><link rel="prefetch" href="/assets/js/364.78f41e2e.js"><link rel="prefetch" href="/assets/js/365.55b8d5b3.js"><link rel="prefetch" href="/assets/js/366.d1c007ca.js"><link rel="prefetch" href="/assets/js/367.bc6a31fb.js"><link rel="prefetch" href="/assets/js/368.147012d3.js"><link rel="prefetch" href="/assets/js/369.94f25d03.js"><link rel="prefetch" href="/assets/js/37.bf92df67.js"><link rel="prefetch" href="/assets/js/370.37c8786f.js"><link rel="prefetch" href="/assets/js/371.037e513b.js"><link rel="prefetch" href="/assets/js/372.353d4826.js"><link rel="prefetch" href="/assets/js/373.3260442b.js"><link rel="prefetch" href="/assets/js/374.eabaedd4.js"><link rel="prefetch" href="/assets/js/375.f80e9c75.js"><link rel="prefetch" href="/assets/js/376.b041cafe.js"><link rel="prefetch" href="/assets/js/377.d6410416.js"><link rel="prefetch" href="/assets/js/378.0d21f78f.js"><link rel="prefetch" href="/assets/js/379.83c05c56.js"><link rel="prefetch" href="/assets/js/38.74932844.js"><link rel="prefetch" href="/assets/js/380.c41e1704.js"><link rel="prefetch" href="/assets/js/381.52c6dcbf.js"><link rel="prefetch" href="/assets/js/382.d2998ea4.js"><link rel="prefetch" href="/assets/js/383.160918fa.js"><link rel="prefetch" href="/assets/js/384.6e3e4604.js"><link rel="prefetch" href="/assets/js/385.e514c0b7.js"><link rel="prefetch" href="/assets/js/386.3cab7b43.js"><link rel="prefetch" href="/assets/js/387.7b7aa4c3.js"><link rel="prefetch" href="/assets/js/388.1675a9c8.js"><link rel="prefetch" href="/assets/js/389.f5e5e9e4.js"><link rel="prefetch" href="/assets/js/39.45a654d9.js"><link rel="prefetch" href="/assets/js/390.5bbca72c.js"><link rel="prefetch" href="/assets/js/391.4e95a939.js"><link rel="prefetch" href="/assets/js/392.8eb7d12f.js"><link rel="prefetch" href="/assets/js/393.f72f9473.js"><link rel="prefetch" href="/assets/js/394.1cea58b3.js"><link rel="prefetch" href="/assets/js/395.33fa0847.js"><link rel="prefetch" href="/assets/js/396.8ef17642.js"><link rel="prefetch" href="/assets/js/397.dd02eee1.js"><link rel="prefetch" href="/assets/js/398.23ea33a3.js"><link rel="prefetch" href="/assets/js/399.84a4e8db.js"><link rel="prefetch" href="/assets/js/4.5bdb9365.js"><link rel="prefetch" href="/assets/js/40.7cc37d90.js"><link rel="prefetch" href="/assets/js/400.0597181f.js"><link rel="prefetch" href="/assets/js/401.9cb4c0e2.js"><link rel="prefetch" href="/assets/js/402.41ddf5c4.js"><link rel="prefetch" href="/assets/js/403.afa305eb.js"><link rel="prefetch" href="/assets/js/404.3831ec8d.js"><link rel="prefetch" href="/assets/js/405.b79a51fb.js"><link rel="prefetch" href="/assets/js/406.dd6191a5.js"><link rel="prefetch" href="/assets/js/407.d2e12f04.js"><link rel="prefetch" href="/assets/js/408.56c2fc48.js"><link rel="prefetch" href="/assets/js/409.25a15725.js"><link rel="prefetch" href="/assets/js/41.78331f9e.js"><link rel="prefetch" href="/assets/js/410.dd6c1352.js"><link rel="prefetch" href="/assets/js/411.6d95d902.js"><link rel="prefetch" href="/assets/js/412.da6546bd.js"><link rel="prefetch" href="/assets/js/413.39d34e64.js"><link rel="prefetch" href="/assets/js/414.aaa215f3.js"><link rel="prefetch" href="/assets/js/415.b41c61b6.js"><link rel="prefetch" href="/assets/js/416.139592a7.js"><link rel="prefetch" href="/assets/js/417.324a89a1.js"><link rel="prefetch" href="/assets/js/418.676f7dcb.js"><link rel="prefetch" href="/assets/js/419.9350419c.js"><link rel="prefetch" href="/assets/js/42.a22391d6.js"><link rel="prefetch" href="/assets/js/420.0462f81e.js"><link rel="prefetch" href="/assets/js/421.a6efdd34.js"><link rel="prefetch" href="/assets/js/422.569428e8.js"><link rel="prefetch" href="/assets/js/423.8cb41fe5.js"><link rel="prefetch" href="/assets/js/424.98a9d128.js"><link rel="prefetch" href="/assets/js/425.62b51cfb.js"><link rel="prefetch" href="/assets/js/426.7b3a49e4.js"><link rel="prefetch" href="/assets/js/427.f99d9c10.js"><link rel="prefetch" href="/assets/js/428.73db8fe6.js"><link rel="prefetch" href="/assets/js/429.05f1741b.js"><link rel="prefetch" href="/assets/js/43.8946d7e2.js"><link rel="prefetch" href="/assets/js/430.8b43f070.js"><link rel="prefetch" href="/assets/js/431.d85a79d6.js"><link rel="prefetch" href="/assets/js/432.7373e34b.js"><link rel="prefetch" href="/assets/js/433.4be17add.js"><link rel="prefetch" href="/assets/js/434.81670bcf.js"><link rel="prefetch" href="/assets/js/435.6aa95ea5.js"><link rel="prefetch" href="/assets/js/436.4223c356.js"><link rel="prefetch" href="/assets/js/437.13f276dc.js"><link rel="prefetch" href="/assets/js/438.7c6e503d.js"><link rel="prefetch" href="/assets/js/439.6f9afc22.js"><link rel="prefetch" href="/assets/js/44.2a678f4a.js"><link rel="prefetch" href="/assets/js/440.5c949914.js"><link rel="prefetch" href="/assets/js/441.7dc7c8e4.js"><link rel="prefetch" href="/assets/js/442.bfec8250.js"><link rel="prefetch" href="/assets/js/443.0b932152.js"><link rel="prefetch" href="/assets/js/444.ecc56127.js"><link rel="prefetch" href="/assets/js/445.3a1eefa1.js"><link rel="prefetch" href="/assets/js/446.07410371.js"><link rel="prefetch" href="/assets/js/447.920996c3.js"><link rel="prefetch" href="/assets/js/448.9b5b5588.js"><link rel="prefetch" href="/assets/js/449.40afb76e.js"><link rel="prefetch" href="/assets/js/45.a716cdab.js"><link rel="prefetch" href="/assets/js/450.15845e93.js"><link rel="prefetch" href="/assets/js/451.c0454122.js"><link rel="prefetch" href="/assets/js/452.076ca38b.js"><link rel="prefetch" href="/assets/js/453.35add2cd.js"><link rel="prefetch" href="/assets/js/454.fed25dd2.js"><link rel="prefetch" href="/assets/js/455.a3232b7e.js"><link rel="prefetch" href="/assets/js/456.803d9cea.js"><link rel="prefetch" href="/assets/js/457.0a884768.js"><link rel="prefetch" href="/assets/js/458.69b6cc02.js"><link rel="prefetch" href="/assets/js/459.d8e1df18.js"><link rel="prefetch" href="/assets/js/46.53b78a16.js"><link rel="prefetch" href="/assets/js/460.a4980d6e.js"><link rel="prefetch" href="/assets/js/461.68d3e1c1.js"><link rel="prefetch" href="/assets/js/462.7930ea12.js"><link rel="prefetch" href="/assets/js/463.48a62ed8.js"><link rel="prefetch" href="/assets/js/464.5c42fe51.js"><link rel="prefetch" href="/assets/js/465.b65a0e95.js"><link rel="prefetch" href="/assets/js/466.63474609.js"><link rel="prefetch" href="/assets/js/467.e6370736.js"><link rel="prefetch" href="/assets/js/468.a6cd9285.js"><link rel="prefetch" href="/assets/js/469.3df61389.js"><link rel="prefetch" href="/assets/js/47.dc9468b3.js"><link rel="prefetch" href="/assets/js/470.b956e72b.js"><link rel="prefetch" href="/assets/js/471.227fb33d.js"><link rel="prefetch" href="/assets/js/472.407485a3.js"><link rel="prefetch" href="/assets/js/473.9ab2c50d.js"><link rel="prefetch" href="/assets/js/474.dd36f932.js"><link rel="prefetch" href="/assets/js/475.7634085c.js"><link rel="prefetch" href="/assets/js/476.6869c979.js"><link rel="prefetch" href="/assets/js/477.b8bbd1aa.js"><link rel="prefetch" href="/assets/js/478.d85549c5.js"><link rel="prefetch" href="/assets/js/479.a549954b.js"><link rel="prefetch" href="/assets/js/48.f62c6508.js"><link rel="prefetch" href="/assets/js/480.964f2b40.js"><link rel="prefetch" href="/assets/js/481.68f5f905.js"><link rel="prefetch" href="/assets/js/482.32b674c2.js"><link rel="prefetch" href="/assets/js/483.6574c15d.js"><link rel="prefetch" href="/assets/js/484.63db4bff.js"><link rel="prefetch" href="/assets/js/485.0ecd7c6e.js"><link rel="prefetch" href="/assets/js/486.44a1de5d.js"><link rel="prefetch" href="/assets/js/487.fad12e99.js"><link rel="prefetch" href="/assets/js/488.169f32db.js"><link rel="prefetch" href="/assets/js/489.7ea816a6.js"><link rel="prefetch" href="/assets/js/49.f155d78a.js"><link rel="prefetch" href="/assets/js/490.d35de876.js"><link rel="prefetch" href="/assets/js/491.08874d90.js"><link rel="prefetch" href="/assets/js/492.088a7e6e.js"><link rel="prefetch" href="/assets/js/493.61d62bf4.js"><link rel="prefetch" href="/assets/js/494.b0515138.js"><link rel="prefetch" href="/assets/js/495.60587f26.js"><link rel="prefetch" href="/assets/js/496.d66df398.js"><link rel="prefetch" href="/assets/js/497.7c88f879.js"><link rel="prefetch" href="/assets/js/498.73e1e0cf.js"><link rel="prefetch" href="/assets/js/499.8162e0b6.js"><link rel="prefetch" href="/assets/js/5.7c68fdb5.js"><link rel="prefetch" href="/assets/js/50.d2b62498.js"><link rel="prefetch" href="/assets/js/500.8b0de440.js"><link rel="prefetch" href="/assets/js/501.0894844d.js"><link rel="prefetch" href="/assets/js/502.1c0d1c3c.js"><link rel="prefetch" href="/assets/js/503.3e3f2a4a.js"><link rel="prefetch" href="/assets/js/504.cca812a4.js"><link rel="prefetch" href="/assets/js/505.8a1f3adc.js"><link rel="prefetch" href="/assets/js/506.35d49763.js"><link rel="prefetch" href="/assets/js/507.4fd3c268.js"><link rel="prefetch" href="/assets/js/508.aa2ba78c.js"><link rel="prefetch" href="/assets/js/509.cc7d97eb.js"><link rel="prefetch" href="/assets/js/51.7b12b0f0.js"><link rel="prefetch" href="/assets/js/510.73e3254c.js"><link rel="prefetch" href="/assets/js/511.bd21926b.js"><link rel="prefetch" href="/assets/js/512.8b796161.js"><link rel="prefetch" href="/assets/js/513.da11e0bf.js"><link rel="prefetch" href="/assets/js/514.5a620685.js"><link rel="prefetch" href="/assets/js/515.9a4b1681.js"><link rel="prefetch" href="/assets/js/516.de55e3ca.js"><link rel="prefetch" href="/assets/js/517.2b3b1dd5.js"><link rel="prefetch" href="/assets/js/518.aa28e969.js"><link rel="prefetch" href="/assets/js/519.91a752a1.js"><link rel="prefetch" href="/assets/js/52.3391993d.js"><link rel="prefetch" href="/assets/js/520.49c84d3e.js"><link rel="prefetch" href="/assets/js/521.545008de.js"><link rel="prefetch" href="/assets/js/522.11773c74.js"><link rel="prefetch" href="/assets/js/523.5b523166.js"><link rel="prefetch" href="/assets/js/524.9d7c8f5c.js"><link rel="prefetch" href="/assets/js/53.a67a7068.js"><link rel="prefetch" href="/assets/js/54.af0dccf3.js"><link rel="prefetch" href="/assets/js/55.cdae5880.js"><link rel="prefetch" href="/assets/js/56.4d918bef.js"><link rel="prefetch" href="/assets/js/57.5e9dea12.js"><link rel="prefetch" href="/assets/js/58.6cec08ff.js"><link rel="prefetch" href="/assets/js/59.65771179.js"><link rel="prefetch" href="/assets/js/6.c8da7ca7.js"><link rel="prefetch" href="/assets/js/60.8f859a65.js"><link rel="prefetch" href="/assets/js/61.43bff54c.js"><link rel="prefetch" href="/assets/js/62.b8e9e509.js"><link rel="prefetch" href="/assets/js/63.5149a7b9.js"><link rel="prefetch" href="/assets/js/64.961c386a.js"><link rel="prefetch" href="/assets/js/65.73f66baf.js"><link rel="prefetch" href="/assets/js/66.b5930577.js"><link rel="prefetch" href="/assets/js/67.40a0db0c.js"><link rel="prefetch" href="/assets/js/68.6212d2a9.js"><link rel="prefetch" href="/assets/js/69.0cd6b5c4.js"><link rel="prefetch" href="/assets/js/7.e4c88d0e.js"><link rel="prefetch" href="/assets/js/70.8e1f3dad.js"><link rel="prefetch" href="/assets/js/71.041fa5d5.js"><link rel="prefetch" href="/assets/js/72.7b626c12.js"><link rel="prefetch" href="/assets/js/73.78b38a87.js"><link rel="prefetch" href="/assets/js/74.6ec158a9.js"><link rel="prefetch" href="/assets/js/75.de5261fd.js"><link rel="prefetch" href="/assets/js/76.49878016.js"><link rel="prefetch" href="/assets/js/77.77eb5ec0.js"><link rel="prefetch" href="/assets/js/78.13279776.js"><link rel="prefetch" href="/assets/js/79.55cd4da6.js"><link rel="prefetch" href="/assets/js/80.2d4e5531.js"><link rel="prefetch" href="/assets/js/81.f00c64f4.js"><link rel="prefetch" href="/assets/js/82.af834374.js"><link rel="prefetch" href="/assets/js/83.42d97060.js"><link rel="prefetch" href="/assets/js/84.e6bc84a7.js"><link rel="prefetch" href="/assets/js/85.beeccec9.js"><link rel="prefetch" href="/assets/js/86.af675949.js"><link rel="prefetch" href="/assets/js/87.42f1b392.js"><link rel="prefetch" href="/assets/js/88.b5b8b77f.js"><link rel="prefetch" href="/assets/js/89.5892cf98.js"><link rel="prefetch" href="/assets/js/90.975b2533.js"><link rel="prefetch" href="/assets/js/91.64ccb26a.js"><link rel="prefetch" href="/assets/js/92.159aca5a.js"><link rel="prefetch" href="/assets/js/93.ca72cfb7.js"><link rel="prefetch" href="/assets/js/94.134a585d.js"><link rel="prefetch" href="/assets/js/95.83f34609.js"><link rel="prefetch" href="/assets/js/96.25383af1.js"><link rel="prefetch" href="/assets/js/97.404579a5.js"><link rel="prefetch" href="/assets/js/98.b15c1a8c.js"><link rel="prefetch" href="/assets/js/99.2757d9cd.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5143d2e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b4a844ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端收集</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link router-link-active">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link router-link-active">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/deploy/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/1-npm" class="sidebar-heading clickable"><span>npm</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/1-webpack原理" class="sidebar-heading clickable open"><span>webpack原理</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/deploy/1-webpack%E5%8E%9F%E7%90%86/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/deploy/1-webpack原理/Webpack下的HMR机制原理.html" class="sidebar-link">Webpack 下的 HMR 机制原理: 120 行代码帮你搞定</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列一-一文吃透Webpack核心原理.html" class="sidebar-link">一文吃透 Webpack 核心原理</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列七-如何编写loader.html" class="sidebar-link">Webpack 原理系列七：如何编写loader</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列九-Tree-Shaking实现原理.html" class="sidebar-link">Webpack 原理系列九：Tree-Shaking实现原理</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列二-Webpack插件架构深度讲解.html" class="active sidebar-link">Webpack 插件架构深度讲解</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列五-Webpack-Chunk分包规则详解.html" class="sidebar-link">有点难的知识点： Webpack Chunk 分包规则详解</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列八-产物转译打包逻辑.html" class="sidebar-link">Webpack 原理系列八：产物转译打包逻辑</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列六-彻底理解Webpack运行时.html" class="sidebar-link">Webpack 原理系列六： 彻底理解Webpack运行时</a></li><li><a href="/deploy/1-webpack原理/Webpack原理系列四-Dependency-Graph深度解析.html" class="sidebar-link">有点难的 webpack 知识点：Dependency Graph 深度解析</a></li><li><a href="/deploy/1-webpack原理/webpack原理系列-使用Cache提升构建性能.html" class="sidebar-link">Webpack 性能系列一: 使用 Cache 提升构建性能</a></li><li><a href="/deploy/1-webpack原理/webpack方方面面的核心原理总结.html" class="sidebar-link">webpack 方方面面的核心原理总结</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/2-webpack" class="sidebar-heading clickable"><span>webpack</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/3-babel" class="sidebar-heading clickable"><span>babel</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/4-gulp" class="sidebar-heading clickable"><span>gulp</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/4-vite" class="sidebar-heading clickable"><span>vite</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/5-micro-front" class="sidebar-heading clickable"><span>micro-front</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/6-cluster" class="sidebar-heading clickable"><span>cluster</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/6-deploy" class="sidebar-heading clickable"><span>deploy</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/6-docker" class="sidebar-heading clickable"><span>docker</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/deploy/8-linux" class="sidebar-heading clickable"><span>linux</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack-插件架构深度讲解"><a href="#webpack-插件架构深度讲解" class="header-anchor">#</a> Webpack 插件架构深度讲解</h1> <p>本文大部分篇幅都 focus 在 Tapable 框架，详细枚举了 Tapable 提供的钩子及各类型钩子的特点、运行逻辑、实现原理，并进一步讨论 Tapable 框架在 webpack 的作用，进而揭示 webpack 插件架构的核心逻辑。</p> <p>阅读本文，您将：</p> <ul><li>了解 webpack 插件架构的基本套路</li> <li>了解不同钩子的特点，及 webpack 为什么需要接入多种回调方案</li> <li>下次看 webpack 官方文档或源码时，可以仅仅通过钩子的类型名快速推断出钩子的作用</li></ul> <h1 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h1> <p>网上不少资料将 webpack 的插件架构归类为“事件/订阅”模式，我认为这种归纳有失偏颇。订阅模式是一种松耦合架构，发布器只是在特定时机发布事件消息，订阅者并不或者很少与事件直接发生交互，举例来说，我们平常在使用 HTML 事件的时候很多时候只是在这个时机触发业务逻辑，很少调用上下文操作。</p> <p>而 webpack 的插件体系是一种基于 Tapable 实现的强耦合架构，它在特定时机触发钩子时会附带上足够的上下文信息，插件定义的钩子回调中，能也只能与这些上下文背后的数据结构、接口交互产生 side effect，进而影响到编译状态和后续流程。</p> <p>本文将围绕 Tapable 展开，深入讲解 Tapable 的钩子类型、特点、分别以什么逻辑处理回调，在此基础上进一步推导出</p> <h1 id="什么是插件"><a href="#什么是插件" class="header-anchor">#</a> 什么是插件</h1> <p>从形态上看，插件通常是一个带有 apply 函数的类：</p> <div class="language- extra-class"><pre class="language-text"><code>class SomePlugin {
+    apply(compiler) {
+    }
+}
+</code></pre></div><p>Webpack 会在启动后按照注册的顺序逐次调用插件对象的 apply 函数，同时传入编译器对象 compiler ，插件开发者可以以此为起点触达到 webpack 内部定义的任意钩子，例如：</p> <div class="language- extra-class"><pre class="language-text"><code>class SomePlugin {
+    apply(compiler) {
+        compiler.hooks.thisCompilation.tap('SomePlugin', (compilation) =&gt; {
+        })
+    }
+}
+</code></pre></div><p>注意观察核心语句 <code>compiler.hooks.thisCompilation.tap</code>，其中 <code>thisCompilation</code> 为 tapable 仓库提供的钩子对象；<code>tap</code> 为订阅函数，用于注册回调。</p> <p>Webpack 的插件体系基于 tapable 提供的各类钩子展开，所以有必要先熟悉一下 tapable 提供的钩子类型及各自的特点。</p> <h1 id="tapable-全解析"><a href="#tapable-全解析" class="header-anchor">#</a> Tapable 全解析</h1> <p>Tapable 是 Webpack 插件架构的核心支架，但它的源码量其实很少，本质上就是围绕着 订阅/发布 模式叠加各种特化逻辑，适配 webpack 体系下复杂的事件源-处理器之间交互需求，比如说有些场景需要支持将前一个处理器的结果传入下一个回调处理器；有些场景需要支持异步并行调用这些回调处理器。</p> <p>要理解 webpack 的插件架构，必须先理顺 Tapable 提供了哪些类型的钩子，不同类型分别有什么特点，适配哪些应用场景，所幸这块逻辑并不复杂，我们展开来看看。</p> <h2 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h2> <p>Tapable 使用时通常需要经历如下步骤：</p> <ul><li>创建钩子实例</li> <li>调用订阅接口注册回调，包括：<code>tap、tapAsync、tapPromise</code></li> <li>调用发布接口触发回调，包括：<code>call、callAsync、promise</code></li></ul> <p>举个例子：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncHook } = require(&quot;tapable&quot;);
+
+// 1. 创建钩子实例
+const sleep = new SyncHook();
+
+// 2. 调用订阅接口注册回调
+sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback A&quot;);
+});
+
+// 3. 调用发布接口触发回调
+sleep.call();
+
+// 运行结果：
+// callback A
+</code></pre></div><p>示例中使用 <code>tap</code> 注册回调，使用 <code>call</code> 触发回调，在某些钩子中还可以使用异步风格的 <code>tapAsync/callAsync、promise</code> 风格 <code>tapPromise/promise</code>，具体使用哪一类函数与钩子类型有关。</p> <h2 id="tapable-钩子类型"><a href="#tapable-钩子类型" class="header-anchor">#</a> Tapable 钩子类型</h2> <p>Tabable 提供如下类型的钩子：</p> <table><thead><tr><th>名称</th> <th>简介</th> <th>统计</th></tr></thead> <tbody><tr><td>SyncHook</td> <td>同步钩子</td> <td>Webpack 共出现 71 次，如 Compiler.hooks.compilation</td></tr> <tr><td>SyncBailHook</td> <td>同步熔断钩子</td> <td>Webpack 共出现 66 次，如 Compiler.hooks.shouldEmit</td></tr> <tr><td>SyncWaterfallHook</td> <td>同步瀑布流钩子</td> <td>Webpack 共出现 37 次，如 Compilation.hooks.assetPath</td></tr> <tr><td>SyncLoopHook</td> <td>同步循环钩子</td> <td>Webpack 中未使用</td></tr> <tr><td>AsyncParallelHook</td> <td>异步并行钩子</td> <td>Webpack 仅出现 1 次：Compiler.hooks.make</td></tr> <tr><td>AsyncParallelBailHook</td> <td>异步并行熔断钩子</td> <td>Webpack 中未使用</td></tr> <tr><td>AsyncSeriesHook</td> <td>异步串行钩子</td> <td>Webpack 共出现 16 次，如 Compiler.hooks.done</td></tr> <tr><td>AsyncSeriesBailHook</td> <td>异步串行熔断钩子</td> <td>Webpack 中未使用</td></tr> <tr><td>AsyncSeriesLoopHook</td> <td>异步串行循环钩子</td> <td>Webpack 中未使用</td></tr> <tr><td>AsyncSeriesWaterfallHook</td> <td>异步串行瀑布流钩子</td> <td>Webpack 共出现 5 次，如 NormalModuleFactory.hooks.beforeResolve</td></tr></tbody></table> <p>看到上面的表格相信很多人都是懵的，其实 Tapable 仓库的 readme 对钩子分类依据讲的很清楚，总结下来两条规则：</p> <ul><li><p>按回调逻辑，分为：</p></li> <li><ul><li>基本类型，名称不带 <code>Waterfall/Bail/Loop</code> 关键字，与通常 <strong>「订阅/回调」</strong> 模式相似，按钩子注册顺序，逐次调用回调</li></ul></li> <li><p><code>waterfall</code> 类型：前一个回调的返回值会被带入下一个回调</p></li> <li><p><code>bail</code> 类型：逐次调用回调，若有任何一个回调返回非 <code>undefined</code> 值，则终止后续调用</p></li> <li><p><code>loop</code> 类型：逐次、循环调用，直到所有回调函数都返回 <code>undefined</code></p></li> <li><p>第二个维度，按执行回调的并行方式，分为：</p></li> <li><ul><li><code>async</code> ：异步执行，支持传入 <code>callback</code> 或 <code>promise</code> 风格的异步回调函数，支持 <code>callAsync/tapAsync</code> 、<code>promise/tapPromise</code> 两种调用语句</li> <li><code>sync</code> ：同步执行，启动后会按次序逐个执行回调，支持 <code>call/tap</code> 调用语句</li></ul></li></ul> <p>所有钩子都可以按名称套进这两条规则里面，对插件开发者来说不同类型的钩子会直接影响到回调函数的写法，以及插件与其他插件的互通关系，但是有一些基本能力、概念是通用的：<code>tap/call</code>、<code>intercept</code>、<code>context</code>、动态编译等。接下来按同步、异步维度考察每种钩子的特点。</p> <h2 id="同步钩子"><a href="#同步钩子" class="header-anchor">#</a> 同步钩子</h2> <h3 id="synchook-钩子"><a href="#synchook-钩子" class="header-anchor">#</a> <code>SyncHook</code> 钩子</h3> <h4 id="基本逻辑"><a href="#基本逻辑" class="header-anchor">#</a> 基本逻辑</h4> <p><code>SyncHook</code> 算的上是简单的钩子了，触发后会按照注册的顺序逐个调用回调，且不关心这些回调的返回值，逻辑上大致如：</p> <div class="language- extra-class"><pre class="language-text"><code>function syncCall() {
+  const callbacks = [fn1, fn2, fn3];
+  for (let i = 0; i &lt; callbacks.length; i++) {
+    const cb = callbacks[i];
+    cb();
+  }
+}
+</code></pre></div><h4 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h4> <div class="language- extra-class"><pre class="language-text"><code>const { SyncHook } = require(&quot;tapable&quot;);
+
+class Somebody {
+  constructor() {
+    this.hooks = {
+      sleep: new SyncHook(),
+    };
+  }
+  sleep() {
+    //   触发回调
+    this.hooks.sleep.call();
+  }
+}
+
+const person = new Somebody();
+
+// 注册回调
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback A&quot;);
+});
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback B&quot;);
+});
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback C&quot;);
+});
+
+person.sleep();
+// 输出结果：
+// callback A
+// callback B
+// callback C
+</code></pre></div><p>示例中，<code>Somebody</code> 初始化时声明了一个 <code>sleep</code> 钩子，并在后续调用 <code>sleep.tap</code> 函数连续注册三次回调，在调用 <code>person.sleep()</code> 语句触发 <code>sleep.call</code> 之后，tapable 会按照注册的先后按序执行三个回调。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h4 id="异步风格"><a href="#异步风格" class="header-anchor">#</a> 异步风格</h4> <p>上述示例中，触发回调时用到了钩子的 <code>call</code> 函数，我们也可以选择异步风格的 <code>callAsync</code> ，选用 <code>call</code> 或 <code>callAsync</code> 并不会影响回调的执行逻辑：按注册顺序依次执行 + 忽略回调执行结果，两者唯一的区别是 <code>callAsync</code> 需要传入 <code>callback</code> 函数，用于处理回调队列可能抛出的异常：</p> <div class="language- extra-class"><pre class="language-text"><code>// call 风格
+try {
+  this.hooks.sleep.call();
+} catch (e) {
+    // 错误处理逻辑
+}
+// callAsync 风格
+this.hooks.sleep.callAsync((err) =&gt; {
+  if (err) {
+    // 错误处理逻辑
+  }
+});
+</code></pre></div><p>由于调用方式不会钩子本身的规则，所以对钩子的使用者来说无需关注提供者到底用的是 <code>call</code> 还是 <code>callAsync</code>，上面的例子只需要做简单的修改就可以适配 <code>callAsync</code> 场景：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncHook } = require(&quot;tapable&quot;);
+
+class Somebody {
+  constructor() {
+    this.hooks = {
+      sleep: new SyncHook(),
+    };
+  }
+  sleep() {
+    //   触发回调
+    this.hooks.sleep.callAsync((err) =&gt; {
+      if (err) {
+        console.log(`interrupt with &quot;${err.message}&quot;`);
+      }
+    });
+  }
+}
+
+const person = new Somebody();
+
+// 注册回调
+person.hooks.sleep.tap(&quot;test&quot;, (cb) =&gt; {
+  console.log(&quot;callback A&quot;);
+  throw new Error(&quot;我就是要报错&quot;);
+});
+// 第一个回调出错后，后续回调不会执行
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback B&quot;);
+});
+
+person.sleep();
+
+// 输出结果：
+// callback A
+// interrupt with &quot;我就是要报错&quot;
+</code></pre></div><h3 id="syncbailhook-钩子"><a href="#syncbailhook-钩子" class="header-anchor">#</a> <code>SyncBailHook</code> 钩子</h3> <h4 id="基本逻辑-2"><a href="#基本逻辑-2" class="header-anchor">#</a> 基本逻辑</h4> <p><code>bail</code> 单词有熔断的意思，而 <code>bail</code> 类型钩子的特点是在回调队列中，若任一回调返回了非 <code>undefined</code> 的值，则中断后续处理，直接返回该值，用一段伪代码来表示：</p> <div class="language- extra-class"><pre class="language-text"><code>function bailCall() {
+  const callbacks = [fn1, fn2, fn3];
+  for (let i in callbacks) {
+    const cb = callbacks[i];
+    const result = cb(lastResult);
+    if (result !== undefined) {
+      // 熔断
+      return result;
+    }
+  }
+  return undefined;
+}
+</code></pre></div><h4 id="示例-2"><a href="#示例-2" class="header-anchor">#</a> 示例</h4> <p><code>SyncBailHook</code> 的调用顺序与规则都跟 <code>SyncHook</code> 相似，主要区别一是 <code>SyncBailHook</code> 增加了熔断逻辑，例如：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncBailHook } = require(&quot;tapable&quot;);
+
+class Somebody {
+  constructor() {
+    this.hooks = {
+      sleep: new SyncBailHook(),
+    };
+  }
+  sleep() {
+    return this.hooks.sleep.call();
+  }
+}
+
+const person = new Somebody();
+
+// 注册回调
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback A&quot;);
+  // 熔断点
+  // 返回非 undefined 的任意值都会中断回调队列
+  return '返回值：tecvan'
+});
+person.hooks.sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback B&quot;);
+});
+
+console.log(person.sleep());
+
+// 运行结果：
+// callback A
+// 返回值：tecvan
+</code></pre></div><p>其次，相比于 <code>SyncHook</code> ，<code>SyncBailHook</code> 运行结束后，会将熔断值返回给call函数，例如上例第20行， <code>callback A</code> 返回的返回值：<code>tecvan</code> 会成为 <code>this.hooks.sleep.call</code> 的调用结果。</p> <h4 id="webpack-场景解析"><a href="#webpack-场景解析" class="header-anchor">#</a> Webpack 场景解析</h4> <p><code>SyncBailHook</code> 通常用在发布者需要关心订阅回调运行结果的场景， webpack 内部有99个地方用到这种钩子，举个例子： <code>compiler.hooks.shouldEmit</code>，对应的 <code>call</code> 语句：</p> <div class="language- extra-class"><pre class="language-text"><code>class Compiler {
+  run(callback) {
+    //   ...
+
+    const onCompiled = (err, compilation) =&gt; {
+      if (this.hooks.shouldEmit.call(compilation) === false) {
+        // ...
+      }
+    };
+  }
+}
+</code></pre></div><p>此处 webpack 会根据 <code>shouldEmit</code> 钩子的运行结果确定是否执行后续的操作，其它场景也有相似逻辑，如：</p> <ul><li><code>NormalModuleFactory.hooks.createModule</code> ：预期返回新建的 <code>module</code> 对象</li> <li><code>Compilation.hooks.needAdditionalSeal</code> ：预期返回 <code>bool</code> 值，判定是否进入 <code>unseal</code> 状态</li> <li><code>Compilation.hooks.optimizeModules</code> ：预期返回 <code>bool</code> 值，用于判定是否继续执行优化操作</li></ul> <h3 id="syncwaterfallhook-钩子"><a href="#syncwaterfallhook-钩子" class="header-anchor">#</a> SyncWaterfallHook 钩子</h3> <h4 id="基本逻辑-3"><a href="#基本逻辑-3" class="header-anchor">#</a> 基本逻辑</h4> <p><code>waterfall</code> 钩子的执行逻辑跟 lodash 的 <code>flow</code> 函数有点像，大致上就是会将前一个函数的返回值作为参数传入下一个函数，可以简化为如下代码：</p> <div class="language- extra-class"><pre class="language-text"><code>function waterfallCall(arg) {
+  const callbacks = [fn1, fn2, fn3];
+  let lastResult = arg;
+  for (let i in callbacks) {
+    const cb = callbacks[i];
+    // 上次执行结果作为参数传入下一个函数
+    lastResult = cb(lastResult);
+  }
+  return lastResult;
+}
+</code></pre></div><p>理解上述逻辑后，<code>SyncWaterfallHook</code> 的特点也就很明确了：</p> <ol><li>上一个函数的结果会被带入下一个函数</li> <li>最后一个回调的结果会作为 call 调用的结果返回</li></ol> <h4 id="示例-3"><a href="#示例-3" class="header-anchor">#</a> 示例</h4> <p>还是举例感受一下：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncWaterfallHook } = require(&quot;tapable&quot;);
+
+class Somebody {
+  constructor() {
+    this.hooks = {
+      sleep: new SyncWaterfallHook([&quot;msg&quot;]),
+    };
+  }
+  sleep() {
+    return this.hooks.sleep.call(&quot;hello&quot;);
+  }
+}
+
+const person = new Somebody();
+
+// 注册回调
+person.hooks.sleep.tap(&quot;test&quot;, (arg) =&gt; {
+  console.log(`call 调用传入： ${arg}`);
+  return &quot;tecvan&quot;;
+});
+
+person.hooks.sleep.tap(&quot;test&quot;, (arg) =&gt; {
+  console.log(`A 回调返回： ${arg}`);
+  return &quot;world&quot;;
+});
+
+console.log(&quot;最终结果：&quot; + person.sleep());
+// 运行结果：
+// call 调用传入： hello
+// A 回调返回： tecvan
+// 最终结果：world
+</code></pre></div><p>示例中，<code>sleep</code> 钩子为 <code>SyncWaterfallHook</code> 类型，之后注册了两个回调，从处理结果可以看到第一个回调收到的 <code>arg = hello</code> ，即第10行 <code>call</code> 调用时传入的参数；第二个回调收到的是第一个回调返回的结果 <code>tecvan</code>；之后 <code>call</code> 调用返回的是第二个回调的结果 <code>world</code> 。</p> <p>使用上，<code>SyncWaterfallHook</code> 钩子有一些注意事项：</p> <ul><li>初始化时必须提供参数，例如上例 <code>new SyncWaterfallHook([&quot;msg&quot;])</code> 构造函数中必须传入参数 <code>[&quot;msg&quot;]</code> ，用于动态编译 <code>call</code> 的参数依赖，后面会讲到**「动态编译」**的细节。</li> <li>发布调用 <code>call</code> 时，需要传入初始参数</li></ul> <h4 id="webpack-场景解析-2"><a href="#webpack-场景解析-2" class="header-anchor">#</a> Webpack 场景解析</h4> <p><code>SyncWaterfallHook</code> 在 webpack 中总共出现了55次，其中比较有代表性的例子是 <code>NormalModuleFactory.hooks.factory</code> ，在 webpack 内部实现中，会在这个钩子内根据资源类型 <code>resolve</code> 出对应的 <code>module</code> 对象：</p> <div class="language- extra-class"><pre class="language-text"><code>class NormalModuleFactory {
+  constructor() {
+    this.hooks = {
+      factory: new SyncWaterfallHook([&quot;filename&quot;, &quot;data&quot;]),
+    };
+
+    this.hooks.factory.tap(&quot;NormalModuleFactory&quot;, () =&gt; (result, callback) =&gt; {
+      let resolver = this.hooks.resolver.call(null);
+
+      if (!resolver) return callback();
+
+      resolver(result, (err, data) =&gt; {
+        if (err) return callback(err);
+
+        // direct module
+        if (typeof data.source === &quot;function&quot;) return callback(null, data);
+
+        // ...
+      });
+    });
+  }
+
+  create(data, callback) {
+    //   ...
+    const factory = this.hooks.factory.call(null);
+    // ...
+  }
+}
+</code></pre></div><p>大致上就是在创建模块，通过 <code>factory</code> 钩子将 <code>module</code> 的创建过程外包出去，在钩子回调队列中依据 <code>waterfall</code> 的特性逐步推断出最终的 <code>module</code> 对象。</p> <h3 id="syncloophook-钩子"><a href="#syncloophook-钩子" class="header-anchor">#</a> <code>SyncLoopHook</code> 钩子</h3> <h4 id="基本逻辑-4"><a href="#基本逻辑-4" class="header-anchor">#</a> 基本逻辑</h4> <p><code>loop</code> 型钩子的特点是循环执行直到所有回调都返回 <code>undefined</code> ，不过这里循环的维度是单个回调函数，例如有回调队列 <code>[fn1, fn2, fn3]</code> ，<code>loop</code> 钩子先执行 <code>fn1</code> ，如果此时 <code>fn1</code> 返回了非 <code>undefined</code> 值，则继续执行 <code>fn1</code> 直到返回 <code>undefined</code> 后才向前推进执行 <code>fn2</code> 。伪代码：</p> <div class="language- extra-class"><pre class="language-text"><code>function loopCall() {
+  const callbacks = [fn1, fn2, fn3];
+  for (let i in callbacks) {
+    const cb = callbacks[i];
+    // 重复执行
+    while (cb() !== undefined) {}
+  }
+}
+</code></pre></div><h4 id="示例-4"><a href="#示例-4" class="header-anchor">#</a> 示例</h4> <p>由于 <code>loop</code> 钩子循环执行的特性，使用时务必十分注意，避免陷入死循环。示例：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncLoopHook } = require(&quot;tapable&quot;);
+
+class Somebody {
+  constructor() {
+    this.hooks = {
+      sleep: new SyncLoopHook(),
+    };
+  }
+  sleep() {
+    return this.hooks.sleep.call();
+  }
+}
+
+const person = new Somebody();
+let times = 0;
+
+// 注册回调
+person.hooks.sleep.tap(&quot;test&quot;, (arg) =&gt; {
+  ++times;
+  console.log(`第 ${times} 次执行回调A`);
+  if (times &lt; 4) {
+    return times;
+  }
+});
+
+person.hooks.sleep.tap(&quot;test&quot;, (arg) =&gt; {
+  console.log(`执行回调B`);
+});
+
+person.sleep();
+// 运行结果
+// 第 1 次执行回调A
+// 第 2 次执行回调A
+// 第 3 次执行回调A
+// 第 4 次执行回调A
+// 执行回调B
+</code></pre></div><p>可以看到示例中一直在执行回调 A，直到满足判定条件 <code>times &gt;= 4</code> ，A 返回 <code>undefined</code> 后，才开始执行回调B。</p> <p>虽然 Tapable 提供了 <code>SyncLoopHook</code> 钩子，但 webpack 源码中并没有使用到，所以读者理解用法就行，不用深究。</p> <h2 id="异步钩子"><a href="#异步钩子" class="header-anchor">#</a> 异步钩子</h2> <p>前面说的 <code>Sync</code> 开头的都是同步风格的钩子，优点是执行顺序相对简单，回调之前依次执行，缺点是不能在回调中执行异步操作。除了同步钩子外，Tapable 还提供了一系列 <code>Async</code>开头的异步钩子，支持在回调函数中执行异步操作，逻辑比较复杂。</p> <h3 id="asyncserieshook-钩子"><a href="#asyncserieshook-钩子" class="header-anchor">#</a> <code>AsyncSeriesHook</code> 钩子</h3> <h4 id="基本逻辑-5"><a href="#基本逻辑-5" class="header-anchor">#</a> 基本逻辑</h4> <p><code>AsyncSeriesHook</code> 的特点：</p> <ul><li>支持异步回调，可以在回调函数中写 <code>callback</code> 或 <code>promise</code> 风格的异步操作</li> <li>回调队列依次执行，前一个执行结束后才会开始执行下一个</li> <li>与 <code>SyncHook</code> 一样，不关心回调的执行结果</li></ul> <p>用一段伪代码来表示：</p> <div class="language- extra-class"><pre class="language-text"><code>function asyncSeriesCall(callback) {
+  const callbacks = [fn1, fn2, fn3];
+  //   执行回调 1
+  fn1((err1) =&gt; {
+    if (err1) {
+      callback(err1);
+    } else {
+      //   执行回调 2
+      fn2((err2) =&gt; {
+        if (err2) {
+          callback(err2);
+        } else {
+          //   执行回调 3
+          fn3((err3) =&gt; {
+            if (err3) {
+              callback(err2);
+            }
+          });
+        }
+      });
+    }
+  });
+}
+</code></pre></div><h4 id="示例-5"><a href="#示例-5" class="header-anchor">#</a> 示例</h4> <p>先来看个 <code>callback</code> 风格的示例：</p> <div class="language- extra-class"><pre class="language-text"><code>const { AsyncSeriesHook } = require(&quot;tapable&quot;);
+
+const hook = new AsyncSeriesHook();
+
+// 注册回调
+hook.tapAsync(&quot;test&quot;, (cb) =&gt; {
+  console.log(&quot;callback A&quot;);
+  setTimeout(() =&gt; {
+    console.log(&quot;callback A 异步操作结束&quot;);
+    // 回调结束时，调用 cb 通知 tapable 当前回调已结束
+    cb();
+  }, 100);
+});
+
+hook.tapAsync(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback B&quot;);
+});
+
+hook.callAsync();
+// 运行结果：
+// callback A
+// callback A 异步操作结束
+// callback B
+</code></pre></div><p>从代码输出结果可以看出，A 回调内部的 <code>setTimeout</code> 执行完毕调用 <code>cb</code> 函数，tapable 才认为当前回调执行完毕，开始执行 B 回调。</p> <p>除了 <code>callback</code> 风格外，也可以使用 <code>promise</code> 风格调用 <code>tap/call</code> 函数，改造上例：</p> <div class="language- extra-class"><pre class="language-text"><code>const { AsyncSeriesHook } = require(&quot;tapable&quot;);
+
+const hook = new AsyncSeriesHook();
+
+// 注册回调
+hook.tapPromise(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback A&quot;);
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+      console.log(&quot;callback A 异步操作结束&quot;);
+      resolve();
+    }, 100);
+  });
+});
+
+hook.tapPromise(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback B&quot;);
+  return Promise.resolve();
+});
+
+hook.promise();
+// 运行结果：
+// callback A
+// callback A 异步操作结束
+// callback B
+</code></pre></div><p>有三个改动点：</p> <ul><li>将 <code>tapAsync</code> 更改为 <code>tapPromise</code></li> <li><code>Tap</code> 回调需要返回 <code>promise</code> 对象，如上例第 8 行</li> <li><code>callAsync</code> 调用更改为 <code>promise</code></li></ul> <h4 id="webpack-场景分析"><a href="#webpack-场景分析" class="header-anchor">#</a> Webpack 场景分析</h4> <p><code>AsyncSeriesHook</code> 钩子在 webpack 中总共出现了34次，相对来说都是一些比较容易理解的时机，比如在构建完毕后触发 <code>compiler.hooks.done</code> 钩子，用于通知单次构建已经结束：</p> <div class="language- extra-class"><pre class="language-text"><code>class Compiler {
+  run(callback) {
+    if (err) return finalCallback(err);
+
+    this.emitAssets(compilation, (err) =&gt; {
+      if (err) return finalCallback(err);
+
+      if (compilation.hooks.needAdditionalPass.call()) {
+        // ...
+        this.hooks.done.callAsync(stats, (err) =&gt; {
+          if (err) return finalCallback(err);
+
+          this.hooks.additionalPass.callAsync((err) =&gt; {
+            if (err) return finalCallback(err);
+            this.compile(onCompiled);
+          });
+        });
+        return;
+      }
+
+      this.emitRecords((err) =&gt; {
+        if (err) return finalCallback(err);
+
+        // ...
+        this.hooks.done.callAsync(stats, (err) =&gt; {
+          if (err) return finalCallback(err);
+          return finalCallback(null, stats);
+        });
+      });
+    });
+  }
+}
+</code></pre></div><h3 id="asyncparallelhook-钩子"><a href="#asyncparallelhook-钩子" class="header-anchor">#</a> <code>AsyncParallelHook</code> 钩子</h3> <p>与 <code>AsyncSeriesHook</code> 类似，<code>AsyncParallelHook</code> 也支持异步风格的回调，不过 <code>AsyncParallelHook</code> 是以并行方式，同时执行回调队列里面的所有回调，逻辑上近似于：</p> <div class="language- extra-class"><pre class="language-text"><code>function asyncParallelCall(callback) {
+  const callbacks = [fn1, fn2];
+  // 内部维护了一个计数器
+  var _counter = 2;
+
+  var _done = function() {
+    _callback();
+  };
+  if (_counter &lt;= 0) return;
+  // 按序执行回调
+  var _fn0 = callbacks[0];
+  _fn0(function(_err0) {
+    if (_err0) {
+      if (_counter &gt; 0) {
+        // 出错时，忽略后续回调，直接退出
+        _callback(_err0);
+        _counter = 0;
+      }
+    } else {
+      if (--_counter === 0) _done();
+    }
+  });
+  if (_counter &lt;= 0) return;
+  // 不需要等待前面回调结束，直接开始执行下一个回调
+  var _fn1 = callbacks[1];
+  _fn1(function(_err1) {
+    if (_err1) {
+      if (_counter &gt; 0) {
+        _callback(_err1);
+        _counter = 0;
+      }
+    } else {
+      if (--_counter === 0) _done();
+    }
+  });
+}
+</code></pre></div><p><code>AsyncParallelHook</code> 钩子的特点：</p> <ul><li>支持异步风格</li> <li>并行执行回调队列，不需要做任何等待</li> <li>与 SyncHook 一样，不关心回调的执行结果</li></ul> <h3 id="其它"><a href="#其它" class="header-anchor">#</a> 其它</h3> <p>部分钩子类型在 tapable 定义，但在 webpack 中并没有用例，大致理解作用即可：</p> <ul><li><code>AsyncParallelBailHook</code> ：异步 + 并行 + 熔断，启动后同时执行所有回调，但任意回调有返回值时，忽略剩余未执行完的回调，直接返回该结果</li> <li><code>AsyncSeriesBailHook</code> ：异步 + 串行 + 熔断，启动后按序逐个执行回调，过程中若有任意回调返回非 undefined 值，则停止后续调用，直接返回该结果</li> <li><code>AsyncSeriesLoopHook</code>： 异步 + 串行 + 循环，启动后按序逐个执行回调，若有任意回调返回非 <code>undefined</code> 值，则重复执行该回调直到返回 <code>undefined</code> 后，才继续执行下一个回调</li></ul> <h2 id="动态编译"><a href="#动态编译" class="header-anchor">#</a> 动态编译</h2> <h3 id="基本逻辑-6"><a href="#基本逻辑-6" class="header-anchor">#</a> 基本逻辑</h3> <p>Tapable 最大的秘密就是其内部实现了一套非常大胆的设计：动态编译，所谓的同步、异步、bail、waterfall、loop 等回调规则都是基于动态编译能力实现的，所以要深入学习 tapable 必然绕不开动态编译特性。</p> <p>当用户执行钩子发布函数 <code>call/callAsync/promise</code> 时，tapable 会根据钩子类型、参数、回调队列等信息动态生成执行函数，例如对于下面的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncHook } = require(&quot;tapable&quot;);
+
+const sleep = new SyncHook();
+
+sleep.tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback A&quot;);
+});
+sleep.call();
+</code></pre></div><p>调用 <code>sleep.call</code> 时，tapable 内部处理流程大致为：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>编译过程主要涉及三个实体：</p> <ul><li><code>tapable/lib/SyncHook.js</code> ：定义 <code>SyncHook</code> 的入口文件</li> <li><code>tapable/lib/Hook.js</code> ：<code>SyncHook</code> 只是一个简单接口，内部实际上调用了 <code>Hook</code> 类，由 <code>Hook</code> 实现钩子的逻辑 —— 其它钩子也是一样的套路</li> <li><code>tapable/lib/HookCodeFactory.js</code> ：动态编译出 <code>call、callAsync、promise</code> 函数内容的工厂类，注意，其他钩子也都会用到 <code>HookCodeFactory</code> 工厂函数。</li></ul> <p><code>SyncHook</code> (其他钩子类似) 调用 <code>call</code> 后，<code>Hook</code> 基类收集上下文信息并调用 <code>createCall</code> 及子类传入的 <code>compiler</code> 函数；<code>compiler</code> 调用 <code>HookCodeFactory</code> 进而使用 <code>new Function</code> 方法动态拼接出回调执行函数。上面例子对应的生成函数：</p> <div class="language- extra-class"><pre class="language-text"><code>(function anonymous() {
+&quot;use strict&quot;;
+var _context;
+var _x = this._x;
+var _fn0 = _x[0];
+_fn0();
+
+})
+</code></pre></div><h3 id="更复杂的例子"><a href="#更复杂的例子" class="header-anchor">#</a> 更复杂的例子</h3> <p>动态编译能力在一般场景下会存在诸如性能、安全性方面的问题，所以社区很少见到类似的设计。回到上面的例子，<code>SyncHook</code> 的回调逻辑其实很简单，真的有必要用到动态编译吗？我们来看一个更复杂的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>const { AsyncSeriesWaterfallHook } = require(&quot;tapable&quot;);
+
+const sleep = new AsyncSeriesWaterfallHook([&quot;name&quot;]);
+
+sleep.tapAsync(&quot;test1&quot;, (name, cb) =&gt; {
+  console.log(`执行 A 回调： 参数 name=${name}`);
+  setTimeout(() =&gt; {
+    cb(undefined, &quot;tecvan2&quot;);
+  }, 100);
+});
+
+sleep.tapAsync(&quot;test&quot;, (name, cb) =&gt; {
+  console.log(`执行 B 回调： 参数 name=${name}`);
+  setTimeout(() =&gt; {
+    cb(undefined, &quot;tecvan3&quot;);
+  }, 100);
+});
+
+sleep.tapAsync(&quot;test&quot;, (name, cb) =&gt; {
+  console.log(`执行 C 回调： 参数 name=${name}`);
+  setTimeout(() =&gt; {
+    cb(undefined, &quot;tecvan4&quot;);
+  }, 100);
+});
+
+sleep.callAsync(&quot;tecvan&quot;, (err, name) =&gt; {
+  console.log(`回调结束， name=${name}`);
+});
+
+// 运行结果：
+// 执行 A 回调： 参数 name=tecvan
+// 执行 B 回调： 参数 name=tecvan2
+// 执行 C 回调： 参数 name=tecvan3
+// 回调结束， name=tecvan4
+</code></pre></div><p>示例用到 <code>AsyncSeriesWaterfallHook</code>，这个钩子的特点是异步 + 串行 + 前一个回调的返回值会传入下一个回调，对应生成函数：</p> <div class="language- extra-class"><pre class="language-text"><code>(function anonymous(name, _callback) {
+  &quot;use strict&quot;;
+  var _context;
+  var _x = this._x;
+  function _next1() {
+    var _fn2 = _x[2];
+    _fn2(name, function(_err2, _result2) {
+      if (_err2) {
+        _callback(_err2);
+      } else {
+        if (_result2 !== undefined) {
+          name = _result2;
+        }
+        _callback(null, name);
+      }
+    });
+  }
+  function _next0() {
+    var _fn1 = _x[1];
+    _fn1(name, function(_err1, _result1) {
+      if (_err1) {
+        _callback(_err1);
+      } else {
+        if (_result1 !== undefined) {
+          name = _result1;
+        }
+        _next1();
+      }
+    });
+  }
+  var _fn0 = _x[0];
+  _fn0(name, function(_err0, _result0) {
+    if (_err0) {
+      _callback(_err0);
+    } else {
+      if (_result0 !== undefined) {
+        name = _result0;
+      }
+      _next0();
+    }
+  });
+});
+</code></pre></div><p>这段生成函数有几个特点：</p> <ul><li>生成函数将回调队列各个项封装为 <code>_next0/_next1</code> 函数，这些 <code>next</code> 函数内在逻辑高度相似</li> <li>按回调定义的顺序，逐次执行，上一个回调结束后，才调用下一个回调，例如生成代码中的第39行、27行</li></ul> <p>相对于用递归、循环之类的手段实现 <code>AsyncSeriesWaterfallHook</code> ，这段生成函数逻辑确实会更清晰，更容易理解。</p> <p>Tapable 提供的大多数特性都是基于 <code>Hook + HookCodeFactory</code> 实现的，如果读者对此有兴趣，可以在 <code>tapable/lib/Hook.js</code> 的 <code>CALL\_DELEGATE/CALL\_ASYNC\_DELEGATE/PROMISE\_DELEGATE</code> 几个函数打断点：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>之后，通过 ndb 命令断点调试，查看发布动作动态编译出的代码：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h2 id="高级特性-intercept"><a href="#高级特性-intercept" class="header-anchor">#</a> 高级特性：Intercept</h2> <p>除了通常的 <code>tap/call</code> 之外，tapable 还提供了简易的中间件机制 —— <code>intercept</code> 接口，例如</p> <div class="language- extra-class"><pre class="language-text"><code>const sleep = new SyncHook();
+
+sleep.intercept({
+  name: &quot;test&quot;,
+  context: true,
+  call() {
+    console.log(&quot;before call&quot;);
+  },
+  loop(){
+    console.log(&quot;before loop&quot;);
+  },
+  tap() {
+    console.log(&quot;before each callback&quot;);
+  },
+  register() {
+    console.log(&quot;every time call tap&quot;);
+  },
+});
+</code></pre></div><p><code>intercept</code> 支持注册如下类型的中间件：</p> <table><thead><tr><th></th> <th>签名</th> <th>解释</th></tr></thead> <tbody><tr><td>call</td> <td>(...args) =&gt; void</td> <td>调用 call/callAsync/promise 时触发</td></tr> <tr><td>tap</td> <td>(tap: Tap) =&gt; void</td> <td>调用 call 类函数后，每次调用回调之前触发</td></tr> <tr><td>loop</td> <td>(...args) =&gt; void</td> <td>仅 loop 型的钩子有效，在循环开始之前触发</td></tr> <tr><td>register</td> <td>(tap: Tap) =&gt; Tap | undefined</td> <td>调用 tap/tapAsync/tapPromise 时触发</td></tr></tbody></table> <p>其中 <code>register</code> 在每次调用 tap 时被调用；其他三种中间件的触发时机大致如：</p> <div class="language- extra-class"><pre class="language-text"><code>  var _context;
+  const callbacks = [fn1, fn2];
+  var _interceptors = this.interceptors;
+  // 调用 call 函数，立即触发
+  _interceptors.forEach((intercept) =&gt; intercept.call(_context));
+  var _loop;
+  var cursor = 0;
+  do {
+    _loop = false;
+    // 每次循环开始时触发 `loop`
+    _interceptors.forEach((intercept) =&gt; intercept.loop(_context));
+    // 触发 `tap`
+    var _fn0 = callbacks[0];
+    _interceptors.forEach((intercept) =&gt; intercept.tap(_context, _fn0));
+    var _result0 = _fn0();
+    if (_result0 !== undefined) {
+      _loop = true;
+    } else {
+      var _fn1 = callbacks[1];
+      // 再次触发 `tap`
+      _interceptors.forEach((intercept) =&gt; intercept.tap(_context, _fn1));
+      var _result1 = _fn1();
+      if (_result1 !== undefined) {
+        _loop = true;
+      }
+    }
+  } while (_loop);
+</code></pre></div><p><code>intercept</code> 特性在 webpack 内主要被用作进度提示，如 <code>webpack/lib/ProgressPlugin</code> 插件中，分别对 <code>compiler.hooks.emit</code> 、<code>compiler.hooks.afterEmit</code>钩子应用了记录进度的中间件函数。其他类型的插件应用较少。</p> <h2 id="高级特性-hookmap"><a href="#高级特性-hookmap" class="header-anchor">#</a> 高级特性：HookMap</h2> <p>Tapable 还有一个特性值得注意的特性 —— <code>HookMap</code> 。<code>HookMap</code> 提供了一种集合操作能力，能够降低创建与使用的复杂度，用法比较简单：</p> <div class="language- extra-class"><pre class="language-text"><code>const { SyncHook, HookMap } = require(&quot;tapable&quot;);
+
+const sleep = new HookMap(() =&gt; new SyncHook());
+
+// 通过 for 函数过滤集合中的特定钩子
+sleep.for(&quot;statement&quot;).tap(&quot;test&quot;, () =&gt; {
+  console.log(&quot;callback for statement&quot;);
+});
+
+// 触发 statement 类型的钩子
+sleep.get(&quot;statement&quot;).call();
+</code></pre></div><p>在 webpack 中，HookMap 集中在 <code>webpack/lib/parser.js</code> 文件中，<code>parser</code> 文件主要完成将资源内容解析为 AST 集合，解析完成后遍历 AST 并以钩子方式对外通知遍历到的内容。例如遇到表达式的时候触发 <code>Parser.hooks.expression</code> 钩子，问题是 AST 结构和内容都很复杂，如果所有情景都以独立的钩子实现，那代码量工作量会急剧膨胀。</p> <p>这种场景就很适合用 <code>HookMap</code> 解决，以 <code>expression</code> 为例：</p> <div class="language- extra-class"><pre class="language-text"><code>class Parser {
+  constructor() {
+    this.hooks = {
+      // 定义钩子
+      // 这里用到 HookMap ，所以不需要提前遍历枚举所有 expression 场景
+      expression: new HookMap(() =&gt; new SyncBailHook([&quot;expression&quot;])),
+    };
+  }
+
+  //   不同场景下触发钩子
+  walkMemberExpression(expression) {
+    const exprName = this.getNameForExpression(expression);
+    if (exprName &amp;&amp; exprName.free) {
+      // 触发特定类型的钩子
+      const expressionHook = this.hooks.expression.get(exprName.name);
+      if (expressionHook !== undefined) {
+        const result = expressionHook.call(expression);
+        if (result === true) return;
+      }
+    }
+    // ...
+  }
+
+  walkThisExpression(expression) {
+    const expressionHook = this.hooks.expression.get(&quot;this&quot;);
+    if (expressionHook !== undefined) {
+      expressionHook.call(expression);
+    }
+  }
+}
+
+// 钩子消费逻辑
+// 选取 CommonJsStuffPlugin 仅起示例作用
+class CommonJsStuffPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      &quot;CommonJsStuffPlugin&quot;,
+      (compilation, { normalModuleFactory }) =&gt; {
+        const handler = (parser, parserOptions) =&gt; {
+          // 通过 for 精确消费钩子
+          parser.hooks.expression
+            .for(&quot;require.main.require&quot;)
+            .tap(
+              &quot;CommonJsStuffPlugin&quot;,
+              ParserHelpers.expressionIsUnsupported(
+                parser,
+                &quot;require.main.require is not supported by webpack.&quot;
+              )
+            );
+          parser.hooks.expression
+            .for(&quot;module.parent.require&quot;)
+            .tap(
+              &quot;CommonJsStuffPlugin&quot;,
+              ParserHelpers.expressionIsUnsupported(
+                parser,
+                &quot;module.parent.require is not supported by webpack.&quot;
+              )
+            );
+          parser.hooks.expression
+            .for(&quot;require.main&quot;)
+            .tap(
+              &quot;CommonJsStuffPlugin&quot;,
+              ParserHelpers.toConstantDependencyWithWebpackRequire(
+                parser,
+                &quot;__webpack_require__.c[__webpack_require__.s]&quot;
+              )
+            );
+          // ...
+        };
+      }
+    );
+  }
+}
+</code></pre></div><h1 id="webpack-插件架构"><a href="#webpack-插件架构" class="header-anchor">#</a> Webpack 插件架构</h1> <p>上面内容围绕 tapable 展开，着重介绍各种钩子类型的运行机理、特点、交互等，在理解这些内容之后，我们可以继续往前推导，聊聊 webpack 插件架构的核心设计。</p> <p>前端社区里很多有名的框架都各自有一套插件架构，例如 axios、quill、vscode、webpack、vue、rollup 等等。插件架构灵活性高，扩展性强，但是通常需要非常强的架构能力，需要至少解决三个方面的问题：</p> <ul><li><strong>「接口」</strong>：需要提供一套逻辑接入方法，让开发者能够将逻辑在特定时机插入特定位置</li> <li><strong>「输入」</strong>：如何将上下文信息高效传导给插件</li> <li><strong>「输出」</strong>：插件内部通过何种方式影响整套运行体系</li></ul> <p>针对这些问题，webpack 为开发者提供了基于 tapable 钩子的插件方案：</p> <ol><li>编译过程的特定节点以钩子形式，通知插件此刻正在发生什么事情；</li> <li>通过 tapable 提供的回调机制，以参数方式传递上下文信息；</li> <li>在上下文参数对象中附带了很多存在 side effect 的交互接口，插件可以通过这些接口改变</li></ol> <p>这一切实现都离不开 tapable，例如：</p> <div class="language- extra-class"><pre class="language-text"><code>class Compiler {
+  // 在构造函数中，先初始化钩子对象
+  constructor() {
+    this.hooks = {
+      thisCompilation: new SyncHook([&quot;compilation&quot;, &quot;params&quot;]),
+    };
+  }
+
+  compile() {
+    // 特定时机触发特定钩子
+    const compilation = new Compilation();
+    this.hooks.thisCompilation.call(compilation);
+  }
+}
+</code></pre></div><p><code>Compiler</code> 类型内部定义了 <code>thisCompilation</code> 钩子，并在 <code>compilation</code> 创建完毕后发布事件消息，插件开发者就可以基于这个钩子获取到最新创建出的 <code>compilation</code> 对象：</p> <div class="language- extra-class"><pre class="language-text"><code>class SomePlugin {
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap(&quot;SomePlugin&quot;, (compilation, params) =&gt; {
+        // 上下文信息： compilation、params
+    });
+  }
+}
+</code></pre></div><p>钩子回调传递的 <code>compilation/params</code> 参数就是 webpack 希望传递给插件的上下文信息，也是插件能拿到的输入。不同钩子会传递不同的上下文对象，这一点在钩子被创建的时候就定下来了，比如：</p> <div class="language- extra-class"><pre class="language-text"><code>class Compiler {
+    constructor() {
+        this.hooks = {
+            /** @type {SyncBailHook&lt;Compilation&gt;} */
+            shouldEmit: new SyncBailHook([&quot;compilation&quot;]),
+            /** @type {AsyncSeriesHook&lt;Stats&gt;} */
+            done: new AsyncSeriesHook([&quot;stats&quot;]),
+            /** @type {AsyncSeriesHook&lt;&gt;} */
+            additionalPass: new AsyncSeriesHook([]),
+            /** @type {AsyncSeriesHook&lt;Compiler&gt;} */
+            beforeRun: new AsyncSeriesHook([&quot;compiler&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compiler&gt;} */
+            run: new AsyncSeriesHook([&quot;compiler&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compilation&gt;} */
+            emit: new AsyncSeriesHook([&quot;compilation&quot;]),
+            /** @type {AsyncSeriesHook&lt;string, Buffer&gt;} */
+            assetEmitted: new AsyncSeriesHook([&quot;file&quot;, &quot;content&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compilation&gt;} */
+            afterEmit: new AsyncSeriesHook([&quot;compilation&quot;]),
+        };
+    }
+}
+</code></pre></div><ul><li><code>shouldEmit</code> 会被传入 <code>compilation</code> 参数</li> <li><code>done</code> 会被传入 <code>stats</code> 参数</li> <li><code>addtionalPass</code> 没有参数</li> <li>...</li></ul> <p>常见的参数对象有 <code>compilation/module/stats/compiler/file/chunks</code> 等，在钩子回调中可以通过改变这些对象的状态，影响 webpack 的编译逻辑。这些类型的含义、作用、接口都比较复杂，建议读者到 [<a href="http://mp.weixin.qq.com/s?__biz=Mzg3OTYwMjcxMA==&amp;mid=2247483744&amp;idx=1&amp;sn=d7128a76eed20746cd8c5100f0899138&amp;chksm=cf00bc19f877350f17844b283fa0f39daa111864aa69f0be8ce05d3809c51496da43de018a17&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">万字总结] 一文吃透 Webpack 核心原理<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 做进一步了解。</p> <h1 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h1> <p>Tapable 合计提供了 10 种钩子，支持同步、异步、熔断、循环、waterfall等功能特性，以此支撑起 webpack 复杂的编译功能。熟悉这10种钩子只是一个起点，能够让你在编写插件时迅速识别出回调函数的基本模式。</p> <p>除此之外你还需要了解学习更多 webpack 内置对象的功能、特点、接口等内容才能顺利编写出符合需求的插件，作者近期会一直 focus 在 webpack 领域，对此感兴趣的同学记得点击关注。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">11/8/2024, 10:19:43 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/deploy/1-webpack原理/Webpack原理系列九-Tree-Shaking实现原理.html" class="prev">
+        Webpack 原理系列九：Tree-Shaking实现原理
+      </a></span> <span class="next"><a href="/deploy/1-webpack原理/Webpack原理系列五-Webpack-Chunk分包规则详解.html">
+        有点难的知识点： Webpack Chunk 分包规则详解
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.ae400df5.js" defer></script><script src="/assets/js/2.57da4f88.js" defer></script><script src="/assets/js/1.a76cc220.js" defer></script><script src="/assets/js/117.d5fa2588.js" defer></script>
+  </body>
+</html>

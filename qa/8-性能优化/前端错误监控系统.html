@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>这三年沉淀的前端错误监控系统，一篇文章讲透给你 | 前端收集</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/logo.webp">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="blog,react,node,js">
+    
+    <link rel="preload" href="/assets/css/0.styles.b4a844ec.css" as="style"><link rel="preload" href="/assets/js/app.ae400df5.js" as="script"><link rel="preload" href="/assets/js/2.57da4f88.js" as="script"><link rel="preload" href="/assets/js/1.a76cc220.js" as="script"><link rel="preload" href="/assets/js/366.d1c007ca.js" as="script"><link rel="prefetch" href="/assets/js/10.50f73657.js"><link rel="prefetch" href="/assets/js/100.f9ccbc6f.js"><link rel="prefetch" href="/assets/js/101.c20baa36.js"><link rel="prefetch" href="/assets/js/102.4ce575e4.js"><link rel="prefetch" href="/assets/js/103.6ddf9f4a.js"><link rel="prefetch" href="/assets/js/104.e8bd0c3f.js"><link rel="prefetch" href="/assets/js/105.d0a85c47.js"><link rel="prefetch" href="/assets/js/106.4b3aadee.js"><link rel="prefetch" href="/assets/js/107.436e7f8f.js"><link rel="prefetch" href="/assets/js/108.f46692dc.js"><link rel="prefetch" href="/assets/js/109.322908a6.js"><link rel="prefetch" href="/assets/js/11.0390ceee.js"><link rel="prefetch" href="/assets/js/110.9181da82.js"><link rel="prefetch" href="/assets/js/111.c451b4da.js"><link rel="prefetch" href="/assets/js/112.196b195d.js"><link rel="prefetch" href="/assets/js/113.d65148d0.js"><link rel="prefetch" href="/assets/js/114.5566de19.js"><link rel="prefetch" href="/assets/js/115.12d1619e.js"><link rel="prefetch" href="/assets/js/116.d2f23fe7.js"><link rel="prefetch" href="/assets/js/117.d5fa2588.js"><link rel="prefetch" href="/assets/js/118.79455d12.js"><link rel="prefetch" href="/assets/js/119.b43c99e9.js"><link rel="prefetch" href="/assets/js/12.f88bec36.js"><link rel="prefetch" href="/assets/js/120.f321d53f.js"><link rel="prefetch" href="/assets/js/121.286fed99.js"><link rel="prefetch" href="/assets/js/122.ff0af27d.js"><link rel="prefetch" href="/assets/js/123.00138c02.js"><link rel="prefetch" href="/assets/js/124.25640250.js"><link rel="prefetch" href="/assets/js/125.cb2f28a6.js"><link rel="prefetch" href="/assets/js/126.e8ec0fe7.js"><link rel="prefetch" href="/assets/js/127.0fdd48c2.js"><link rel="prefetch" href="/assets/js/128.38b675a9.js"><link rel="prefetch" href="/assets/js/129.7819df5c.js"><link rel="prefetch" href="/assets/js/13.963ad03b.js"><link rel="prefetch" href="/assets/js/130.a58f0a09.js"><link rel="prefetch" href="/assets/js/131.4a0133b5.js"><link rel="prefetch" href="/assets/js/132.24e842c4.js"><link rel="prefetch" href="/assets/js/133.be3bb854.js"><link rel="prefetch" href="/assets/js/134.8c4662c6.js"><link rel="prefetch" href="/assets/js/135.03d2f395.js"><link rel="prefetch" href="/assets/js/136.acf07647.js"><link rel="prefetch" href="/assets/js/137.f0fa48ad.js"><link rel="prefetch" href="/assets/js/138.843d86f2.js"><link rel="prefetch" href="/assets/js/139.015086b5.js"><link rel="prefetch" href="/assets/js/14.512f15b9.js"><link rel="prefetch" href="/assets/js/140.5468056b.js"><link rel="prefetch" href="/assets/js/141.9bf65de6.js"><link rel="prefetch" href="/assets/js/142.63b38359.js"><link rel="prefetch" href="/assets/js/143.55120954.js"><link rel="prefetch" href="/assets/js/144.e3d71ef2.js"><link rel="prefetch" href="/assets/js/145.470a4869.js"><link rel="prefetch" href="/assets/js/146.574b3929.js"><link rel="prefetch" href="/assets/js/147.28c0b405.js"><link rel="prefetch" href="/assets/js/148.08f963f8.js"><link rel="prefetch" href="/assets/js/149.0b296978.js"><link rel="prefetch" href="/assets/js/15.a674496c.js"><link rel="prefetch" href="/assets/js/150.651bd19a.js"><link rel="prefetch" href="/assets/js/151.d2029876.js"><link rel="prefetch" href="/assets/js/152.32f253ce.js"><link rel="prefetch" href="/assets/js/153.ceb29b56.js"><link rel="prefetch" href="/assets/js/154.6a7f6d29.js"><link rel="prefetch" href="/assets/js/155.50aaf5d9.js"><link rel="prefetch" href="/assets/js/156.036e250b.js"><link rel="prefetch" href="/assets/js/157.c2435840.js"><link rel="prefetch" href="/assets/js/158.242ba411.js"><link rel="prefetch" href="/assets/js/159.136ff0a3.js"><link rel="prefetch" href="/assets/js/16.ed7e507f.js"><link rel="prefetch" href="/assets/js/160.25dcaecf.js"><link rel="prefetch" href="/assets/js/161.ab904d4e.js"><link rel="prefetch" href="/assets/js/162.04b69881.js"><link rel="prefetch" href="/assets/js/163.e7e749f8.js"><link rel="prefetch" href="/assets/js/164.71f53227.js"><link rel="prefetch" href="/assets/js/165.5841cd1a.js"><link rel="prefetch" href="/assets/js/166.28071d6e.js"><link rel="prefetch" href="/assets/js/167.93ce97d2.js"><link rel="prefetch" href="/assets/js/168.f3b2972c.js"><link rel="prefetch" href="/assets/js/169.aa7f77f0.js"><link rel="prefetch" href="/assets/js/17.de667ca5.js"><link rel="prefetch" href="/assets/js/170.cfdf36f3.js"><link rel="prefetch" href="/assets/js/171.e542ad9a.js"><link rel="prefetch" href="/assets/js/172.2101f9ed.js"><link rel="prefetch" href="/assets/js/173.8f875d74.js"><link rel="prefetch" href="/assets/js/174.61572c8b.js"><link rel="prefetch" href="/assets/js/175.2ce966d7.js"><link rel="prefetch" href="/assets/js/176.bf7661ff.js"><link rel="prefetch" href="/assets/js/177.99ab75ff.js"><link rel="prefetch" href="/assets/js/178.8c053eff.js"><link rel="prefetch" href="/assets/js/179.bb56672f.js"><link rel="prefetch" href="/assets/js/18.b44e84af.js"><link rel="prefetch" href="/assets/js/180.44be886d.js"><link rel="prefetch" href="/assets/js/181.a635f8b4.js"><link rel="prefetch" href="/assets/js/182.43ee494e.js"><link rel="prefetch" href="/assets/js/183.7f8013e7.js"><link rel="prefetch" href="/assets/js/184.995eba6d.js"><link rel="prefetch" href="/assets/js/185.ae8dc8fc.js"><link rel="prefetch" href="/assets/js/186.f5f3b8d8.js"><link rel="prefetch" href="/assets/js/187.0b834066.js"><link rel="prefetch" href="/assets/js/188.de0798b4.js"><link rel="prefetch" href="/assets/js/189.bd73bd48.js"><link rel="prefetch" href="/assets/js/19.5b5ad6a1.js"><link rel="prefetch" href="/assets/js/190.3b34618c.js"><link rel="prefetch" href="/assets/js/191.d69ac5ae.js"><link rel="prefetch" href="/assets/js/192.6fb41323.js"><link rel="prefetch" href="/assets/js/193.deec3471.js"><link rel="prefetch" href="/assets/js/194.a936f543.js"><link rel="prefetch" href="/assets/js/195.257a9d86.js"><link rel="prefetch" href="/assets/js/196.b04a1424.js"><link rel="prefetch" href="/assets/js/197.b1b12256.js"><link rel="prefetch" href="/assets/js/198.d3539378.js"><link rel="prefetch" href="/assets/js/199.802facc3.js"><link rel="prefetch" href="/assets/js/20.6800493a.js"><link rel="prefetch" href="/assets/js/200.c2e3da4f.js"><link rel="prefetch" href="/assets/js/201.9b119f49.js"><link rel="prefetch" href="/assets/js/202.283e51cb.js"><link rel="prefetch" href="/assets/js/203.4ebeba02.js"><link rel="prefetch" href="/assets/js/204.a3680104.js"><link rel="prefetch" href="/assets/js/205.e89e1221.js"><link rel="prefetch" href="/assets/js/206.a2159b40.js"><link rel="prefetch" href="/assets/js/207.30aa8a56.js"><link rel="prefetch" href="/assets/js/208.25e87523.js"><link rel="prefetch" href="/assets/js/209.1feb11d6.js"><link rel="prefetch" href="/assets/js/21.6589052c.js"><link rel="prefetch" href="/assets/js/210.3988d49f.js"><link rel="prefetch" href="/assets/js/211.c35b6127.js"><link rel="prefetch" href="/assets/js/212.a47a605d.js"><link rel="prefetch" href="/assets/js/213.e67c2145.js"><link rel="prefetch" href="/assets/js/214.f2adf5ee.js"><link rel="prefetch" href="/assets/js/215.8af7fa44.js"><link rel="prefetch" href="/assets/js/216.c4c02e18.js"><link rel="prefetch" href="/assets/js/217.8a2ed0a4.js"><link rel="prefetch" href="/assets/js/218.5224a21c.js"><link rel="prefetch" href="/assets/js/219.85a23ded.js"><link rel="prefetch" href="/assets/js/22.f648d829.js"><link rel="prefetch" href="/assets/js/220.1a4b37cb.js"><link rel="prefetch" href="/assets/js/221.fd8b42a5.js"><link rel="prefetch" href="/assets/js/222.ab3b9c2e.js"><link rel="prefetch" href="/assets/js/223.7e579d8f.js"><link rel="prefetch" href="/assets/js/224.a9ba827c.js"><link rel="prefetch" href="/assets/js/225.e1612fcc.js"><link rel="prefetch" href="/assets/js/226.9c1af133.js"><link rel="prefetch" href="/assets/js/227.0bc3b51e.js"><link rel="prefetch" href="/assets/js/228.a0eba8af.js"><link rel="prefetch" href="/assets/js/229.5d1c84bb.js"><link rel="prefetch" href="/assets/js/23.79aa69fa.js"><link rel="prefetch" href="/assets/js/230.f83fdc59.js"><link rel="prefetch" href="/assets/js/231.9f82cedb.js"><link rel="prefetch" href="/assets/js/232.f97914ee.js"><link rel="prefetch" href="/assets/js/233.50ac2baa.js"><link rel="prefetch" href="/assets/js/234.d313f866.js"><link rel="prefetch" href="/assets/js/235.f5eb3748.js"><link rel="prefetch" href="/assets/js/236.d452db47.js"><link rel="prefetch" href="/assets/js/237.5199378b.js"><link rel="prefetch" href="/assets/js/238.d1c3107c.js"><link rel="prefetch" href="/assets/js/239.4e2b6d59.js"><link rel="prefetch" href="/assets/js/24.03ffbcca.js"><link rel="prefetch" href="/assets/js/240.b46f5ecd.js"><link rel="prefetch" href="/assets/js/241.7e9311b0.js"><link rel="prefetch" href="/assets/js/242.ede280f9.js"><link rel="prefetch" href="/assets/js/243.71efdf6e.js"><link rel="prefetch" href="/assets/js/244.1b089d77.js"><link rel="prefetch" href="/assets/js/245.47562a1b.js"><link rel="prefetch" href="/assets/js/246.35ce7ccb.js"><link rel="prefetch" href="/assets/js/247.0eea6dda.js"><link rel="prefetch" href="/assets/js/248.d606d51a.js"><link rel="prefetch" href="/assets/js/249.22a9c555.js"><link rel="prefetch" href="/assets/js/25.872464d2.js"><link rel="prefetch" href="/assets/js/250.7cf64a15.js"><link rel="prefetch" href="/assets/js/251.b6f787d7.js"><link rel="prefetch" href="/assets/js/252.8b9bedcd.js"><link rel="prefetch" href="/assets/js/253.5c63ec35.js"><link rel="prefetch" href="/assets/js/254.31ff9dc4.js"><link rel="prefetch" href="/assets/js/255.190e5f80.js"><link rel="prefetch" href="/assets/js/256.e68f87e0.js"><link rel="prefetch" href="/assets/js/257.3095f7a1.js"><link rel="prefetch" href="/assets/js/258.af517699.js"><link rel="prefetch" href="/assets/js/259.f10ece0f.js"><link rel="prefetch" href="/assets/js/26.bd6d2ac2.js"><link rel="prefetch" href="/assets/js/260.e8bbba00.js"><link rel="prefetch" href="/assets/js/261.5d9b1d5e.js"><link rel="prefetch" href="/assets/js/262.950474a9.js"><link rel="prefetch" href="/assets/js/263.3e7dca65.js"><link rel="prefetch" href="/assets/js/264.1017ad1a.js"><link rel="prefetch" href="/assets/js/265.99c4d846.js"><link rel="prefetch" href="/assets/js/266.8d1ea647.js"><link rel="prefetch" href="/assets/js/267.20e69579.js"><link rel="prefetch" href="/assets/js/268.4da84374.js"><link rel="prefetch" href="/assets/js/269.e3ad7859.js"><link rel="prefetch" href="/assets/js/27.814c713d.js"><link rel="prefetch" href="/assets/js/270.c5c4b40b.js"><link rel="prefetch" href="/assets/js/271.9c7294fd.js"><link rel="prefetch" href="/assets/js/272.3d41fdce.js"><link rel="prefetch" href="/assets/js/273.3eaafe8e.js"><link rel="prefetch" href="/assets/js/274.f98d5554.js"><link rel="prefetch" href="/assets/js/275.5ec6a4b8.js"><link rel="prefetch" href="/assets/js/276.0936dd89.js"><link rel="prefetch" href="/assets/js/277.33bd4dff.js"><link rel="prefetch" href="/assets/js/278.c383b31c.js"><link rel="prefetch" href="/assets/js/279.6df8b215.js"><link rel="prefetch" href="/assets/js/28.5229eb08.js"><link rel="prefetch" href="/assets/js/280.07169fc6.js"><link rel="prefetch" href="/assets/js/281.4b28be3f.js"><link rel="prefetch" href="/assets/js/282.79bba86e.js"><link rel="prefetch" href="/assets/js/283.32f592bc.js"><link rel="prefetch" href="/assets/js/284.fd9b6b59.js"><link rel="prefetch" href="/assets/js/285.df1454be.js"><link rel="prefetch" href="/assets/js/286.18b1703e.js"><link rel="prefetch" href="/assets/js/287.94781ca0.js"><link rel="prefetch" href="/assets/js/288.f21493cb.js"><link rel="prefetch" href="/assets/js/289.8fc283e3.js"><link rel="prefetch" href="/assets/js/29.a63c1057.js"><link rel="prefetch" href="/assets/js/290.3346a986.js"><link rel="prefetch" href="/assets/js/291.5fafa49e.js"><link rel="prefetch" href="/assets/js/292.ac874de4.js"><link rel="prefetch" href="/assets/js/293.19730c32.js"><link rel="prefetch" href="/assets/js/294.98ddc6d7.js"><link rel="prefetch" href="/assets/js/295.eae00758.js"><link rel="prefetch" href="/assets/js/296.1d81c552.js"><link rel="prefetch" href="/assets/js/297.5f86f97e.js"><link rel="prefetch" href="/assets/js/298.1bc558ca.js"><link rel="prefetch" href="/assets/js/299.d068c6b6.js"><link rel="prefetch" href="/assets/js/3.13e892f5.js"><link rel="prefetch" href="/assets/js/30.1b884b1b.js"><link rel="prefetch" href="/assets/js/300.c956e204.js"><link rel="prefetch" href="/assets/js/301.77127d95.js"><link rel="prefetch" href="/assets/js/302.1d7c4af3.js"><link rel="prefetch" href="/assets/js/303.2bcbc099.js"><link rel="prefetch" href="/assets/js/304.b2180761.js"><link rel="prefetch" href="/assets/js/305.3ac4a62e.js"><link rel="prefetch" href="/assets/js/306.1ce3e68d.js"><link rel="prefetch" href="/assets/js/307.6c3d9548.js"><link rel="prefetch" href="/assets/js/308.b777fbfa.js"><link rel="prefetch" href="/assets/js/309.e5d32660.js"><link rel="prefetch" href="/assets/js/31.68c1b4eb.js"><link rel="prefetch" href="/assets/js/310.fcda8acc.js"><link rel="prefetch" href="/assets/js/311.cde4dc35.js"><link rel="prefetch" href="/assets/js/312.98a0ee89.js"><link rel="prefetch" href="/assets/js/313.ce02630f.js"><link rel="prefetch" href="/assets/js/314.3883ac39.js"><link rel="prefetch" href="/assets/js/315.b6c9cd37.js"><link rel="prefetch" href="/assets/js/316.6cd33ea7.js"><link rel="prefetch" href="/assets/js/317.eb818350.js"><link rel="prefetch" href="/assets/js/318.e9e7da16.js"><link rel="prefetch" href="/assets/js/319.1edfec0a.js"><link rel="prefetch" href="/assets/js/32.64224241.js"><link rel="prefetch" href="/assets/js/320.f4728475.js"><link rel="prefetch" href="/assets/js/321.799c6e59.js"><link rel="prefetch" href="/assets/js/322.a701407b.js"><link rel="prefetch" href="/assets/js/323.803b7bcc.js"><link rel="prefetch" href="/assets/js/324.a73b88d8.js"><link rel="prefetch" href="/assets/js/325.f08e06ca.js"><link rel="prefetch" href="/assets/js/326.80813d35.js"><link rel="prefetch" href="/assets/js/327.8310d6c8.js"><link rel="prefetch" href="/assets/js/328.68f1b07a.js"><link rel="prefetch" href="/assets/js/329.04be32fe.js"><link rel="prefetch" href="/assets/js/33.b4859866.js"><link rel="prefetch" href="/assets/js/330.fbd486d3.js"><link rel="prefetch" href="/assets/js/331.bc43b814.js"><link rel="prefetch" href="/assets/js/332.838514e5.js"><link rel="prefetch" href="/assets/js/333.c647f10b.js"><link rel="prefetch" href="/assets/js/334.293d7db1.js"><link rel="prefetch" href="/assets/js/335.f60f98c5.js"><link rel="prefetch" href="/assets/js/336.d59a627e.js"><link rel="prefetch" href="/assets/js/337.719cd005.js"><link rel="prefetch" href="/assets/js/338.eb93d4b7.js"><link rel="prefetch" href="/assets/js/339.a38c5695.js"><link rel="prefetch" href="/assets/js/34.69c1bc55.js"><link rel="prefetch" href="/assets/js/340.9a4ce427.js"><link rel="prefetch" href="/assets/js/341.d39b4f2f.js"><link rel="prefetch" href="/assets/js/342.11fbba88.js"><link rel="prefetch" href="/assets/js/343.36030f9c.js"><link rel="prefetch" href="/assets/js/344.94fc0ac0.js"><link rel="prefetch" href="/assets/js/345.c6ef0cd3.js"><link rel="prefetch" href="/assets/js/346.3f3484bf.js"><link rel="prefetch" href="/assets/js/347.f6957922.js"><link rel="prefetch" href="/assets/js/348.df8650b3.js"><link rel="prefetch" href="/assets/js/349.402ca2e1.js"><link rel="prefetch" href="/assets/js/35.d8b00796.js"><link rel="prefetch" href="/assets/js/350.8a48f4c3.js"><link rel="prefetch" href="/assets/js/351.b5356e83.js"><link rel="prefetch" href="/assets/js/352.944301fd.js"><link rel="prefetch" href="/assets/js/353.8b170c06.js"><link rel="prefetch" href="/assets/js/354.97b92290.js"><link rel="prefetch" href="/assets/js/355.948e7095.js"><link rel="prefetch" href="/assets/js/356.5aaf9fe5.js"><link rel="prefetch" href="/assets/js/357.67c88167.js"><link rel="prefetch" href="/assets/js/358.e241fbe2.js"><link rel="prefetch" href="/assets/js/359.15b3166a.js"><link rel="prefetch" href="/assets/js/36.090e85b2.js"><link rel="prefetch" href="/assets/js/360.187f4fe6.js"><link rel="prefetch" href="/assets/js/361.a77fa57f.js"><link rel="prefetch" href="/assets/js/362.30ed8657.js"><link rel="prefetch" href="/assets/js/363.c8caaf0f.js"><link rel="prefetch" href="/assets/js/364.78f41e2e.js"><link rel="prefetch" href="/assets/js/365.55b8d5b3.js"><link rel="prefetch" href="/assets/js/367.bc6a31fb.js"><link rel="prefetch" href="/assets/js/368.147012d3.js"><link rel="prefetch" href="/assets/js/369.94f25d03.js"><link rel="prefetch" href="/assets/js/37.bf92df67.js"><link rel="prefetch" href="/assets/js/370.37c8786f.js"><link rel="prefetch" href="/assets/js/371.037e513b.js"><link rel="prefetch" href="/assets/js/372.353d4826.js"><link rel="prefetch" href="/assets/js/373.3260442b.js"><link rel="prefetch" href="/assets/js/374.eabaedd4.js"><link rel="prefetch" href="/assets/js/375.f80e9c75.js"><link rel="prefetch" href="/assets/js/376.b041cafe.js"><link rel="prefetch" href="/assets/js/377.d6410416.js"><link rel="prefetch" href="/assets/js/378.0d21f78f.js"><link rel="prefetch" href="/assets/js/379.83c05c56.js"><link rel="prefetch" href="/assets/js/38.74932844.js"><link rel="prefetch" href="/assets/js/380.c41e1704.js"><link rel="prefetch" href="/assets/js/381.52c6dcbf.js"><link rel="prefetch" href="/assets/js/382.d2998ea4.js"><link rel="prefetch" href="/assets/js/383.160918fa.js"><link rel="prefetch" href="/assets/js/384.6e3e4604.js"><link rel="prefetch" href="/assets/js/385.e514c0b7.js"><link rel="prefetch" href="/assets/js/386.3cab7b43.js"><link rel="prefetch" href="/assets/js/387.7b7aa4c3.js"><link rel="prefetch" href="/assets/js/388.1675a9c8.js"><link rel="prefetch" href="/assets/js/389.f5e5e9e4.js"><link rel="prefetch" href="/assets/js/39.45a654d9.js"><link rel="prefetch" href="/assets/js/390.5bbca72c.js"><link rel="prefetch" href="/assets/js/391.4e95a939.js"><link rel="prefetch" href="/assets/js/392.8eb7d12f.js"><link rel="prefetch" href="/assets/js/393.f72f9473.js"><link rel="prefetch" href="/assets/js/394.1cea58b3.js"><link rel="prefetch" href="/assets/js/395.33fa0847.js"><link rel="prefetch" href="/assets/js/396.8ef17642.js"><link rel="prefetch" href="/assets/js/397.dd02eee1.js"><link rel="prefetch" href="/assets/js/398.23ea33a3.js"><link rel="prefetch" href="/assets/js/399.84a4e8db.js"><link rel="prefetch" href="/assets/js/4.5bdb9365.js"><link rel="prefetch" href="/assets/js/40.7cc37d90.js"><link rel="prefetch" href="/assets/js/400.0597181f.js"><link rel="prefetch" href="/assets/js/401.9cb4c0e2.js"><link rel="prefetch" href="/assets/js/402.41ddf5c4.js"><link rel="prefetch" href="/assets/js/403.afa305eb.js"><link rel="prefetch" href="/assets/js/404.3831ec8d.js"><link rel="prefetch" href="/assets/js/405.b79a51fb.js"><link rel="prefetch" href="/assets/js/406.dd6191a5.js"><link rel="prefetch" href="/assets/js/407.d2e12f04.js"><link rel="prefetch" href="/assets/js/408.56c2fc48.js"><link rel="prefetch" href="/assets/js/409.25a15725.js"><link rel="prefetch" href="/assets/js/41.78331f9e.js"><link rel="prefetch" href="/assets/js/410.dd6c1352.js"><link rel="prefetch" href="/assets/js/411.6d95d902.js"><link rel="prefetch" href="/assets/js/412.da6546bd.js"><link rel="prefetch" href="/assets/js/413.39d34e64.js"><link rel="prefetch" href="/assets/js/414.aaa215f3.js"><link rel="prefetch" href="/assets/js/415.b41c61b6.js"><link rel="prefetch" href="/assets/js/416.139592a7.js"><link rel="prefetch" href="/assets/js/417.324a89a1.js"><link rel="prefetch" href="/assets/js/418.676f7dcb.js"><link rel="prefetch" href="/assets/js/419.9350419c.js"><link rel="prefetch" href="/assets/js/42.a22391d6.js"><link rel="prefetch" href="/assets/js/420.0462f81e.js"><link rel="prefetch" href="/assets/js/421.a6efdd34.js"><link rel="prefetch" href="/assets/js/422.569428e8.js"><link rel="prefetch" href="/assets/js/423.8cb41fe5.js"><link rel="prefetch" href="/assets/js/424.98a9d128.js"><link rel="prefetch" href="/assets/js/425.62b51cfb.js"><link rel="prefetch" href="/assets/js/426.7b3a49e4.js"><link rel="prefetch" href="/assets/js/427.f99d9c10.js"><link rel="prefetch" href="/assets/js/428.73db8fe6.js"><link rel="prefetch" href="/assets/js/429.05f1741b.js"><link rel="prefetch" href="/assets/js/43.8946d7e2.js"><link rel="prefetch" href="/assets/js/430.8b43f070.js"><link rel="prefetch" href="/assets/js/431.d85a79d6.js"><link rel="prefetch" href="/assets/js/432.7373e34b.js"><link rel="prefetch" href="/assets/js/433.4be17add.js"><link rel="prefetch" href="/assets/js/434.81670bcf.js"><link rel="prefetch" href="/assets/js/435.6aa95ea5.js"><link rel="prefetch" href="/assets/js/436.4223c356.js"><link rel="prefetch" href="/assets/js/437.13f276dc.js"><link rel="prefetch" href="/assets/js/438.7c6e503d.js"><link rel="prefetch" href="/assets/js/439.6f9afc22.js"><link rel="prefetch" href="/assets/js/44.2a678f4a.js"><link rel="prefetch" href="/assets/js/440.5c949914.js"><link rel="prefetch" href="/assets/js/441.7dc7c8e4.js"><link rel="prefetch" href="/assets/js/442.bfec8250.js"><link rel="prefetch" href="/assets/js/443.0b932152.js"><link rel="prefetch" href="/assets/js/444.ecc56127.js"><link rel="prefetch" href="/assets/js/445.3a1eefa1.js"><link rel="prefetch" href="/assets/js/446.07410371.js"><link rel="prefetch" href="/assets/js/447.920996c3.js"><link rel="prefetch" href="/assets/js/448.9b5b5588.js"><link rel="prefetch" href="/assets/js/449.40afb76e.js"><link rel="prefetch" href="/assets/js/45.a716cdab.js"><link rel="prefetch" href="/assets/js/450.15845e93.js"><link rel="prefetch" href="/assets/js/451.c0454122.js"><link rel="prefetch" href="/assets/js/452.076ca38b.js"><link rel="prefetch" href="/assets/js/453.35add2cd.js"><link rel="prefetch" href="/assets/js/454.fed25dd2.js"><link rel="prefetch" href="/assets/js/455.a3232b7e.js"><link rel="prefetch" href="/assets/js/456.803d9cea.js"><link rel="prefetch" href="/assets/js/457.0a884768.js"><link rel="prefetch" href="/assets/js/458.69b6cc02.js"><link rel="prefetch" href="/assets/js/459.d8e1df18.js"><link rel="prefetch" href="/assets/js/46.53b78a16.js"><link rel="prefetch" href="/assets/js/460.a4980d6e.js"><link rel="prefetch" href="/assets/js/461.68d3e1c1.js"><link rel="prefetch" href="/assets/js/462.7930ea12.js"><link rel="prefetch" href="/assets/js/463.48a62ed8.js"><link rel="prefetch" href="/assets/js/464.5c42fe51.js"><link rel="prefetch" href="/assets/js/465.b65a0e95.js"><link rel="prefetch" href="/assets/js/466.63474609.js"><link rel="prefetch" href="/assets/js/467.e6370736.js"><link rel="prefetch" href="/assets/js/468.a6cd9285.js"><link rel="prefetch" href="/assets/js/469.3df61389.js"><link rel="prefetch" href="/assets/js/47.dc9468b3.js"><link rel="prefetch" href="/assets/js/470.b956e72b.js"><link rel="prefetch" href="/assets/js/471.227fb33d.js"><link rel="prefetch" href="/assets/js/472.407485a3.js"><link rel="prefetch" href="/assets/js/473.9ab2c50d.js"><link rel="prefetch" href="/assets/js/474.dd36f932.js"><link rel="prefetch" href="/assets/js/475.7634085c.js"><link rel="prefetch" href="/assets/js/476.6869c979.js"><link rel="prefetch" href="/assets/js/477.b8bbd1aa.js"><link rel="prefetch" href="/assets/js/478.d85549c5.js"><link rel="prefetch" href="/assets/js/479.a549954b.js"><link rel="prefetch" href="/assets/js/48.f62c6508.js"><link rel="prefetch" href="/assets/js/480.964f2b40.js"><link rel="prefetch" href="/assets/js/481.68f5f905.js"><link rel="prefetch" href="/assets/js/482.32b674c2.js"><link rel="prefetch" href="/assets/js/483.6574c15d.js"><link rel="prefetch" href="/assets/js/484.63db4bff.js"><link rel="prefetch" href="/assets/js/485.0ecd7c6e.js"><link rel="prefetch" href="/assets/js/486.44a1de5d.js"><link rel="prefetch" href="/assets/js/487.fad12e99.js"><link rel="prefetch" href="/assets/js/488.169f32db.js"><link rel="prefetch" href="/assets/js/489.7ea816a6.js"><link rel="prefetch" href="/assets/js/49.f155d78a.js"><link rel="prefetch" href="/assets/js/490.d35de876.js"><link rel="prefetch" href="/assets/js/491.08874d90.js"><link rel="prefetch" href="/assets/js/492.088a7e6e.js"><link rel="prefetch" href="/assets/js/493.61d62bf4.js"><link rel="prefetch" href="/assets/js/494.b0515138.js"><link rel="prefetch" href="/assets/js/495.60587f26.js"><link rel="prefetch" href="/assets/js/496.d66df398.js"><link rel="prefetch" href="/assets/js/497.7c88f879.js"><link rel="prefetch" href="/assets/js/498.73e1e0cf.js"><link rel="prefetch" href="/assets/js/499.8162e0b6.js"><link rel="prefetch" href="/assets/js/5.7c68fdb5.js"><link rel="prefetch" href="/assets/js/50.d2b62498.js"><link rel="prefetch" href="/assets/js/500.8b0de440.js"><link rel="prefetch" href="/assets/js/501.0894844d.js"><link rel="prefetch" href="/assets/js/502.1c0d1c3c.js"><link rel="prefetch" href="/assets/js/503.3e3f2a4a.js"><link rel="prefetch" href="/assets/js/504.cca812a4.js"><link rel="prefetch" href="/assets/js/505.8a1f3adc.js"><link rel="prefetch" href="/assets/js/506.35d49763.js"><link rel="prefetch" href="/assets/js/507.4fd3c268.js"><link rel="prefetch" href="/assets/js/508.aa2ba78c.js"><link rel="prefetch" href="/assets/js/509.cc7d97eb.js"><link rel="prefetch" href="/assets/js/51.7b12b0f0.js"><link rel="prefetch" href="/assets/js/510.73e3254c.js"><link rel="prefetch" href="/assets/js/511.bd21926b.js"><link rel="prefetch" href="/assets/js/512.8b796161.js"><link rel="prefetch" href="/assets/js/513.da11e0bf.js"><link rel="prefetch" href="/assets/js/514.5a620685.js"><link rel="prefetch" href="/assets/js/515.9a4b1681.js"><link rel="prefetch" href="/assets/js/516.de55e3ca.js"><link rel="prefetch" href="/assets/js/517.2b3b1dd5.js"><link rel="prefetch" href="/assets/js/518.aa28e969.js"><link rel="prefetch" href="/assets/js/519.91a752a1.js"><link rel="prefetch" href="/assets/js/52.3391993d.js"><link rel="prefetch" href="/assets/js/520.49c84d3e.js"><link rel="prefetch" href="/assets/js/521.545008de.js"><link rel="prefetch" href="/assets/js/522.11773c74.js"><link rel="prefetch" href="/assets/js/523.5b523166.js"><link rel="prefetch" href="/assets/js/524.9d7c8f5c.js"><link rel="prefetch" href="/assets/js/53.a67a7068.js"><link rel="prefetch" href="/assets/js/54.af0dccf3.js"><link rel="prefetch" href="/assets/js/55.cdae5880.js"><link rel="prefetch" href="/assets/js/56.4d918bef.js"><link rel="prefetch" href="/assets/js/57.5e9dea12.js"><link rel="prefetch" href="/assets/js/58.6cec08ff.js"><link rel="prefetch" href="/assets/js/59.65771179.js"><link rel="prefetch" href="/assets/js/6.c8da7ca7.js"><link rel="prefetch" href="/assets/js/60.8f859a65.js"><link rel="prefetch" href="/assets/js/61.43bff54c.js"><link rel="prefetch" href="/assets/js/62.b8e9e509.js"><link rel="prefetch" href="/assets/js/63.5149a7b9.js"><link rel="prefetch" href="/assets/js/64.961c386a.js"><link rel="prefetch" href="/assets/js/65.73f66baf.js"><link rel="prefetch" href="/assets/js/66.b5930577.js"><link rel="prefetch" href="/assets/js/67.40a0db0c.js"><link rel="prefetch" href="/assets/js/68.6212d2a9.js"><link rel="prefetch" href="/assets/js/69.0cd6b5c4.js"><link rel="prefetch" href="/assets/js/7.e4c88d0e.js"><link rel="prefetch" href="/assets/js/70.8e1f3dad.js"><link rel="prefetch" href="/assets/js/71.041fa5d5.js"><link rel="prefetch" href="/assets/js/72.7b626c12.js"><link rel="prefetch" href="/assets/js/73.78b38a87.js"><link rel="prefetch" href="/assets/js/74.6ec158a9.js"><link rel="prefetch" href="/assets/js/75.de5261fd.js"><link rel="prefetch" href="/assets/js/76.49878016.js"><link rel="prefetch" href="/assets/js/77.77eb5ec0.js"><link rel="prefetch" href="/assets/js/78.13279776.js"><link rel="prefetch" href="/assets/js/79.55cd4da6.js"><link rel="prefetch" href="/assets/js/80.2d4e5531.js"><link rel="prefetch" href="/assets/js/81.f00c64f4.js"><link rel="prefetch" href="/assets/js/82.af834374.js"><link rel="prefetch" href="/assets/js/83.42d97060.js"><link rel="prefetch" href="/assets/js/84.e6bc84a7.js"><link rel="prefetch" href="/assets/js/85.beeccec9.js"><link rel="prefetch" href="/assets/js/86.af675949.js"><link rel="prefetch" href="/assets/js/87.42f1b392.js"><link rel="prefetch" href="/assets/js/88.b5b8b77f.js"><link rel="prefetch" href="/assets/js/89.5892cf98.js"><link rel="prefetch" href="/assets/js/90.975b2533.js"><link rel="prefetch" href="/assets/js/91.64ccb26a.js"><link rel="prefetch" href="/assets/js/92.159aca5a.js"><link rel="prefetch" href="/assets/js/93.ca72cfb7.js"><link rel="prefetch" href="/assets/js/94.134a585d.js"><link rel="prefetch" href="/assets/js/95.83f34609.js"><link rel="prefetch" href="/assets/js/96.25383af1.js"><link rel="prefetch" href="/assets/js/97.404579a5.js"><link rel="prefetch" href="/assets/js/98.b15c1a8c.js"><link rel="prefetch" href="/assets/js/99.2757d9cd.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5143d2e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b4a844ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端收集</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link router-link-active">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link router-link-active">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/qa/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/1-http" class="sidebar-heading clickable"><span>http</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/2-h5" class="sidebar-heading clickable"><span>h5</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/3-js" class="sidebar-heading clickable"><span>js</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/4-工程化" class="sidebar-heading clickable"><span>工程化</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/5-node和ts" class="sidebar-heading clickable"><span>node和ts</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/6-react" class="sidebar-heading clickable"><span>react</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/7-vue" class="sidebar-heading clickable"><span>vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/8-场景题" class="sidebar-heading clickable"><span>场景题</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/8-性能优化" class="sidebar-heading clickable open"><span>性能优化</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/qa/8-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/qa/8-性能优化/为什你应该使用picture标签而不是Img标签.html" class="sidebar-link">为什你应该使用picture标签而不是Img标签</a></li><li><a href="/qa/8-性能优化/从前端性能优化引申出来的5道经典面试题.html" class="sidebar-link">从前端性能优化引申出来的 5 道经典面试题</a></li><li><a href="/qa/8-性能优化/关于性能优化的面试题.html" class="sidebar-link">21 道关于性能优化的面试题（附答案）</a></li><li><a href="/qa/8-性能优化/前端错误监控系统.html" class="active sidebar-link">这三年沉淀的前端错误监控系统，一篇文章讲透给你</a></li><li><a href="/qa/8-性能优化/性能优化.html" class="sidebar-link">写给中高级前端关于性能优化的9大策略和6大指标</a></li><li><a href="/qa/8-性能优化/节流防抖.html" class="sidebar-link">函数防抖与节流</a></li><li><a href="/qa/8-性能优化/进度条优化.html" class="sidebar-link">进度条优化</a></li><li><a href="/qa/8-性能优化/逻辑判断.html" class="sidebar-link">编写高质量可维护的代码之优化逻辑判断</a></li><li><a href="/qa/8-性能优化/降级处理.html" class="sidebar-link">浅析前端异常及降级处理</a></li><li><a href="/qa/8-性能优化/项目中做过哪些安全防范措施.html" class="sidebar-link">你在项目中做过哪些安全防范措施？</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/9-算法" class="sidebar-heading clickable"><span>算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/9-统计梳理" class="sidebar-heading clickable"><span>统计梳理</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/qa/9-设计模式" class="sidebar-heading clickable"><span>设计模式</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="这三年沉淀的前端错误监控系统-一篇文章讲透给你"><a href="#这三年沉淀的前端错误监控系统-一篇文章讲透给你" class="header-anchor">#</a> 这三年沉淀的前端错误监控系统，一篇文章讲透给你</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/NY72_cRGAPsex78YwVF_hg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/NY72_cRGAPsex78YwVF_hg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="痛点"><a href="#痛点" class="header-anchor">#</a> 痛点</h2> <blockquote><p>某⼀天产品：xxx ⼴告主反馈我们的页面注册不了！又⼀天运营：这个活动在 xxx 媒体上挂掉了！</p></blockquote> <p>在我司线上运行的是近亿级别的广告页面，这样线上如果裸奔，出现了什么问题不知道，后置在业务端发现，被业务方询问，这种场景很尴尬。</p> <h2 id="选择"><a href="#选择" class="header-anchor">#</a> 选择</h2> <p>公司存在四个事业部，而每个事业部不下于 3 个项目，这里至少 12 个项目，这里作为伏笔，业务线多。</p> <p>我们是选择自己做呢，还是选第三方的呢。我们比较一项几款常见第三方。</p> <ul><li>Fundebug：付费版 159 元/月起，数据存在第三方，而数据自我保存需要 30 万/年。还是很贵的。</li> <li>FrontJS，FrontJS 高级版 899/月，专业版是 2999/月。</li> <li>Sentry，80 美金/月。</li></ul> <p>以 Sentry 为计费，对这 12 个项目计算一下。12 个项目一年将近 10 万。而大致估算过需要 2 人 1.5 月即 90 人日，能完成 MVP 版本，按每人 1.5 万工资/月计算，总共花费 4.5 万，而且是一劳永逸的。</p> <p>因此从成本角度我们会选择自研，但除了成本外，还有其他原因。例如我们会基于这套系统做一些自定义功能，与公司权限用户系统打通，再针对用户进行 Todo 管理，对用户进行错误排行等。</p> <p>还有基于业务数据的安全，我们希望自我搭建一个系统。</p> <p>所以从成本、安全、扩展性角度，我们选择了自己研发。</p> <h1 id="产品设计"><a href="#产品设计" class="header-anchor">#</a> 产品设计</h1> <blockquote><p>我们要什么样的一个产品呢，根据第一性原理，解决关键问题“怎么定位问题”。通过 5W1H 法我们来分析，我们想要知道些什么信息呢？</p></blockquote> <h2 id="错误信息"><a href="#错误信息" class="header-anchor">#</a> 错误信息</h2> <p>其实错误监控说简单就一句话可以描述，搜集页面错误，进行上报，然后对症分析。</p> <p>按照 5W1H 法则进行分析这句话，可以发现有几项需要我们关注。</p> <ol><li>What，发⽣了什么错误：逻辑错误、数据错误、⽹络错误、语法错误等。</li> <li>When，出现的时间段，如时间戳。</li> <li>Who，影响了多少用户，包括报错事件数、IP、设备信息。</li> <li>Where，出现的页面是哪些，包括页面、广告位（我司）、媒体（我司）。</li> <li>Why，错误的原因是为什么，包括错误堆栈、⾏列、SourceMap。</li> <li>How，怎么定位解决问题，我们还需要收集系统等信息。</li></ol> <h2 id="架构层次"><a href="#架构层次" class="header-anchor">#</a> 架构层次</h2> <blockquote><p>首先我们需要梳理下，我们需要一些哪些功能。</p></blockquote> <p>那我们怎么得到上面的信息进行最终错误的定位呢。</p> <p>首先我们肯定需要对错误进行搜集，然后用户设备页面端的错误我们怎么才能感知到呢，这就需要进行上报。那么第一层就展现出来了，我们需要一个搜集上报端。</p> <p>那怎么才能进行上报呢，和后端协作那么久，肯定知道的吧 🙃 ，你需要一个接口。那就需要一个服务器来进行对于上报的错误进行采集，对于错误进行筛选聚合。那么第二层也知道了啊，我们需要一个采集聚合端。</p> <p>我们搜集到了我们足够的物料信息了，那接下来要怎么用起来呢，我们需要把它们按照我们的规则进行整理。如果每次又是通过写类 SQL 进行整理查询效率会很低，因此我们需要一个可视化的平台进行展示。因此有了第三层，可视化分析端。</p> <p>感觉好像做完啦，想必大家都这么想，一个错误监控平台做完了，🙅 。如果是这样你会发现一个现象，每次上线和上线后一段时间，开发同学都一直盯着屏幕看，这是在干嘛，人形眼动观察者模式吗。因此我们需要通过代码去解决，自然而然，第四层，监控告警端应运而生。</p> <p>所以请大声说出来我们需要什么 🙈 ，搜集上报端，采集聚合端，可视分析端，监控告警端。</p> <h1 id="系统设计"><a href="#系统设计" class="header-anchor">#</a> 系统设计</h1> <blockquote><p>如函数一样，定义好每个环节的输入和输出，且核心需要处理的功能。</p></blockquote> <p>下面我们看看上述所说的四个端怎么去实现呢。</p> <h2 id="搜集上报端-sdk"><a href="#搜集上报端-sdk" class="header-anchor">#</a> 搜集上报端（SDK）</h2> <blockquote><p>这个环节主要输入是所有错误，输出是捕获上报错误。核心是处理不同类型错误的搜集工作。其他是一些非核心但必要的工作。</p></blockquote> <h3 id="错误类型"><a href="#错误类型" class="header-anchor">#</a> 错误类型</h3> <p>先看看我们需要处理哪些错误类型。</p> <p><strong>常见 JS 执行错误</strong></p> <ol><li><p>SyntaxError</p> <blockquote><p>解析时发生语法错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// 控制台运行
+const xx,
+</code></pre></div><p>window.onerror 捕获不到 SyntxError，一般 SyntaxError 在构建阶段，甚至本地开发阶段就会被发现。</p> <ol><li><p>TypeError</p> <blockquote><p>值不是所期待的类型</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// 控制台运行
+const person = void 0;
+person.name;
+</code></pre></div><ol><li><p>ReferenceError</p> <blockquote><p>引用未声明的变量</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// 控制台运行
+nodefined;
+</code></pre></div><ol><li><p>RangeError</p> <blockquote><p>当一个值不在其所允许的范围或者集合中</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>(function fn() {
+  fn();
+})();
+</code></pre></div><p><strong>网络错误</strong></p> <ol><li><p>ResourceError</p> <blockquote><p>资源加载错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>new Image().src = &quot;/remote/image/notdeinfed.png&quot;;
+</code></pre></div><ol><li><p>HttpError</p> <blockquote><p>Http 请求错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// 控制台运行
+fetch(&quot;/remote/notdefined&quot;, {});
+</code></pre></div><h3 id="搜集错误"><a href="#搜集错误" class="header-anchor">#</a> 搜集错误</h3> <p>所有起因来源于错误，那我们如何进行错误捕获。</p> <p><strong>try/catch</strong></p> <blockquote><p>能捕获常规运行时错误，语法错误和异步错误不行</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>// 常规运行时错误，可以捕获 ✅
+try {
+  console.log(notdefined);
+} catch(e) {
+  console.log('捕获到异常：', e);
+}
+
+// 语法错误，不能捕获 ❌
+try {
+  const notdefined,
+} catch(e) {
+  console.log('捕获到异常：', e);
+}
+
+// 异步错误，不能捕获 ❌
+try {
+  setTimeout(() =&gt; {
+    console.log(notdefined);
+  }, 0)
+} catch(e) {
+  console.log('捕获到异常：',e);
+}
+</code></pre></div><p>try/catch 有它细致处理的优势，但缺点也比较明显。</p> <p><strong>window.onerror</strong></p> <blockquote><p>pure js 错误收集，window.onerror，当 JS 运行时错误发生时，window 会触发一个 ErrorEvent 接口的 error 事件。</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * @param {String}  message    错误信息
+ * @param {String}  source    出错文件
+ * @param {Number}  lineno    行号
+ * @param {Number}  colno    列号
+ * @param {Object}  error  Error对象
+ */
+
+window.onerror = function (message, source, lineno, colno, error) {
+  console.log(&quot;捕获到异常：&quot;, { message, source, lineno, colno, error });
+};
+</code></pre></div><p>先验证下几个错误是否可以捕获。</p> <div class="language- extra-class"><pre class="language-text"><code>// 常规运行时错误，可以捕获 ✅
+window.onerror = function(message, source, lineno, colno, error) {
+  console.log('捕获到异常：',{message, source, lineno, colno, error});
+}
+console.log(notdefined);
+
+// 语法错误，不能捕获 ❌
+window.onerror = function(message, source, lineno, colno, error) {
+  console.log('捕获到异常：',{message, source, lineno, colno, error});
+}
+const notdefined,
+
+// 异步错误，可以捕获 ✅
+window.onerror = function(message, source, lineno, colno, error) {
+  console.log('捕获到异常：',{message, source, lineno, colno, error});
+}
+setTimeout(() =&gt; {
+  console.log(notdefined);
+}, 0)
+
+// 资源错误，不能捕获 ❌
+&lt;script&gt;
+  window.onerror = function(message, source, lineno, colno, error) {
+  console.log('捕获到异常：',{message, source, lineno, colno, error});
+  return true;
+}
+&lt;/script&gt;
+&lt;img src=&quot;https://yun.tuia.cn/image/kkk.png&quot;&gt;
+</code></pre></div><p>window.onerror 不能捕获资源错误怎么办？</p> <p><strong>window.addEventListener</strong></p> <blockquote><p>当一项资源（如图片或脚本）加载失败，加载资源的元素会触发一个 Event 接口的 error 事件，这些 error 事件不会向上冒泡到 window，但能被捕获。而 window.onerror 不能监测捕获。</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>// 图片、script、css加载错误，都能被捕获 ✅
+&lt;script&gt;
+  window.addEventListener(
+    &quot;error&quot;,
+    (error) =&gt; {
+      console.log(&quot;捕获到异常：&quot;, error);
+    },
+    true
+  );
+&lt;/script&gt;
+&lt;img src=&quot;https://yun.tuia.cn/image/kkk.png&quot; /&gt;
+&lt;script src=&quot;https://yun.tuia.cn/foundnull.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;https://yun.tuia.cn/foundnull.css&quot; rel=&quot;stylesheet&quot; /&gt;
+
+// new Image错误，不能捕获 ❌
+&lt;script&gt;
+  window.addEventListener(
+    &quot;error&quot;,
+    (error) =&gt; {
+      console.log(&quot;捕获到异常：&quot;, error);
+    },
+    true
+  );
+&lt;/script&gt;
+&lt;script&gt;
+  new Image().src = &quot;https://yun.tuia.cn/image/lll.png&quot;;
+&lt;/script&gt;
+
+// fetch错误，不能捕获 ❌
+&lt;script&gt;
+  window.addEventListener(
+    &quot;error&quot;,
+    (error) =&gt; {
+      console.log(&quot;捕获到异常：&quot;, error);
+    },
+    true
+  );
+&lt;/script&gt;
+&lt;script&gt;
+  fetch(&quot;https://tuia.cn/test&quot;);
+&lt;/script&gt;
+</code></pre></div><p>new Image 运用的比较少，可以单独自己处理自己的错误。</p> <p>但通用的 fetch 怎么办呢，fetch 返回 Promise，但 Promise 的错误不能被捕获，怎么办呢？</p> <p><strong>Promise 错误</strong></p> <ol><li><p>普通 Promise 错误</p> <blockquote><p>try/catch 不能捕获 Promise 中的错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// try/catch 不能处理 JSON.parse 的错误，因为它在 Promise 中
+try {
+  new Promise((resolve, reject) =&gt; {
+    JSON.parse(&quot;&quot;);
+    resolve();
+  });
+} catch (err) {
+  console.error(&quot;in try catch&quot;, err);
+}
+
+// 需要使用catch方法
+new Promise((resolve, reject) =&gt; {
+  JSON.parse(&quot;&quot;);
+  resolve();
+}).catch((err) =&gt; {
+  console.log(&quot;in catch fn&quot;, err);
+});
+</code></pre></div><ol><li><p>async 错误</p> <blockquote><p>try/catch 不能捕获 async 包裹的错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const getJSON = async () =&gt; {
+  throw new Error(&quot;inner error&quot;);
+};
+
+// 通过try/catch处理
+const makeRequest = async () =&gt; {
+  try {
+    // 捕获不到
+    JSON.parse(getJSON());
+  } catch (err) {
+    console.log(&quot;outer&quot;, err);
+  }
+};
+
+try {
+  // try/catch不到
+  makeRequest();
+} catch (err) {
+  console.error(&quot;in try catch&quot;, err);
+}
+
+try {
+  // 需要await，才能捕获到
+  await makeRequest();
+} catch (err) {
+  console.error(&quot;in try catch&quot;, err);
+}
+</code></pre></div><ol><li><p>import chunk 错误</p> <blockquote><p>import 其实返回的也是一个 promise，因此使用如下两种方式捕获错误</p></blockquote></li></ol> <div class="language- extra-class"><pre class="language-text"><code>// Promise catch方法
+import(/* webpackChunkName: &quot;incentive&quot; */ &quot;./index&quot;)
+  .then((module) =&gt; {
+    module.default();
+  })
+  .catch((err) =&gt; {
+    console.error(&quot;in catch fn&quot;, err);
+  });
+
+// await 方法，try catch
+try {
+  const module = await import(/* webpackChunkName: &quot;incentive&quot; */ &quot;./index&quot;);
+  module.default();
+} catch (err) {
+  console.error(&quot;in try catch&quot;, err);
+}
+</code></pre></div><p>小结：全局捕获 Promise 中的错误</p> <p>以上三种其实归结为 Promise 类型错误，可以通过 unhandledrejection 捕获</p> <div class="language- extra-class"><pre class="language-text"><code>// 全局统一处理Promise
+window.addEventListener(&quot;unhandledrejection&quot;, function (e) {
+  console.log(&quot;捕获到异常：&quot;, e);
+});
+fetch(&quot;https://tuia.cn/test&quot;);
+</code></pre></div><p>为了防止有漏掉的 Promise 异常，可通过 unhandledrejection 用来全局监听 Uncaught Promise Error。</p> <p><strong>Vue 错误</strong></p> <blockquote><p>由于 Vue 会捕获所有 Vue 单文件组件或者 Vue.extend 继承的代码，所以在 Vue 里面出现的错误，并不会直接被 window.onerror 捕获，而是会抛给 Vue.config.errorHandler。</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 全局捕获Vue错误，直接扔出给onerror处理
+ */
+Vue.config.errorHandler = function (err) {
+  setTimeout(() =&gt; {
+    throw err;
+  });
+};
+</code></pre></div><p><strong>React 错误</strong></p> <blockquote><p>react 通过 componentDidCatch，声明一个错误边界的组件</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染能够显示降级后的 UI
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // 你同样可以将错误日志上报给服务器
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // 你可以自定义降级后的 UI 并渲染
+      return &lt;h1&gt;Something went wrong.&lt;/h1&gt;;
+    }
+
+    return this.props.children;
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      &lt;ErrorBoundary&gt;
+        &lt;MyWidget /&gt;
+      &lt;/ErrorBoundary&gt;
+    );
+  }
+}
+</code></pre></div><p>但 error boundaries 并不会捕捉以下错误：React 事件处理，异步代码，error boundaries 自己抛出的错误。</p> <h3 id="跨域问题"><a href="#跨域问题" class="header-anchor">#</a> 跨域问题</h3> <blockquote><p>一般情况，如果出现 Script error 这样的错误，基本上可以确定是出现了跨域问题。</p></blockquote> <p>如果当前投放页面和云端 JS 所在不同域名，如果云端 JS 出现错误，window.onerror 会出现 Script Error。通过以下两种方法能给予解决。</p> <ul><li>后端配置 Access-Control-Allow-Origin、前端 script 加 crossorigin。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;http://yun.tuia.cn/test.js&quot; crossorigin&gt;&lt;/script&gt;;
+
+const script = document.createElement(&quot;script&quot;);
+script.crossOrigin = &quot;anonymous&quot;;
+script.src = &quot;http://yun.tuia.cn/test.js&quot;;
+document.body.appendChild(script);
+</code></pre></div><ul><li>如果不能修改服务端的请求头，可以考虑通过使用 try/catch 绕过，将错误抛出。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Test page in http://test.com&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;https://yun.dui88.com/tuia/cdn/remote/testerror.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      window.onerror = function (message, url, line, column, error) {
+        console.log(message, url, line, column, error);
+      };
+
+      try {
+        foo(); // 调用testerror.js中定义的foo方法
+      } catch (e) {
+        throw e;
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>会发现如果不加 try catch，console.log 就会打印 script error。加上 try catch 就能捕获到。</p> <p>我们捋一下场景，一般调用远端 js，有下列三种常见情况。</p> <ul><li>调用远端 JS 的方法出错</li> <li>远端 JS 内部的事件出问题</li> <li>要么在 setTimeout 等回调内出错</li></ul> <p><strong>调用方法场景</strong></p> <p>可以通过封装一个函数，能装饰原方法，使得其能被 try/catch。</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Test page in http://test.com&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;https://yun.dui88.com/tuia/cdn/remote/testerror.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      window.onerror = function (message, url, line, column, error) {
+        console.log(message, url, line, column, error);
+      };
+
+      function wrapErrors(fn) {
+        // don't wrap function more than once
+        if (!fn.__wrapped__) {
+          fn.__wrapped__ = function () {
+            try {
+              return fn.apply(this, arguments);
+            } catch (e) {
+              throw e; // re-throw the error
+            }
+          };
+        }
+
+        return fn.__wrapped__;
+      }
+
+      wrapErrors(foo)();
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>大家可以尝试去掉 wrapErrors 感受下。</p> <p><strong>事件场景</strong></p> <p>可以劫持原生方法。</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Test page in http://test.com&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      const originAddEventListener = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function (
+        type,
+        listener,
+        options
+      ) {
+        const wrappedListener = function (...args) {
+          try {
+            return listener.apply(this, args);
+          } catch (err) {
+            throw err;
+          }
+        };
+        return originAddEventListener.call(
+          this,
+          type,
+          wrappedListener,
+          options
+        );
+      };
+    &lt;/script&gt;
+    &lt;div style=&quot;height: 9999px;&quot;&gt;http://test.com&lt;/div&gt;
+    &lt;script src=&quot;https://yun.dui88.com/tuia/cdn/remote/error_scroll.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      window.onerror = function (message, url, line, column, error) {
+        console.log(message, url, line, column, error);
+      };
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>大家可以尝试去掉封装 EventTarget.prototype.addEventListener 的那段代码，感受下。</p> <h3 id="上报接口"><a href="#上报接口" class="header-anchor">#</a> 上报接口</h3> <p>为什么不能直接用 GET/POST/HEAD 请求接口进行上报？</p> <p>这个比较容易想到原因。一般而言，打点域名都不是当前域名，所以所有的接口请求都会构成跨域。</p> <p>为什么不能用请求其他的文件资源（js/css/ttf）的方式进行上报？</p> <p>创建资源节点后只有将对象注入到浏览器 DOM 树后，浏览器才会实际发送资源请求。而且载入 js/css 资源还会阻塞页面渲染，影响用户体验。</p> <p>构造图片打点不仅不用插入 DOM，只要在 js 中 new 出 Image 对象就能发起请求，而且还没有阻塞问题，在没有 js 的浏览器环境中也能通过 img 标签正常打点。</p> <p>使用 new Image 进行接口上报。最后一个问题，同样都是图片，上报时选用了 1x1 的透明 GIF，而不是其他的 PNG/JEPG/BMP 文件。</p> <p>首先，1x1 像素是最小的合法图片。而且，因为是通过图片打点，所以图片最好是透明的，这样一来不会影响页面本身展示效果，二者表示图片透明只要使用一个二进制位标记图片是透明色即可，不用存储色彩空间数据，可以节约体积。因为需要透明色，所以可以直接排除 JEPG。</p> <p>同样的响应，GIF 可以比 BMP 节约 41%的流量，比 PNG 节约 35%的流量。GIF 才是最佳选择。</p> <ul><li>可以进行跨域</li> <li>不会携带 cookie</li> <li>不需要等待服务器返回数据</li></ul> <blockquote><p>使用 1*1 的 gif[1]</p></blockquote> <h3 id="非阻塞加载"><a href="#非阻塞加载" class="header-anchor">#</a> 非阻塞加载</h3> <p>尽量避免 SDK 的 js 资源加载影响。</p> <p>通过先把 window.onerror 的错误记录进行缓存，然后异步进行 SDK 的加载，再在 SDK 里面处理错误上报。</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        (function(w) {
+            w._error_storage_ = [];
+            function errorhandler(){
+                // 用于记录当前的错误
+                w._error_storage_&amp;&amp;w._error_storage_.push([].slice.call(arguments));
+            }
+            w.addEventListener &amp;&amp; w.addEventListener(&quot;error&quot;, errorhandler, true);
+            var times = 3,
+            appendScript = function appendScript() {
+                var sc = document.createElement(&quot;script&quot;);
+                sc.async = !0,
+                sc.src = './build/skyeye.js',  // 取决于你存放的位置
+                sc.crossOrigin = &quot;anonymous&quot;,
+                sc.onerror = function() {
+                    times--,
+                    times &gt; 0 &amp;&amp; setTimeout(appendScript, 1500)
+                },
+                document.head &amp;&amp; document.head.appendChild(sc);
+            };
+            setTimeout(appendScript, 1500);
+        })(window);
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;这是一个测试页面(new)&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h2 id="采集聚合端-日志服务器"><a href="#采集聚合端-日志服务器" class="header-anchor">#</a> 采集聚合端（日志服务器）</h2> <blockquote><p>这个环节，输入是借口接收到的错误记录，输出是有效的数据入库。核心功能需要对数据进行清洗，顺带解决了过多的服务压力。另一个核心功能是对数据进行入库。</p></blockquote> <p>总体流程可以看为错误标识 -&gt; 错误过滤 -&gt; 错误接收 -&gt; 错误存储。</p> <h3 id="错误标识-sdk-配合"><a href="#错误标识-sdk-配合" class="header-anchor">#</a> 错误标识（SDK 配合）</h3> <p>聚合之前，我们需要有不同维度标识错误的能力，可以理解为定位单个错误条目，单个错误事件的能力。</p> <p>**单个错误条目 **</p> <p>通过 date 和随机值生成一条对应的错误条目 id。</p> <div class="language- extra-class"><pre class="language-text"><code>const errorKey = `${+new Date()}@${randomString(8)}`;
+
+function randomString(len) {
+  len = len || 32;
+  let chars = &quot;ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678&quot;;
+  let maxPos = chars.length;
+  let pwd = &quot;&quot;;
+  for (let i = 0; i &lt; len; i++) {
+    pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+  }
+  return pwd;
+}
+</code></pre></div><p><strong>单个错误事件</strong></p> <p>首先需要有定位同个错误事件（不同用户，发生相同错误类型、错误信息）的能力。</p> <p>通过 message、colno 与 lineno 进行相加计算阿斯克码值，可以生成错误的 errorKey。</p> <div class="language- extra-class"><pre class="language-text"><code>const eventKey = compressString(
+  String(e.message),
+  String(e.colno) + String(e.lineno)
+);
+
+function compressString(str, key) {
+  let chars = &quot;ABCDEFGHJKMNPQRSTWXYZ&quot;;
+  if (!str || !key) {
+    return &quot;null&quot;;
+  }
+  let n = 0,
+    m = 0;
+  for (let i = 0; i &lt; str.length; i++) {
+    n += str[i].charCodeAt();
+  }
+  for (let j = 0; j &lt; key.length; j++) {
+    m += key[j].charCodeAt();
+  }
+  let num =
+    n +
+    &quot;&quot; +
+    key[key.length - 1].charCodeAt() +
+    m +
+    str[str.length - 1].charCodeAt();
+  if (num) {
+    num = num + chars[num[num.length - 1]];
+  }
+  return num;
+}
+</code></pre></div><p>如下图，一个错误事件（事件列表），下属每条即为实际的错误条目。<img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h3 id="错误过滤-sdk-配合"><a href="#错误过滤-sdk-配合" class="header-anchor">#</a> 错误过滤（SDK 配合）</h3> <p><strong>域名过滤</strong></p> <p>过滤本页面 script error，可能被 webview 插入其他 js。</p> <p>我们只关心自己的远端 JS 问题，因此做了根据本公司域名进行过滤。</p> <div class="language- extra-class"><pre class="language-text"><code>// 伪代码
+if (!e.filename || !e.filename.match(/^(http|https):\/\/yun./)) return true;
+</code></pre></div><p><strong>重复上报</strong></p> <p>怎么避免重复的数据上报？根据 errorKey 来进行缓存，重复的错误避免上报的次数超过阈值。</p> <div class="language- extra-class"><pre class="language-text"><code>// 伪代码
+
+const localStorage = window.localStorage;
+const TIMES = 6; // 缓存条数
+
+export function setItem(key, repeat) {
+  if (!key) {
+    key = &quot;unknow&quot;;
+  }
+
+  if (has(key)) {
+    const value = getItem(key);
+
+    // 核心代码，超过条数，跳出
+    if (value &gt;= repeat) {
+      return true;
+    }
+    storeStorage[key] = {
+      value: value + 1,
+      time: Date.now(),
+    };
+  } else {
+    storeStorage[key] = {
+      value: 1,
+      time: Date.now(),
+    };
+  }
+  return false;
+}
+</code></pre></div><h3 id="错误接收"><a href="#错误接收" class="header-anchor">#</a> 错误接收</h3> <p>在处理接收接口的时候，注意流量的控制，这也是后端开发需要投入最多精力的地方，处理高并发的流量。</p> <p><strong>错误记录</strong></p> <p>接收端使用 Koa，简单的实现了接收及打印到磁盘。</p> <div class="language- extra-class"><pre class="language-text"><code>// 伪代码
+
+module.exports = async ctx =&gt; {
+  const { query } = ctx.request;
+
+  // 对于字段进行简单check
+  check([ 'mobile', 'network', 'ip', 'system', 'ua', ......], query);
+
+  ctx.type = 'application/json';
+  ctx.body = { code: '1', msg: '数据上报成功' };
+
+  // 进行日志记录到磁盘的代码，根据自己的日志库选择
+};
+</code></pre></div><p><strong>削峰机制</strong></p> <p>比如每秒设置 2000 的阈值，然后根据请求量减少上限，定时重置上限。</p> <div class="language- extra-class"><pre class="language-text"><code>// 伪代码
+
+// 1000ms
+const TICK = 1000;
+// 1秒上限为2000
+const MAX_LIMIT = 2000;
+// 每台服务器请求上限值
+let maxLimit = MAX_LIMIT;
+
+/**
+ * 启动重置函数
+ */
+const task = () =&gt; {
+  setTimeout(() =&gt; {
+    maxLimit = MAX_LIMIT;
+    task();
+  }, TICK);
+};
+task();
+
+const check = () =&gt; {
+  if (maxLimit &lt;= 0) {
+    throw new Error(&quot;超过上报次数&quot;);
+  }
+  maxLimit--;
+  // 执行业务代码。。。
+};
+</code></pre></div><p><strong>采样处理</strong></p> <p>超过阈值，还可以进行采样收集。</p> <div class="language- extra-class"><pre class="language-text"><code>// 只采集 20%
+if (Math.random() &lt; 0.2) {
+  collect(data); // 记录错误信息
+}
+</code></pre></div><h3 id="错误存储"><a href="#错误存储" class="header-anchor">#</a> 错误存储</h3> <p>对于打印在了磁盘的日志，我们怎么样才能对于其进行聚合呢，这里得考虑使用存储方案。</p> <p>一般选择了存储方案后，设置好配置，存储方案就可以通过磁盘定时周期性的获取数据。因此我们需要选择一款存储方案。</p> <p>对于存储方案，我们对比了日常常见方案，阿里云日志服务 - Log Service（SLS）、ELK（Elastic、Logstash、Kibana）、Hadoop/Hive（将数据存储在 Hadoop，利用 Hive 进行查询） 类方案的对比。</p> <p>从以下方面进行了对比，最终选择了 Log Service，主要考虑为无需搭建，成本低，查询功能满足。</p> <table><thead><tr><th style="text-align:left;">功能项</th> <th style="text-align:left;">ELK 类系统</th> <th style="text-align:left;">Hadoop + Hive</th> <th style="text-align:left;">日志服务</th></tr></thead> <tbody><tr><td style="text-align:left;">日志延时</td> <td style="text-align:left;">1~60 秒</td> <td style="text-align:left;">几分钟~数小时</td> <td style="text-align:left;">实时</td></tr> <tr><td style="text-align:left;">查询延时</td> <td style="text-align:left;">小于 1 秒</td> <td style="text-align:left;">分钟级</td> <td style="text-align:left;">小于 1 秒</td></tr> <tr><td style="text-align:left;">查询能力</td> <td style="text-align:left;">好</td> <td style="text-align:left;">好</td> <td style="text-align:left;">好</td></tr> <tr><td style="text-align:left;">扩展性</td> <td style="text-align:left;">提前预备机器</td> <td style="text-align:left;">提前预备机器</td> <td style="text-align:left;">秒级 10 倍扩容</td></tr> <tr><td style="text-align:left;">成本</td> <td style="text-align:left;">较高</td> <td style="text-align:left;">较低</td> <td style="text-align:left;">很低</td></tr></tbody></table> <blockquote><p>日志延时：日志产生后，多久可查询。查询延时：单位时间扫描数据量。查询能力：关键词查询、条件组合查询、模糊查询、数值比较、上下文查询。扩展性：快速应对百倍流量上涨。成本：每 GB 费用。</p></blockquote> <p>具体 API 使用，可查看日志服务[2]。</p> <h2 id="可视分析端-可视化平台"><a href="#可视分析端-可视化平台" class="header-anchor">#</a> 可视分析端（可视化平台）</h2> <blockquote><p>这个环节，输入是借口接收到的错误记录，输出是有效的数据入库。核心功能需要对数据进行清洗，顺带解决了过多的服务压力。另一个核心功能是对数据进行入库。</p></blockquote> <h3 id="主功能"><a href="#主功能" class="header-anchor">#</a> 主功能</h3> <blockquote><p>这部分主要是产品功能的合理设计，做到小而美，具体的怎么聚合，参考阿里云 SLS 就可以。</p></blockquote> <ol><li>首页图表，可选 1 天、4 小时、1 小时等等，聚合错误数，根据 1 天切分 24 份来聚合。</li> <li>首页列表，聚合选中时间内的数据，展示错误文件、错误 key、事件数、错误类型、时间、错误信息。</li> <li>错误详情，事件列表、基本信息、设备信息、设备占比图表（见上面事件列表的图）。</li></ol> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="排行榜"><a href="#排行榜" class="header-anchor">#</a> 排行榜</h3> <p>刚开始做了待处理错误列表、我的错误列表、已解决列表，错误与人没有绑定关系，过于依赖人为主动，需要每个人主动到平台上处理，效果不佳。</p> <p>后面通过错误作者排行榜，通过钉钉日报来提醒对应人员处理。紧急错误，通过实时告警来责任到人，后面告警会说。</p> <p>具体原理：</p> <ul><li>webpack 打包通过 git 命令把作者和作者邮箱、时间打包在头部。</li> <li>在可视化服务中，去请求对应的报错 url 匹配到对应作者，返回给展示端。</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="sourcemap"><a href="#sourcemap" class="header-anchor">#</a> SourceMap</h3> <p>利用 webpack 的 hidden-source-map 构建。与 source-map 相比少了末尾的注释，但 output 目录下的 index.js.map 没有少。线上环境避免 source-map 泄露。</p> <div class="language- extra-class"><pre class="language-text"><code>webpackJsonp([1],[
+  function(e,t,i){...},
+  function(e,t,i){...},
+  function(e,t,i){...},
+  function(e,t,i){...},
+  ...
+])
+// 这里没有生成source-map的链接地址
+</code></pre></div><p>根据报错文件的 url，根据团队内部约定好的目录和规则，定位之前打包上传的 sourceMap 地址。</p> <div class="language- extra-class"><pre class="language-text"><code>const sourcemapUrl = &quot;xxxfolder/&quot; + url + &quot;xxxHash&quot; + &quot;.map&quot;;
+</code></pre></div><p>获取上报的 line、column、source，利用第三方库 sourceMap 进行定位。</p> <div class="language- extra-class"><pre class="language-text"><code>const sourceMap = require(&quot;source-map&quot;);
+
+// 根据行数获取源文件行数
+const getPosition = async (map, rolno, colno) =&gt; {
+  const consumer = await new sourceMap.SourceMapConsumer(map);
+
+  const position = consumer.originalPositionFor({
+    line: rolno,
+    column: colno,
+  });
+
+  position.content = consumer.sourceContentFor(position.source);
+
+  return position;
+};
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">感兴趣 SourceMap 原理的，可以继续深入，<a href="https://mp.weixin.qq.com/s?__biz=MzkxNDIzNTg4MA==&amp;mid=2247484211&amp;idx=1&amp;sn=1fe17b3d2f8d74267bb20c61fcf8204d&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">SourceMap 与前端异常监控<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <h2 id="错误报警"><a href="#错误报警" class="header-anchor">#</a> 错误报警</h2> <h3 id="报警设置"><a href="#报警设置" class="header-anchor">#</a> 报警设置</h3> <ol><li>每条业务线设置自己的阈值、错误时间跨度，报警轮询间隔</li> <li>通过钉钉 hook 报警到对应的群</li> <li>通过日报形式报出错误作者排行榜</li></ol> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h1 id="○-四、扩展"><a href="#○-四、扩展" class="header-anchor">#</a> ○ 四、扩展</h1> <h2 id="行为搜集"><a href="#行为搜集" class="header-anchor">#</a> 行为搜集</h2> <p>通过搜集用户的操作，可以明显发现错误为什么产生。<img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h3 id="分类"><a href="#分类" class="header-anchor">#</a> 分类</h3> <ul><li>UI 行为：点击、滚动、聚焦/失焦、长按</li> <li>浏览器行为：请求、前进/后退、跳转、新开页面、关闭</li> <li>控制台行为：log、warn、error</li></ul> <h3 id="搜集方式"><a href="#搜集方式" class="header-anchor">#</a> 搜集方式</h3> <ol><li>点击行为</li></ol> <p>使用 addEventListener 监听全局上的 click 事件，将事件和 DOM 元素名字收集。与错误信息一起上报。</p> <ol><li>发送请求</li></ol> <p>监听 XMLHttpRequest 的 onreadystatechange 回调函数</p> <ol><li>页面跳转</li></ol> <p>监听 window.onpopstate，页面进行跳转时会触发。</p> <ol><li>控制台行为</li></ol> <p>重写 console 对象的 info 等方法。</p> <p>有兴趣可以参考行为监控[3]。</p> <h2 id="遇到的问题"><a href="#遇到的问题" class="header-anchor">#</a> 遇到的问题</h2> <blockquote><p>由于涉及到一些隐私，下述会做脱敏处理。</p></blockquote> <h3 id="空日志问题"><a href="#空日志问题" class="header-anchor">#</a> 空日志问题</h3> <p>上线灰度运行后，我们发现 SLS 日志存在一些空日志 😢 ，🦢，这是发生了啥？</p> <p>首先我们回忆下这个链路上有哪些环节可能存在问题。排查链路，SLS 采集环节之前有磁盘日志收集，服务端接收，SDK 上报，那我们依次排查。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">往前一步，发现磁盘日志就已经存在空日志，那剩下就得看一下接收端、SDK 端。</p> <p>开始利用控制变量法，先在 SDK 端进行空判断，防止空日志上报。结果：发现无效 😅。</p> <p>再继续对 Node 接收端处理，对接收到的数据进行判空，如果为空不进行日志打印，结果：依然无效 😳。</p> <p>所以开始定位是不是日志打印本身出了什么问题？研究了下日志第三方日志库的 API，进行了各种尝试，发现依旧没用，我脸黑了 🌚。</p> <p>什么情况，“遇事不决”看源码。排查下日志库源码存在什么问题。对于源码的主调用流程走了一遍，并没有发现什么问题，一头雾水 🙃。</p> <p>整个代码逻辑很正常，这让我们开始怀疑难道是数据的问题，于是开始缩减上报的字段，最终定义为了一个字段。发现上线后没有问题了 😢。</p> <p>难道是有些字段存储的数据过长导致的？但从代码逻辑、流程日志中并没有反应这个错误的可能性。</p> <p>因此我们利用二分法，二分地增加字段，最终定位到了某个字段。如果存在某个字段上报就会出现问题。这很出乎人的意料。</p> <p>我们再想了下链路，除了日志库，其他代码基本都是我们自己的逻辑，所以对日志库进行了排查，怀疑其对某个字段做了什么处理。</p> <p>于是通过搜索，定位到了日志库在仆从模式（可以了解下 Node 的主从模式）下会使用某个字段来表意，导致和我们上报的字段冲突，因此丢失了 🤪。</p> <h3 id="日志丢失问题"><a href="#日志丢失问题" class="header-anchor">#</a> 日志丢失问题</h3> <p>解决了上个问题，开心了，一股成就感涌上心头。但马上就被当头一棒，我发现我高兴的太早了 🤮。</p> <p>团队的某同学在本地测试的时候，由于玩的很开心，一直去刷新页面去上报当前页面的错误。但他发现本地上报的条数和实际日志服务里的条数对不上，日志服务里的少了很多。</p> <p>由于之前自身刚毕业时候做过 2 年多后端开发，对于 IO 操作丢失数据还是有点敏感。直觉上就感觉可能是多进程方向的问题。怀疑是多进程导致的文件死锁问题。</p> <p>那我们去掉多线程，通过单线程，我们去重复原先复现问题的步骤。发现没有遗漏 🤭。</p> <p>我们发现能进行配置 Cluster（主从模式）的地方有两处，日志库和部署工具。</p> <p>观察日志库默认使用的主从进程模式，而部署工具没有主从模式的概念，势必会导致写入 IO 的死锁问题，导致日志丢失。于是在想社区有没有可以有解决此问题的第三方支持。</p> <p>然后通过谷歌搜索，很快就找到了对应的第三方库，它能提供主人进程和仆从进程之间的消息沟通。原理是主人进程负责所有消息写入 log，而仆从进程通过消息传递给主人进程。</p> <h1 id="推荐阅读及引用"><a href="#推荐阅读及引用" class="header-anchor">#</a> 推荐阅读及引用</h1> <p>处理异常</p> <blockquote><p>如何优雅处理前端异常？[4]</p></blockquote> <p>source-map</p> <blockquote><p><a href="https://mp.weixin.qq.com/s?__biz=MzkxNDIzNTg4MA==&amp;mid=2247484211&amp;idx=1&amp;sn=1fe17b3d2f8d74267bb20c61fcf8204d&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">SourceMap 与前端异常监控<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>React 错误</p> <blockquote><p><a href="https://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247505631&amp;idx=1&amp;sn=0d6228af42fe5757dca0d8773bab2b12&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">React，优雅的捕获异常<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>Script Error</p> <blockquote><p>Capture and report JavaScript errors with window.onerror | Product Blog • Sentry[5] &gt; [What the heck is &quot;Script error&quot;? | Product Blog • Sentry](https://blog.sentry.io/2016/05/17/what-is-script-error &quot;What the heck is &quot;Script error&quot;? | Product Blog • Sentry&quot;)</p></blockquote> <p>整体</p> <blockquote><p>前端搞监控|Allan - 如何实现一套多端错误监控平台[6] &gt; 一步一步搭建前端监控系统：JS 错误监控篇[7] &gt; 撸一个前端监控系统[8]</p></blockquote> <p>之前开放日自己演讲的</p> <p>[1]使用 1*1 的 gif: <em>https://g.yuque.com/zaotalk/posts/mxx4cb#QUH0x</em></p> <p>[2]日志服务: <em>https://www.aliyun.com/product/sls</em></p> <p>[3]行为监控: <em>https://www.yuque.com/zaotalk/posts/mxx4cb#De5Se</em></p> <p>[4]如何优雅处理前端异常？: <em>http://jartto.wang/2018/11/20/js-exception-handling/index.html</em></p> <p>[5]Capture and report JavaScript errors with window.onerror | Product Blog • Sentry: <em>https://blog.sentry.io/2016/01/04/client-javascript-reporting-window-onerror</em></p> <p>[6]前端搞监控|Allan - 如何实现一套多端错误监控平台: <em>https://www.yuque.com/zaotalk/posts/mxx4cb</em></p> <p>[7]一步一步搭建前端监控系统：JS 错误监控篇: <em>https://blog.fundebug.com/2019/07/06/how-to-monitor-javascript-error/</em></p> <p>[8]撸一个前端监控系统: <em>https://juejin.im/post/6844904054334685197</em></p> <p>[9]结束裸奔 ppt: <em>https://yun.tuia.cn/tuia/fed/openday/%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7%E5%A4%A9%E7%9C%BC%20-%20%E7%BB%93%E6%9D%9F%E8%A3%B8%E5%A5%94.pdf</em></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">11/8/2024, 10:19:43 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/qa/8-性能优化/关于性能优化的面试题.html" class="prev">
+        21 道关于性能优化的面试题（附答案）
+      </a></span> <span class="next"><a href="/qa/8-性能优化/性能优化.html">
+        写给中高级前端关于性能优化的9大策略和6大指标
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.ae400df5.js" defer></script><script src="/assets/js/2.57da4f88.js" defer></script><script src="/assets/js/1.a76cc220.js" defer></script><script src="/assets/js/366.d1c007ca.js" defer></script>
+  </body>
+</html>

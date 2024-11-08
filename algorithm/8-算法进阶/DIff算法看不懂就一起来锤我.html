@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DIff算法看不懂就一起来锤我 | 前端收集</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/logo.webp">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="blog,react,node,js">
+    
+    <link rel="preload" href="/assets/css/0.styles.b4a844ec.css" as="style"><link rel="preload" href="/assets/js/app.ae400df5.js" as="script"><link rel="preload" href="/assets/js/2.57da4f88.js" as="script"><link rel="preload" href="/assets/js/1.a76cc220.js" as="script"><link rel="preload" href="/assets/js/90.975b2533.js" as="script"><link rel="prefetch" href="/assets/js/10.50f73657.js"><link rel="prefetch" href="/assets/js/100.f9ccbc6f.js"><link rel="prefetch" href="/assets/js/101.c20baa36.js"><link rel="prefetch" href="/assets/js/102.4ce575e4.js"><link rel="prefetch" href="/assets/js/103.6ddf9f4a.js"><link rel="prefetch" href="/assets/js/104.e8bd0c3f.js"><link rel="prefetch" href="/assets/js/105.d0a85c47.js"><link rel="prefetch" href="/assets/js/106.4b3aadee.js"><link rel="prefetch" href="/assets/js/107.436e7f8f.js"><link rel="prefetch" href="/assets/js/108.f46692dc.js"><link rel="prefetch" href="/assets/js/109.322908a6.js"><link rel="prefetch" href="/assets/js/11.0390ceee.js"><link rel="prefetch" href="/assets/js/110.9181da82.js"><link rel="prefetch" href="/assets/js/111.c451b4da.js"><link rel="prefetch" href="/assets/js/112.196b195d.js"><link rel="prefetch" href="/assets/js/113.d65148d0.js"><link rel="prefetch" href="/assets/js/114.5566de19.js"><link rel="prefetch" href="/assets/js/115.12d1619e.js"><link rel="prefetch" href="/assets/js/116.d2f23fe7.js"><link rel="prefetch" href="/assets/js/117.d5fa2588.js"><link rel="prefetch" href="/assets/js/118.79455d12.js"><link rel="prefetch" href="/assets/js/119.b43c99e9.js"><link rel="prefetch" href="/assets/js/12.f88bec36.js"><link rel="prefetch" href="/assets/js/120.f321d53f.js"><link rel="prefetch" href="/assets/js/121.286fed99.js"><link rel="prefetch" href="/assets/js/122.ff0af27d.js"><link rel="prefetch" href="/assets/js/123.00138c02.js"><link rel="prefetch" href="/assets/js/124.25640250.js"><link rel="prefetch" href="/assets/js/125.cb2f28a6.js"><link rel="prefetch" href="/assets/js/126.e8ec0fe7.js"><link rel="prefetch" href="/assets/js/127.0fdd48c2.js"><link rel="prefetch" href="/assets/js/128.38b675a9.js"><link rel="prefetch" href="/assets/js/129.7819df5c.js"><link rel="prefetch" href="/assets/js/13.963ad03b.js"><link rel="prefetch" href="/assets/js/130.a58f0a09.js"><link rel="prefetch" href="/assets/js/131.4a0133b5.js"><link rel="prefetch" href="/assets/js/132.24e842c4.js"><link rel="prefetch" href="/assets/js/133.be3bb854.js"><link rel="prefetch" href="/assets/js/134.8c4662c6.js"><link rel="prefetch" href="/assets/js/135.03d2f395.js"><link rel="prefetch" href="/assets/js/136.acf07647.js"><link rel="prefetch" href="/assets/js/137.f0fa48ad.js"><link rel="prefetch" href="/assets/js/138.843d86f2.js"><link rel="prefetch" href="/assets/js/139.015086b5.js"><link rel="prefetch" href="/assets/js/14.512f15b9.js"><link rel="prefetch" href="/assets/js/140.5468056b.js"><link rel="prefetch" href="/assets/js/141.9bf65de6.js"><link rel="prefetch" href="/assets/js/142.63b38359.js"><link rel="prefetch" href="/assets/js/143.55120954.js"><link rel="prefetch" href="/assets/js/144.e3d71ef2.js"><link rel="prefetch" href="/assets/js/145.470a4869.js"><link rel="prefetch" href="/assets/js/146.574b3929.js"><link rel="prefetch" href="/assets/js/147.28c0b405.js"><link rel="prefetch" href="/assets/js/148.08f963f8.js"><link rel="prefetch" href="/assets/js/149.0b296978.js"><link rel="prefetch" href="/assets/js/15.a674496c.js"><link rel="prefetch" href="/assets/js/150.651bd19a.js"><link rel="prefetch" href="/assets/js/151.d2029876.js"><link rel="prefetch" href="/assets/js/152.32f253ce.js"><link rel="prefetch" href="/assets/js/153.ceb29b56.js"><link rel="prefetch" href="/assets/js/154.6a7f6d29.js"><link rel="prefetch" href="/assets/js/155.50aaf5d9.js"><link rel="prefetch" href="/assets/js/156.036e250b.js"><link rel="prefetch" href="/assets/js/157.c2435840.js"><link rel="prefetch" href="/assets/js/158.242ba411.js"><link rel="prefetch" href="/assets/js/159.136ff0a3.js"><link rel="prefetch" href="/assets/js/16.ed7e507f.js"><link rel="prefetch" href="/assets/js/160.25dcaecf.js"><link rel="prefetch" href="/assets/js/161.ab904d4e.js"><link rel="prefetch" href="/assets/js/162.04b69881.js"><link rel="prefetch" href="/assets/js/163.e7e749f8.js"><link rel="prefetch" href="/assets/js/164.71f53227.js"><link rel="prefetch" href="/assets/js/165.5841cd1a.js"><link rel="prefetch" href="/assets/js/166.28071d6e.js"><link rel="prefetch" href="/assets/js/167.93ce97d2.js"><link rel="prefetch" href="/assets/js/168.f3b2972c.js"><link rel="prefetch" href="/assets/js/169.aa7f77f0.js"><link rel="prefetch" href="/assets/js/17.de667ca5.js"><link rel="prefetch" href="/assets/js/170.cfdf36f3.js"><link rel="prefetch" href="/assets/js/171.e542ad9a.js"><link rel="prefetch" href="/assets/js/172.2101f9ed.js"><link rel="prefetch" href="/assets/js/173.8f875d74.js"><link rel="prefetch" href="/assets/js/174.61572c8b.js"><link rel="prefetch" href="/assets/js/175.2ce966d7.js"><link rel="prefetch" href="/assets/js/176.bf7661ff.js"><link rel="prefetch" href="/assets/js/177.99ab75ff.js"><link rel="prefetch" href="/assets/js/178.8c053eff.js"><link rel="prefetch" href="/assets/js/179.bb56672f.js"><link rel="prefetch" href="/assets/js/18.b44e84af.js"><link rel="prefetch" href="/assets/js/180.44be886d.js"><link rel="prefetch" href="/assets/js/181.a635f8b4.js"><link rel="prefetch" href="/assets/js/182.43ee494e.js"><link rel="prefetch" href="/assets/js/183.7f8013e7.js"><link rel="prefetch" href="/assets/js/184.995eba6d.js"><link rel="prefetch" href="/assets/js/185.ae8dc8fc.js"><link rel="prefetch" href="/assets/js/186.f5f3b8d8.js"><link rel="prefetch" href="/assets/js/187.0b834066.js"><link rel="prefetch" href="/assets/js/188.de0798b4.js"><link rel="prefetch" href="/assets/js/189.bd73bd48.js"><link rel="prefetch" href="/assets/js/19.5b5ad6a1.js"><link rel="prefetch" href="/assets/js/190.3b34618c.js"><link rel="prefetch" href="/assets/js/191.d69ac5ae.js"><link rel="prefetch" href="/assets/js/192.6fb41323.js"><link rel="prefetch" href="/assets/js/193.deec3471.js"><link rel="prefetch" href="/assets/js/194.a936f543.js"><link rel="prefetch" href="/assets/js/195.257a9d86.js"><link rel="prefetch" href="/assets/js/196.b04a1424.js"><link rel="prefetch" href="/assets/js/197.b1b12256.js"><link rel="prefetch" href="/assets/js/198.d3539378.js"><link rel="prefetch" href="/assets/js/199.802facc3.js"><link rel="prefetch" href="/assets/js/20.6800493a.js"><link rel="prefetch" href="/assets/js/200.c2e3da4f.js"><link rel="prefetch" href="/assets/js/201.9b119f49.js"><link rel="prefetch" href="/assets/js/202.283e51cb.js"><link rel="prefetch" href="/assets/js/203.4ebeba02.js"><link rel="prefetch" href="/assets/js/204.a3680104.js"><link rel="prefetch" href="/assets/js/205.e89e1221.js"><link rel="prefetch" href="/assets/js/206.a2159b40.js"><link rel="prefetch" href="/assets/js/207.30aa8a56.js"><link rel="prefetch" href="/assets/js/208.25e87523.js"><link rel="prefetch" href="/assets/js/209.1feb11d6.js"><link rel="prefetch" href="/assets/js/21.6589052c.js"><link rel="prefetch" href="/assets/js/210.3988d49f.js"><link rel="prefetch" href="/assets/js/211.c35b6127.js"><link rel="prefetch" href="/assets/js/212.a47a605d.js"><link rel="prefetch" href="/assets/js/213.e67c2145.js"><link rel="prefetch" href="/assets/js/214.f2adf5ee.js"><link rel="prefetch" href="/assets/js/215.8af7fa44.js"><link rel="prefetch" href="/assets/js/216.c4c02e18.js"><link rel="prefetch" href="/assets/js/217.8a2ed0a4.js"><link rel="prefetch" href="/assets/js/218.5224a21c.js"><link rel="prefetch" href="/assets/js/219.85a23ded.js"><link rel="prefetch" href="/assets/js/22.f648d829.js"><link rel="prefetch" href="/assets/js/220.1a4b37cb.js"><link rel="prefetch" href="/assets/js/221.fd8b42a5.js"><link rel="prefetch" href="/assets/js/222.ab3b9c2e.js"><link rel="prefetch" href="/assets/js/223.7e579d8f.js"><link rel="prefetch" href="/assets/js/224.a9ba827c.js"><link rel="prefetch" href="/assets/js/225.e1612fcc.js"><link rel="prefetch" href="/assets/js/226.9c1af133.js"><link rel="prefetch" href="/assets/js/227.0bc3b51e.js"><link rel="prefetch" href="/assets/js/228.a0eba8af.js"><link rel="prefetch" href="/assets/js/229.5d1c84bb.js"><link rel="prefetch" href="/assets/js/23.79aa69fa.js"><link rel="prefetch" href="/assets/js/230.f83fdc59.js"><link rel="prefetch" href="/assets/js/231.9f82cedb.js"><link rel="prefetch" href="/assets/js/232.f97914ee.js"><link rel="prefetch" href="/assets/js/233.50ac2baa.js"><link rel="prefetch" href="/assets/js/234.d313f866.js"><link rel="prefetch" href="/assets/js/235.f5eb3748.js"><link rel="prefetch" href="/assets/js/236.d452db47.js"><link rel="prefetch" href="/assets/js/237.5199378b.js"><link rel="prefetch" href="/assets/js/238.d1c3107c.js"><link rel="prefetch" href="/assets/js/239.4e2b6d59.js"><link rel="prefetch" href="/assets/js/24.03ffbcca.js"><link rel="prefetch" href="/assets/js/240.b46f5ecd.js"><link rel="prefetch" href="/assets/js/241.7e9311b0.js"><link rel="prefetch" href="/assets/js/242.ede280f9.js"><link rel="prefetch" href="/assets/js/243.71efdf6e.js"><link rel="prefetch" href="/assets/js/244.1b089d77.js"><link rel="prefetch" href="/assets/js/245.47562a1b.js"><link rel="prefetch" href="/assets/js/246.35ce7ccb.js"><link rel="prefetch" href="/assets/js/247.0eea6dda.js"><link rel="prefetch" href="/assets/js/248.d606d51a.js"><link rel="prefetch" href="/assets/js/249.22a9c555.js"><link rel="prefetch" href="/assets/js/25.872464d2.js"><link rel="prefetch" href="/assets/js/250.7cf64a15.js"><link rel="prefetch" href="/assets/js/251.b6f787d7.js"><link rel="prefetch" href="/assets/js/252.8b9bedcd.js"><link rel="prefetch" href="/assets/js/253.5c63ec35.js"><link rel="prefetch" href="/assets/js/254.31ff9dc4.js"><link rel="prefetch" href="/assets/js/255.190e5f80.js"><link rel="prefetch" href="/assets/js/256.e68f87e0.js"><link rel="prefetch" href="/assets/js/257.3095f7a1.js"><link rel="prefetch" href="/assets/js/258.af517699.js"><link rel="prefetch" href="/assets/js/259.f10ece0f.js"><link rel="prefetch" href="/assets/js/26.bd6d2ac2.js"><link rel="prefetch" href="/assets/js/260.e8bbba00.js"><link rel="prefetch" href="/assets/js/261.5d9b1d5e.js"><link rel="prefetch" href="/assets/js/262.950474a9.js"><link rel="prefetch" href="/assets/js/263.3e7dca65.js"><link rel="prefetch" href="/assets/js/264.1017ad1a.js"><link rel="prefetch" href="/assets/js/265.99c4d846.js"><link rel="prefetch" href="/assets/js/266.8d1ea647.js"><link rel="prefetch" href="/assets/js/267.20e69579.js"><link rel="prefetch" href="/assets/js/268.4da84374.js"><link rel="prefetch" href="/assets/js/269.e3ad7859.js"><link rel="prefetch" href="/assets/js/27.814c713d.js"><link rel="prefetch" href="/assets/js/270.c5c4b40b.js"><link rel="prefetch" href="/assets/js/271.9c7294fd.js"><link rel="prefetch" href="/assets/js/272.3d41fdce.js"><link rel="prefetch" href="/assets/js/273.3eaafe8e.js"><link rel="prefetch" href="/assets/js/274.f98d5554.js"><link rel="prefetch" href="/assets/js/275.5ec6a4b8.js"><link rel="prefetch" href="/assets/js/276.0936dd89.js"><link rel="prefetch" href="/assets/js/277.33bd4dff.js"><link rel="prefetch" href="/assets/js/278.c383b31c.js"><link rel="prefetch" href="/assets/js/279.6df8b215.js"><link rel="prefetch" href="/assets/js/28.5229eb08.js"><link rel="prefetch" href="/assets/js/280.07169fc6.js"><link rel="prefetch" href="/assets/js/281.4b28be3f.js"><link rel="prefetch" href="/assets/js/282.79bba86e.js"><link rel="prefetch" href="/assets/js/283.32f592bc.js"><link rel="prefetch" href="/assets/js/284.fd9b6b59.js"><link rel="prefetch" href="/assets/js/285.df1454be.js"><link rel="prefetch" href="/assets/js/286.18b1703e.js"><link rel="prefetch" href="/assets/js/287.94781ca0.js"><link rel="prefetch" href="/assets/js/288.f21493cb.js"><link rel="prefetch" href="/assets/js/289.8fc283e3.js"><link rel="prefetch" href="/assets/js/29.a63c1057.js"><link rel="prefetch" href="/assets/js/290.3346a986.js"><link rel="prefetch" href="/assets/js/291.5fafa49e.js"><link rel="prefetch" href="/assets/js/292.ac874de4.js"><link rel="prefetch" href="/assets/js/293.19730c32.js"><link rel="prefetch" href="/assets/js/294.98ddc6d7.js"><link rel="prefetch" href="/assets/js/295.eae00758.js"><link rel="prefetch" href="/assets/js/296.1d81c552.js"><link rel="prefetch" href="/assets/js/297.5f86f97e.js"><link rel="prefetch" href="/assets/js/298.1bc558ca.js"><link rel="prefetch" href="/assets/js/299.d068c6b6.js"><link rel="prefetch" href="/assets/js/3.13e892f5.js"><link rel="prefetch" href="/assets/js/30.1b884b1b.js"><link rel="prefetch" href="/assets/js/300.c956e204.js"><link rel="prefetch" href="/assets/js/301.77127d95.js"><link rel="prefetch" href="/assets/js/302.1d7c4af3.js"><link rel="prefetch" href="/assets/js/303.2bcbc099.js"><link rel="prefetch" href="/assets/js/304.b2180761.js"><link rel="prefetch" href="/assets/js/305.3ac4a62e.js"><link rel="prefetch" href="/assets/js/306.1ce3e68d.js"><link rel="prefetch" href="/assets/js/307.6c3d9548.js"><link rel="prefetch" href="/assets/js/308.b777fbfa.js"><link rel="prefetch" href="/assets/js/309.e5d32660.js"><link rel="prefetch" href="/assets/js/31.68c1b4eb.js"><link rel="prefetch" href="/assets/js/310.fcda8acc.js"><link rel="prefetch" href="/assets/js/311.cde4dc35.js"><link rel="prefetch" href="/assets/js/312.98a0ee89.js"><link rel="prefetch" href="/assets/js/313.ce02630f.js"><link rel="prefetch" href="/assets/js/314.3883ac39.js"><link rel="prefetch" href="/assets/js/315.b6c9cd37.js"><link rel="prefetch" href="/assets/js/316.6cd33ea7.js"><link rel="prefetch" href="/assets/js/317.eb818350.js"><link rel="prefetch" href="/assets/js/318.e9e7da16.js"><link rel="prefetch" href="/assets/js/319.1edfec0a.js"><link rel="prefetch" href="/assets/js/32.64224241.js"><link rel="prefetch" href="/assets/js/320.f4728475.js"><link rel="prefetch" href="/assets/js/321.799c6e59.js"><link rel="prefetch" href="/assets/js/322.a701407b.js"><link rel="prefetch" href="/assets/js/323.803b7bcc.js"><link rel="prefetch" href="/assets/js/324.a73b88d8.js"><link rel="prefetch" href="/assets/js/325.f08e06ca.js"><link rel="prefetch" href="/assets/js/326.80813d35.js"><link rel="prefetch" href="/assets/js/327.8310d6c8.js"><link rel="prefetch" href="/assets/js/328.68f1b07a.js"><link rel="prefetch" href="/assets/js/329.04be32fe.js"><link rel="prefetch" href="/assets/js/33.b4859866.js"><link rel="prefetch" href="/assets/js/330.fbd486d3.js"><link rel="prefetch" href="/assets/js/331.bc43b814.js"><link rel="prefetch" href="/assets/js/332.838514e5.js"><link rel="prefetch" href="/assets/js/333.c647f10b.js"><link rel="prefetch" href="/assets/js/334.293d7db1.js"><link rel="prefetch" href="/assets/js/335.f60f98c5.js"><link rel="prefetch" href="/assets/js/336.d59a627e.js"><link rel="prefetch" href="/assets/js/337.719cd005.js"><link rel="prefetch" href="/assets/js/338.eb93d4b7.js"><link rel="prefetch" href="/assets/js/339.a38c5695.js"><link rel="prefetch" href="/assets/js/34.69c1bc55.js"><link rel="prefetch" href="/assets/js/340.9a4ce427.js"><link rel="prefetch" href="/assets/js/341.d39b4f2f.js"><link rel="prefetch" href="/assets/js/342.11fbba88.js"><link rel="prefetch" href="/assets/js/343.36030f9c.js"><link rel="prefetch" href="/assets/js/344.94fc0ac0.js"><link rel="prefetch" href="/assets/js/345.c6ef0cd3.js"><link rel="prefetch" href="/assets/js/346.3f3484bf.js"><link rel="prefetch" href="/assets/js/347.f6957922.js"><link rel="prefetch" href="/assets/js/348.df8650b3.js"><link rel="prefetch" href="/assets/js/349.402ca2e1.js"><link rel="prefetch" href="/assets/js/35.d8b00796.js"><link rel="prefetch" href="/assets/js/350.8a48f4c3.js"><link rel="prefetch" href="/assets/js/351.b5356e83.js"><link rel="prefetch" href="/assets/js/352.944301fd.js"><link rel="prefetch" href="/assets/js/353.8b170c06.js"><link rel="prefetch" href="/assets/js/354.97b92290.js"><link rel="prefetch" href="/assets/js/355.948e7095.js"><link rel="prefetch" href="/assets/js/356.5aaf9fe5.js"><link rel="prefetch" href="/assets/js/357.67c88167.js"><link rel="prefetch" href="/assets/js/358.e241fbe2.js"><link rel="prefetch" href="/assets/js/359.15b3166a.js"><link rel="prefetch" href="/assets/js/36.090e85b2.js"><link rel="prefetch" href="/assets/js/360.187f4fe6.js"><link rel="prefetch" href="/assets/js/361.a77fa57f.js"><link rel="prefetch" href="/assets/js/362.30ed8657.js"><link rel="prefetch" href="/assets/js/363.c8caaf0f.js"><link rel="prefetch" href="/assets/js/364.78f41e2e.js"><link rel="prefetch" href="/assets/js/365.55b8d5b3.js"><link rel="prefetch" href="/assets/js/366.d1c007ca.js"><link rel="prefetch" href="/assets/js/367.bc6a31fb.js"><link rel="prefetch" href="/assets/js/368.147012d3.js"><link rel="prefetch" href="/assets/js/369.94f25d03.js"><link rel="prefetch" href="/assets/js/37.bf92df67.js"><link rel="prefetch" href="/assets/js/370.37c8786f.js"><link rel="prefetch" href="/assets/js/371.037e513b.js"><link rel="prefetch" href="/assets/js/372.353d4826.js"><link rel="prefetch" href="/assets/js/373.3260442b.js"><link rel="prefetch" href="/assets/js/374.eabaedd4.js"><link rel="prefetch" href="/assets/js/375.f80e9c75.js"><link rel="prefetch" href="/assets/js/376.b041cafe.js"><link rel="prefetch" href="/assets/js/377.d6410416.js"><link rel="prefetch" href="/assets/js/378.0d21f78f.js"><link rel="prefetch" href="/assets/js/379.83c05c56.js"><link rel="prefetch" href="/assets/js/38.74932844.js"><link rel="prefetch" href="/assets/js/380.c41e1704.js"><link rel="prefetch" href="/assets/js/381.52c6dcbf.js"><link rel="prefetch" href="/assets/js/382.d2998ea4.js"><link rel="prefetch" href="/assets/js/383.160918fa.js"><link rel="prefetch" href="/assets/js/384.6e3e4604.js"><link rel="prefetch" href="/assets/js/385.e514c0b7.js"><link rel="prefetch" href="/assets/js/386.3cab7b43.js"><link rel="prefetch" href="/assets/js/387.7b7aa4c3.js"><link rel="prefetch" href="/assets/js/388.1675a9c8.js"><link rel="prefetch" href="/assets/js/389.f5e5e9e4.js"><link rel="prefetch" href="/assets/js/39.45a654d9.js"><link rel="prefetch" href="/assets/js/390.5bbca72c.js"><link rel="prefetch" href="/assets/js/391.4e95a939.js"><link rel="prefetch" href="/assets/js/392.8eb7d12f.js"><link rel="prefetch" href="/assets/js/393.f72f9473.js"><link rel="prefetch" href="/assets/js/394.1cea58b3.js"><link rel="prefetch" href="/assets/js/395.33fa0847.js"><link rel="prefetch" href="/assets/js/396.8ef17642.js"><link rel="prefetch" href="/assets/js/397.dd02eee1.js"><link rel="prefetch" href="/assets/js/398.23ea33a3.js"><link rel="prefetch" href="/assets/js/399.84a4e8db.js"><link rel="prefetch" href="/assets/js/4.5bdb9365.js"><link rel="prefetch" href="/assets/js/40.7cc37d90.js"><link rel="prefetch" href="/assets/js/400.0597181f.js"><link rel="prefetch" href="/assets/js/401.9cb4c0e2.js"><link rel="prefetch" href="/assets/js/402.41ddf5c4.js"><link rel="prefetch" href="/assets/js/403.afa305eb.js"><link rel="prefetch" href="/assets/js/404.3831ec8d.js"><link rel="prefetch" href="/assets/js/405.b79a51fb.js"><link rel="prefetch" href="/assets/js/406.dd6191a5.js"><link rel="prefetch" href="/assets/js/407.d2e12f04.js"><link rel="prefetch" href="/assets/js/408.56c2fc48.js"><link rel="prefetch" href="/assets/js/409.25a15725.js"><link rel="prefetch" href="/assets/js/41.78331f9e.js"><link rel="prefetch" href="/assets/js/410.dd6c1352.js"><link rel="prefetch" href="/assets/js/411.6d95d902.js"><link rel="prefetch" href="/assets/js/412.da6546bd.js"><link rel="prefetch" href="/assets/js/413.39d34e64.js"><link rel="prefetch" href="/assets/js/414.aaa215f3.js"><link rel="prefetch" href="/assets/js/415.b41c61b6.js"><link rel="prefetch" href="/assets/js/416.139592a7.js"><link rel="prefetch" href="/assets/js/417.324a89a1.js"><link rel="prefetch" href="/assets/js/418.676f7dcb.js"><link rel="prefetch" href="/assets/js/419.9350419c.js"><link rel="prefetch" href="/assets/js/42.a22391d6.js"><link rel="prefetch" href="/assets/js/420.0462f81e.js"><link rel="prefetch" href="/assets/js/421.a6efdd34.js"><link rel="prefetch" href="/assets/js/422.569428e8.js"><link rel="prefetch" href="/assets/js/423.8cb41fe5.js"><link rel="prefetch" href="/assets/js/424.98a9d128.js"><link rel="prefetch" href="/assets/js/425.62b51cfb.js"><link rel="prefetch" href="/assets/js/426.7b3a49e4.js"><link rel="prefetch" href="/assets/js/427.f99d9c10.js"><link rel="prefetch" href="/assets/js/428.73db8fe6.js"><link rel="prefetch" href="/assets/js/429.05f1741b.js"><link rel="prefetch" href="/assets/js/43.8946d7e2.js"><link rel="prefetch" href="/assets/js/430.8b43f070.js"><link rel="prefetch" href="/assets/js/431.d85a79d6.js"><link rel="prefetch" href="/assets/js/432.7373e34b.js"><link rel="prefetch" href="/assets/js/433.4be17add.js"><link rel="prefetch" href="/assets/js/434.81670bcf.js"><link rel="prefetch" href="/assets/js/435.6aa95ea5.js"><link rel="prefetch" href="/assets/js/436.4223c356.js"><link rel="prefetch" href="/assets/js/437.13f276dc.js"><link rel="prefetch" href="/assets/js/438.7c6e503d.js"><link rel="prefetch" href="/assets/js/439.6f9afc22.js"><link rel="prefetch" href="/assets/js/44.2a678f4a.js"><link rel="prefetch" href="/assets/js/440.5c949914.js"><link rel="prefetch" href="/assets/js/441.7dc7c8e4.js"><link rel="prefetch" href="/assets/js/442.bfec8250.js"><link rel="prefetch" href="/assets/js/443.0b932152.js"><link rel="prefetch" href="/assets/js/444.ecc56127.js"><link rel="prefetch" href="/assets/js/445.3a1eefa1.js"><link rel="prefetch" href="/assets/js/446.07410371.js"><link rel="prefetch" href="/assets/js/447.920996c3.js"><link rel="prefetch" href="/assets/js/448.9b5b5588.js"><link rel="prefetch" href="/assets/js/449.40afb76e.js"><link rel="prefetch" href="/assets/js/45.a716cdab.js"><link rel="prefetch" href="/assets/js/450.15845e93.js"><link rel="prefetch" href="/assets/js/451.c0454122.js"><link rel="prefetch" href="/assets/js/452.076ca38b.js"><link rel="prefetch" href="/assets/js/453.35add2cd.js"><link rel="prefetch" href="/assets/js/454.fed25dd2.js"><link rel="prefetch" href="/assets/js/455.a3232b7e.js"><link rel="prefetch" href="/assets/js/456.803d9cea.js"><link rel="prefetch" href="/assets/js/457.0a884768.js"><link rel="prefetch" href="/assets/js/458.69b6cc02.js"><link rel="prefetch" href="/assets/js/459.d8e1df18.js"><link rel="prefetch" href="/assets/js/46.53b78a16.js"><link rel="prefetch" href="/assets/js/460.a4980d6e.js"><link rel="prefetch" href="/assets/js/461.68d3e1c1.js"><link rel="prefetch" href="/assets/js/462.7930ea12.js"><link rel="prefetch" href="/assets/js/463.48a62ed8.js"><link rel="prefetch" href="/assets/js/464.5c42fe51.js"><link rel="prefetch" href="/assets/js/465.b65a0e95.js"><link rel="prefetch" href="/assets/js/466.63474609.js"><link rel="prefetch" href="/assets/js/467.e6370736.js"><link rel="prefetch" href="/assets/js/468.a6cd9285.js"><link rel="prefetch" href="/assets/js/469.3df61389.js"><link rel="prefetch" href="/assets/js/47.dc9468b3.js"><link rel="prefetch" href="/assets/js/470.b956e72b.js"><link rel="prefetch" href="/assets/js/471.227fb33d.js"><link rel="prefetch" href="/assets/js/472.407485a3.js"><link rel="prefetch" href="/assets/js/473.9ab2c50d.js"><link rel="prefetch" href="/assets/js/474.dd36f932.js"><link rel="prefetch" href="/assets/js/475.7634085c.js"><link rel="prefetch" href="/assets/js/476.6869c979.js"><link rel="prefetch" href="/assets/js/477.b8bbd1aa.js"><link rel="prefetch" href="/assets/js/478.d85549c5.js"><link rel="prefetch" href="/assets/js/479.a549954b.js"><link rel="prefetch" href="/assets/js/48.f62c6508.js"><link rel="prefetch" href="/assets/js/480.964f2b40.js"><link rel="prefetch" href="/assets/js/481.68f5f905.js"><link rel="prefetch" href="/assets/js/482.32b674c2.js"><link rel="prefetch" href="/assets/js/483.6574c15d.js"><link rel="prefetch" href="/assets/js/484.63db4bff.js"><link rel="prefetch" href="/assets/js/485.0ecd7c6e.js"><link rel="prefetch" href="/assets/js/486.44a1de5d.js"><link rel="prefetch" href="/assets/js/487.fad12e99.js"><link rel="prefetch" href="/assets/js/488.169f32db.js"><link rel="prefetch" href="/assets/js/489.7ea816a6.js"><link rel="prefetch" href="/assets/js/49.f155d78a.js"><link rel="prefetch" href="/assets/js/490.d35de876.js"><link rel="prefetch" href="/assets/js/491.08874d90.js"><link rel="prefetch" href="/assets/js/492.088a7e6e.js"><link rel="prefetch" href="/assets/js/493.61d62bf4.js"><link rel="prefetch" href="/assets/js/494.b0515138.js"><link rel="prefetch" href="/assets/js/495.60587f26.js"><link rel="prefetch" href="/assets/js/496.d66df398.js"><link rel="prefetch" href="/assets/js/497.7c88f879.js"><link rel="prefetch" href="/assets/js/498.73e1e0cf.js"><link rel="prefetch" href="/assets/js/499.8162e0b6.js"><link rel="prefetch" href="/assets/js/5.7c68fdb5.js"><link rel="prefetch" href="/assets/js/50.d2b62498.js"><link rel="prefetch" href="/assets/js/500.8b0de440.js"><link rel="prefetch" href="/assets/js/501.0894844d.js"><link rel="prefetch" href="/assets/js/502.1c0d1c3c.js"><link rel="prefetch" href="/assets/js/503.3e3f2a4a.js"><link rel="prefetch" href="/assets/js/504.cca812a4.js"><link rel="prefetch" href="/assets/js/505.8a1f3adc.js"><link rel="prefetch" href="/assets/js/506.35d49763.js"><link rel="prefetch" href="/assets/js/507.4fd3c268.js"><link rel="prefetch" href="/assets/js/508.aa2ba78c.js"><link rel="prefetch" href="/assets/js/509.cc7d97eb.js"><link rel="prefetch" href="/assets/js/51.7b12b0f0.js"><link rel="prefetch" href="/assets/js/510.73e3254c.js"><link rel="prefetch" href="/assets/js/511.bd21926b.js"><link rel="prefetch" href="/assets/js/512.8b796161.js"><link rel="prefetch" href="/assets/js/513.da11e0bf.js"><link rel="prefetch" href="/assets/js/514.5a620685.js"><link rel="prefetch" href="/assets/js/515.9a4b1681.js"><link rel="prefetch" href="/assets/js/516.de55e3ca.js"><link rel="prefetch" href="/assets/js/517.2b3b1dd5.js"><link rel="prefetch" href="/assets/js/518.aa28e969.js"><link rel="prefetch" href="/assets/js/519.91a752a1.js"><link rel="prefetch" href="/assets/js/52.3391993d.js"><link rel="prefetch" href="/assets/js/520.49c84d3e.js"><link rel="prefetch" href="/assets/js/521.545008de.js"><link rel="prefetch" href="/assets/js/522.11773c74.js"><link rel="prefetch" href="/assets/js/523.5b523166.js"><link rel="prefetch" href="/assets/js/524.9d7c8f5c.js"><link rel="prefetch" href="/assets/js/53.a67a7068.js"><link rel="prefetch" href="/assets/js/54.af0dccf3.js"><link rel="prefetch" href="/assets/js/55.cdae5880.js"><link rel="prefetch" href="/assets/js/56.4d918bef.js"><link rel="prefetch" href="/assets/js/57.5e9dea12.js"><link rel="prefetch" href="/assets/js/58.6cec08ff.js"><link rel="prefetch" href="/assets/js/59.65771179.js"><link rel="prefetch" href="/assets/js/6.c8da7ca7.js"><link rel="prefetch" href="/assets/js/60.8f859a65.js"><link rel="prefetch" href="/assets/js/61.43bff54c.js"><link rel="prefetch" href="/assets/js/62.b8e9e509.js"><link rel="prefetch" href="/assets/js/63.5149a7b9.js"><link rel="prefetch" href="/assets/js/64.961c386a.js"><link rel="prefetch" href="/assets/js/65.73f66baf.js"><link rel="prefetch" href="/assets/js/66.b5930577.js"><link rel="prefetch" href="/assets/js/67.40a0db0c.js"><link rel="prefetch" href="/assets/js/68.6212d2a9.js"><link rel="prefetch" href="/assets/js/69.0cd6b5c4.js"><link rel="prefetch" href="/assets/js/7.e4c88d0e.js"><link rel="prefetch" href="/assets/js/70.8e1f3dad.js"><link rel="prefetch" href="/assets/js/71.041fa5d5.js"><link rel="prefetch" href="/assets/js/72.7b626c12.js"><link rel="prefetch" href="/assets/js/73.78b38a87.js"><link rel="prefetch" href="/assets/js/74.6ec158a9.js"><link rel="prefetch" href="/assets/js/75.de5261fd.js"><link rel="prefetch" href="/assets/js/76.49878016.js"><link rel="prefetch" href="/assets/js/77.77eb5ec0.js"><link rel="prefetch" href="/assets/js/78.13279776.js"><link rel="prefetch" href="/assets/js/79.55cd4da6.js"><link rel="prefetch" href="/assets/js/80.2d4e5531.js"><link rel="prefetch" href="/assets/js/81.f00c64f4.js"><link rel="prefetch" href="/assets/js/82.af834374.js"><link rel="prefetch" href="/assets/js/83.42d97060.js"><link rel="prefetch" href="/assets/js/84.e6bc84a7.js"><link rel="prefetch" href="/assets/js/85.beeccec9.js"><link rel="prefetch" href="/assets/js/86.af675949.js"><link rel="prefetch" href="/assets/js/87.42f1b392.js"><link rel="prefetch" href="/assets/js/88.b5b8b77f.js"><link rel="prefetch" href="/assets/js/89.5892cf98.js"><link rel="prefetch" href="/assets/js/91.64ccb26a.js"><link rel="prefetch" href="/assets/js/92.159aca5a.js"><link rel="prefetch" href="/assets/js/93.ca72cfb7.js"><link rel="prefetch" href="/assets/js/94.134a585d.js"><link rel="prefetch" href="/assets/js/95.83f34609.js"><link rel="prefetch" href="/assets/js/96.25383af1.js"><link rel="prefetch" href="/assets/js/97.404579a5.js"><link rel="prefetch" href="/assets/js/98.b15c1a8c.js"><link rel="prefetch" href="/assets/js/99.2757d9cd.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5143d2e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b4a844ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端收集</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/react-source/" class="nav-link">
+  源码解析
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  算法
+</a></div><div class="nav-item"><a href="/deploy/" class="nav-link">
+  工程化
+</a></div><div class="nav-item"><a href="/qa/" class="nav-link">
+  QA
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://note.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  note
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/algorithm/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/1-leetcode-summary" class="sidebar-heading clickable"><span>leetcode-summary</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/1-栈" class="sidebar-heading clickable"><span>栈</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/2-队列" class="sidebar-heading clickable"><span>队列</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/3-集合" class="sidebar-heading clickable"><span>集合</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/4-字典" class="sidebar-heading clickable"><span>字典</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/5-排序" class="sidebar-heading clickable"><span>排序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/5-链表" class="sidebar-heading clickable"><span>链表</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/6-前端实际项目使用" class="sidebar-heading clickable"><span>前端实际项目使用</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/algorithm/8-算法进阶" class="sidebar-heading clickable open"><span>算法进阶</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/8-%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/algorithm/8-算法进阶/ChromeV8源码看JavaScript数组.html" class="sidebar-link">前端进阶算法2：从Chrome V8源码看JavaScript数组(附赠腾讯面试题)</a></li><li><a href="/algorithm/8-算法进阶/DIff算法看不懂就一起来锤我.html" class="active sidebar-link">DIff算法看不懂就一起来锤我</a></li><li><a href="/algorithm/8-算法进阶/Diff算法核心原理.html" class="sidebar-link">15张图，20分钟吃透Diff算法核心原理</a></li><li><a href="/algorithm/8-算法进阶/一看就懂的队列及配套算法题.html" class="sidebar-link">前端进阶算法6：一看就懂的队列及配套算法题</a></li><li><a href="/algorithm/8-算法进阶/从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法.html" class="sidebar-link">前端进阶算法3：从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法</a></li><li><a href="/algorithm/8-算法进阶/别再说你不懂Top-K问题了.html" class="sidebar-link">别再说你不懂Top K问题了</a></li><li><a href="/algorithm/8-算法进阶/去大厂面试问我算法.html" class="sidebar-link">去大厂面试问我算法，我该怎么办？</a></li><li><a href="/algorithm/8-算法进阶/吊打面试官之数据结构栈.html" class="sidebar-link">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）</a></li><li><a href="/algorithm/8-算法进阶/堆排序.html" class="sidebar-link">前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</a></li><li><a href="/algorithm/8-算法进阶/头条正在面的哈希表问题.html" class="sidebar-link">前端进阶算法：头条正在面的哈希表问题</a></li><li><a href="/algorithm/8-算法进阶/如何分析-统计算法的执行效率和资源消耗.html" class="sidebar-link">前端进阶算法1：如何分析、统计算法的执行效率和资源消耗？</a></li><li><a href="/algorithm/8-算法进阶/小白都可以看懂的树与二叉树.html" class="sidebar-link">前端进阶算法7：小白都可以看懂的树与二叉树</a></li><li><a href="/algorithm/8-算法进阶/带你快速入门前端算法.html" class="sidebar-link">10 问 10 答，带你快速入门前端算法</a></li><li><a href="/algorithm/8-算法进阶/常见算法题及完美题解.html" class="sidebar-link">前端进阶算法：常见算法题及完美题解</a></li><li><a href="/algorithm/8-算法进阶/链表原来如此简单.html" class="sidebar-link">前端进阶算法4：链表原来如此简单(+leetcode刷题）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="diff算法看不懂就一起来锤我"><a href="#diff算法看不懂就一起来锤我" class="header-anchor">#</a> DIff算法看不懂就一起来锤我</h1> <blockquote><p><a href="https://mp.weixin.qq.com/s/vAt4oCMwa8Bsd3Wb2YfrYg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/vAt4oCMwa8Bsd3Wb2YfrYg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h1 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h1> <p>面试官:&quot;你了解<code>虚拟DOM(Virtual DOM)</code>跟<code>Diff算法</code>吗,请描述一下它们&quot;;</p> <p>我:&quot;额,...鹅,那个&quot;,完了😰,突然智商不在线,没组织好语言没答好或者压根就答不出来;</p> <p>所以这次我总结一下相关的知识点,让你可以有一个清晰的认知之余也会让你在今后遇到这种情况可以<strong>坦然自若,应付自如,游刃有余</strong>:</p> <hr> <h2 id="相关知识点"><a href="#相关知识点" class="header-anchor">#</a> 相关知识点:</h2> <ul><li><p>虚拟DOM(Virtual DOM):</p></li> <li><ul><li><strong>什么是虚拟dom</strong></li> <li><strong>为什么要使用虚拟dom</strong></li> <li>虚拟DOM库</li></ul></li> <li><p>DIFF算法:</p></li> <li><ul><li>init函数</li> <li>h函数</li> <li><strong>patch函数</strong></li> <li><strong>patchVnode函数</strong></li> <li><strong>updateChildren函数</strong></li> <li>snabbDom源码</li></ul></li></ul> <hr> <h2 id="虚拟dom-virtual-dom"><a href="#虚拟dom-virtual-dom" class="header-anchor">#</a> 虚拟DOM(Virtual DOM)</h2> <h3 id="什么是虚拟dom"><a href="#什么是虚拟dom" class="header-anchor">#</a> 什么是虚拟DOM</h3> <p>一句话总结虚拟DOM就是一个用来描述真实DOM的<strong>javaScript对象</strong>,这样说可能不够形象,那我们来举个🌰:分别用代码来描述<code>真实DOM</code>以及<code>虚拟DOM</code></p> <p><code>真实DOM</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul class=&quot;list&quot;&gt;
+    &lt;li&gt;a&lt;/li&gt;
+    &lt;li&gt;b&lt;/li&gt;
+    &lt;li&gt;c&lt;/li&gt;
+&lt;/ul&gt;
+复制代码
+</code></pre></div><p><code>对应的虚拟DOM</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>let vnode = h('ul.list', [
+  h('li','a'),
+  h('li','b'),
+  h('li','c'),
+])
+
+console.log(vnode)
+复制代码
+</code></pre></div><h4 id="控制台打印出来的vnode"><a href="#控制台打印出来的vnode" class="header-anchor">#</a> 控制台打印出来的<strong>Vnode</strong>:</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLfDQbT3YnicB8GCBnDpF4K3uCL9yt7F05tKuwS1kxMIrAkLcCic7zK2Dw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <h4 id="h函数生成的虚拟dom这个js对象-vnode-的源码"><a href="#h函数生成的虚拟dom这个js对象-vnode-的源码" class="header-anchor">#</a> h函数生成的虚拟DOM这个JS对象(Vnode)的源码:</h4> <div class="language- extra-class"><pre class="language-text"><code>export interface VNodeData {
+    props?: Props
+    attrs?: Attrs
+    class?: Classes
+    style?: VNodeStyle
+    dataset?: Dataset
+    on?: On
+    hero?: Hero
+    attachData?: AttachData
+    hook?: Hooks
+    key?: Key
+    ns?: string // for SVGs
+    fn?: () =&gt; VNode // for thunks
+    args?: any[] // for thunks
+    [key: string]: any // for any other 3rd party module
+}
+
+export type Key = string | number
+
+const interface VNode = {
+    sel: string | undefined, // 选择器
+    data: VNodeData | undefined, // VNodeData上面定义的VNodeData
+    children: Array&lt;VNode | string&gt; | undefined, //子节点,与text互斥
+    text: string | undefined, // 标签中间的文本内容
+    elm: Node | undefined, // 转换而成的真实DOM
+    key: Key | undefined // 字符串或者数字
+}
+
+复制代码
+</code></pre></div><h5 id="补充"><a href="#补充" class="header-anchor">#</a> 补充:</h5> <p>上面的h函数大家可能有点熟悉的感觉但是一时间也没想起来,没关系我来帮大伙回忆; <code>开发中常见的现实场景,render函数渲染</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>// 案例1 vue项目中的main.js的创建vue实例
+new Vue({
+  router,
+  store,
+  render: h =&gt; h(App)
+}).$mount(&quot;#app&quot;);
+
+//案例2 列表中使用render渲染
+columns: [
+    {
+        title: &quot;操作&quot;,
+        key: &quot;action&quot;,
+        width: 150,
+        render: (h, params) =&gt; {
+            return h('div', [
+                h('Button', {
+                    props: {
+                        size: 'small'
+                    },
+                    style: {
+                        marginRight: '5px',
+                        marginBottom: '5px',
+                    },
+                    on: {
+                        click: () =&gt; {
+                            this.toEdit(params.row.uuid);
+                        }
+                    }
+                }, '编辑')
+            ]);
+        }
+    }
+]
+复制代码
+</code></pre></div><hr> <h3 id="为什么要使用虚拟dom"><a href="#为什么要使用虚拟dom" class="header-anchor">#</a> 为什么要使用虚拟DOM</h3> <ul><li><p>MVVM框架解决视图和状态同步问题</p></li> <li><p>模板引擎可以简化视图操作,没办法跟踪状态</p></li> <li><p>虚拟DOM跟踪状态变化</p></li> <li><p>参考github上<strong>virtual-dom</strong>[1]的动机描述</p></li> <li><ul><li>虚拟DOM可以维护程序的状态,跟踪上一次的状态</li> <li>通过比较前后两次状态差异更新真实DOM</li></ul></li> <li><p>跨平台使用</p></li> <li><ul><li>浏览器平台渲染DOM</li> <li>服务端渲染SSR(Nuxt.js/Next.js),前端是vue向,后者是react向</li> <li>原生应用(Weex/React Native)</li> <li>小程序(mpvue/uni-app)等</li></ul></li> <li><p>真实DOM的属性很多，创建DOM节点开销很大</p></li> <li><p>虚拟DOM只是普通JavaScript对象，描述属性并不需要很多，创建开销很小</p></li> <li><p><strong>复杂视图情况下提升渲染性能</strong>(操作dom性能消耗大,减少操作dom的范围可以提升性能)</p></li></ul> <p><strong>灵魂发问</strong>:使用了虚拟DOM就一定会比直接渲染真实DOM快吗?答案当然是<code>否定</code>的,且听我说:<img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLOqRQpVxXrpsrQicImZicauU14gEaQsytr9ctPwnribnp8RumzfVibLJ5TA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>举例</strong>:当一个节点变更时DOMA-&gt;DOMB</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLMicqWYBn2NDILaboY0599tJPkaaOl2fJKJIScBrdjmUcGP20MxJgmRQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">上述情况: <code>示例1</code>是创建一个<code>DOMB</code>然后替换掉<code>DOMA</code>; <code>示例2</code>去<code>创建虚拟DOM+DIFF算法</code>比对发现<code>DOMB</code>跟<code>DOMA</code>不是相同的节点,最后还是创建一个<code>DOMB</code>然后替换掉<code>DOMA</code>; 可以明显看出1是更快的,同样的结果,2还要去创建虚拟DOM+DIFF算啊对比 所以说使用虚拟DOM比直接操作真实DOM就一定要快这个说法是<code>错误的,不严谨的</code></p> <p><strong>举例</strong>:当DOM树里面的某个子节点的内容变更时:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLawXVuJrQgyv2RIt2c8XXFPADLfbDMJ55ibzBib36sAbTLXv6Qgg2sySQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">当一些复杂的节点,比如说一个父节点里面有多个子节点,当只是一个子节点的内容发生了改变,那么我们没有必要像<code>示例1</code>重新去渲染这个<code>DOM树</code>,这个时候<code>虚拟DOM+DIFF算法</code>就能够得到很好的体现,我们通过<code>示例2</code>使用<code>虚拟DOM+Diff算法</code>去找出改变了的子节点更新它的内容就可以了</p> <p>总结:<strong>复杂视图情况下提升渲染性能</strong>,因为<code>虚拟DOM+Diff算法</code>可以精准找到DOM树变更的地方,减少DOM的操作(重排重绘)</p> <hr> <h3 id="虚拟dom库"><a href="#虚拟dom库" class="header-anchor">#</a> 虚拟dom库</h3> <ul><li><p><strong>Snabbdom</strong>[2]</p></li> <li><ul><li>Vue.js2.x内部使用的虚拟DOM就是改造的Snabbdom</li> <li>大约200SLOC(single line of code)</li> <li>通过模块可扩展</li> <li>源码使用TypeScript开发</li> <li>最快的Virtual DOM之一</li></ul></li> <li><p><strong>virtual-dom</strong>[3]</p></li></ul> <hr> <h2 id="diff算法"><a href="#diff算法" class="header-anchor">#</a> Diff算法</h2> <p>在看完上述的文章之后相信大家已经对Diff算法有一个初步的概念,没错,Diff算法其实就是找出两者之间的差异;</p> <blockquote><p>diff 算法首先要明确一个概念就是 Diff 的对象是虚拟DOM（virtual dom），更新真实 DOM 是 Diff 算法的结果。</p></blockquote> <p>下面我将会手撕<code>snabbdom</code>源码核心部分为大家打开<code>Diff</code>的心,给点耐心,别关网页,我知道你们都是这样:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLmiaaGkkBAmSsUpkaFzPL6DXA5wPrSePTiajHt6GbtZjs6gQvdRUlhwdA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">src=http___img.wxcha.com_file_201905_17_f5a4d33d48.jpg&amp;refer=http___img.wxcha.jpeg</p> <hr> <h2 id="snabbdom的核心"><a href="#snabbdom的核心" class="header-anchor">#</a> snabbdom的核心</h2> <ul><li><code>init()</code>设置模块.创建<code>patch()</code>函数</li> <li>使用<code>h()</code>函数创建JavaScript对象<code>(Vnode)</code>描述<code>真实DOM</code></li> <li><code>patch()</code>比较<code>新旧两个Vnode</code></li> <li>把变化的内容更新到<code>真实DOM树</code></li></ul> <h3 id="init函数"><a href="#init函数" class="header-anchor">#</a> init函数</h3> <p>init函数时设置模块,然后创建patch()函数,我们先通过场景案例来有一个直观的体现:</p> <div class="language- extra-class"><pre class="language-text"><code>import {init} from 'snabbdom/build/package/init.js'
+import {h} from 'snabbdom/build/package/h.js'
+
+// 1.导入模块
+import {styleModule} from &quot;snabbdom/build/package/modules/style&quot;;
+import {eventListenersModule} from &quot;snabbdom/build/package/modules/eventListeners&quot;;
+
+// 2.注册模块
+const patch = init([
+  styleModule,
+  eventListenersModule
+])
+
+// 3.使用h()函数的第二个参数传入模块中使用的数据(对象)
+let vnode = h('div', [
+  h('h1', {style: {backgroundColor: 'red'}}, 'Hello world'),
+  h('p', {on: {click: eventHandler}}, 'Hello P')
+])
+
+function eventHandler() {
+  alert('疼,别摸我')
+}
+
+const app = document.querySelector('#app')
+
+patch(app,vnode)
+复制代码
+</code></pre></div><p>当init使用了导入的模块就能够在h函数中用这些模块提供的api去创建<code>虚拟DOM(Vnode)对象</code>;在上文中就使用了<code>样式模块</code>以及<code>事件模块</code>让创建的这个虚拟DOM具备样式属性以及事件属性,最终通过<code>patch函数</code>对比<code>两个虚拟dom</code>(会先把app转换成虚拟dom),更新视图;</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLaFBls2pciaaK7XfSjuKBuTicUq5wUUmX7tF5BSPF0Hr8bruzUMSjt3Tw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p>我们再简单看看init的源码部分:</p> <div class="language- extra-class"><pre class="language-text"><code>// src/package/init.ts
+/* 第一参数就是各个模块
+   第二参数就是DOMAPI,可以把DOM转换成别的平台的API,
+也就是说支持跨平台使用,当不传的时候默认是htmlDOMApi,见下文
+   init是一个高阶函数,一个函数返回另外一个函数,可以缓存modules,与domApi两个参数,
+那么以后直接只传oldValue跟newValue(vnode)就可以了*/
+export function init (modules: Array&lt;Partial&lt;Module&gt;&gt;, domApi?: DOMAPI) {
+
+...
+
+return function patch (oldVnode: VNode | Element, vnode: VNode): VNode {}
+}
+复制代码
+</code></pre></div><hr> <h3 id="h函数"><a href="#h函数" class="header-anchor">#</a> h函数</h3> <p>些地方也会用<code>createElement</code>来命名,它们是一样的东西,都是创建<code>虚拟DOM</code>的,在上述文章中相信大伙已经对h函数有一个初步的了解并且已经联想了使用场景,就不作场景案例介绍了,直接上源码部分:</p> <div class="language- extra-class"><pre class="language-text"><code>// h函数
+export function h (sel: string): VNode
+export function h (sel: string, data: VNodeData | null): VNode
+export function h (sel: string, children: VNodeChildren): VNode
+export function h (sel: string, data: VNodeData | null, children: VNodeChildren): VNode
+export function h (sel: any, b?: any, c?: any): VNode {
+  var data: VNodeData = {}
+  var children: any
+  var text: any
+  var i: number
+    ...
+  return vnode(sel, data, children, text, undefined) //最终返回一个vnode函数
+};
+复制代码
+// vnode函数
+export function vnode (sel: string | undefined,
+  data: any | undefined,
+  children: Array&lt;VNode | string&gt; | undefined,
+  text: string | undefined,
+  elm: Element | Text | undefined): VNode {
+  const key = data === undefined ? undefined : data.key
+  return { sel, data, children, text, elm, key } //最终生成Vnode对象
+}
+复制代码
+</code></pre></div><p><strong>总结</strong>:<code>h函数</code>先生成一个<code>vnode</code>函数,然后<code>vnode</code>函数再生成一个<code>Vnode</code>对象(虚拟DOM对象)</p> <h4 id="补充-2"><a href="#补充-2" class="header-anchor">#</a> 补充:</h4> <p>在h函数源码部分涉及一个<code>函数重载</code>的概念,简单说明一下:</p> <ul><li>参数个数或参数类型不同的函数()</li> <li>JavaScript中没有重载的概念</li> <li>TypeScript中有重载,不过重载的实现还是通过代码调整参数</li></ul> <blockquote><p>重载这个概念个参数相关,和返回值无关</p></blockquote> <ul><li>实例1(函数重载-参数个数)</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function add(a:number,b:number){
+
+console.log(a+b)
+
+}
+
+function add(a:number,b:number,c:number){
+
+console.log(a+b+c)
+
+}
+
+add(1,2)
+
+add(1,2,3)
+
+复制代码
+</code></pre></div><ul><li>实例2(函数重载-参数类型)</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function add(a:number,b:number){
+
+console.log(a+b)
+
+}
+
+function add(a:number,b:string){
+
+console.log(a+b)
+
+}
+
+add(1,2)
+
+add(1,'2')
+
+复制代码
+</code></pre></div><hr> <h3 id="patch函数-核心"><a href="#patch函数-核心" class="header-anchor">#</a> patch函数(核心)</h3> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLdMiaEDJ8ZsO8A93InplfPM97XWqSnm6Y3nLH4QwOdVyqrwpVvJP5VJg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">src=http___shp.qpic.cn_qqvideo_ori_0_e3012t7v643_496_280_0&amp;refer=http___shp.qpic.jpeg</p> <p>要是看完前面的铺垫,看到这里你可能走神了,<code>醒醒啊,这是核心啊,上高地了兄弟</code>;</p> <ul><li>pactch(oldVnode,newVnode)</li> <li>把新节点中变化的内容渲染到真实DOM,最后返回新节点作为下一次处理的旧节点(核心)</li> <li>对比新旧<code>VNode</code>是否相同节点(节点的key和sel相同)</li> <li>如果不是相同节点,删除之前的内容,重新渲染</li> <li>如果是相同节点,再判断新的<code>VNode</code>是否有<code>text</code>,如果有并且和<code>oldVnode</code>的<code>text</code>不同直接更新文本内容<code>(patchVnode)</code></li> <li>如果新的VNode有children,判断子节点是否有变化<code>(updateChildren,最麻烦,最难实现)</code></li></ul> <p>源码:</p> <div class="language- extra-class"><pre class="language-text"><code>return function patch(oldVnode: VNode | Element, vnode: VNode): VNode {    
+    let i: number, elm: Node, parent: Node
+    const insertedVnodeQueue: VNodeQueue = []
+    // cbs.pre就是所有模块的pre钩子函数集合
+    for (i = 0; i &lt; cbs.pre.length; ++i) cbs.pre[i]()
+    // isVnode函数时判断oldVnode是否是一个虚拟DOM对象
+    if (!isVnode(oldVnode)) {
+        // 若不是即把Element转换成一个虚拟DOM对象
+        oldVnode = emptyNodeAt(oldVnode)
+    }
+    // sameVnode函数用于判断两个虚拟DOM是否是相同的,源码见补充1;
+    if (sameVnode(oldVnode, vnode)) {
+        // 相同则运行patchVnode对比两个节点,关于patchVnode后面会重点说明(核心)
+        patchVnode(oldVnode, vnode, insertedVnodeQueue)
+    } else {
+        elm = oldVnode.elm! // !是ts的一种写法代码oldVnode.elm肯定有值
+        // parentNode就是获取父元素
+        parent = api.parentNode(elm) as Node
+
+        // createElm是用于创建一个dom元素插入到vnode中(新的虚拟DOM)
+        createElm(vnode, insertedVnodeQueue)
+
+        if (parent !== null) {
+            // 把dom元素插入到父元素中,并且把旧的dom删除
+            api.insertBefore(parent, vnode.elm!, api.nextSibling(elm))// 把新创建的元素放在旧的dom后面
+            removeVnodes(parent, [oldVnode], 0, 0)
+        }
+    }
+
+    for (i = 0; i &lt; insertedVnodeQueue.length; ++i) {
+        insertedVnodeQueue[i].data!.hook!.insert!(insertedVnodeQueue[i])
+    }
+    for (i = 0; i &lt; cbs.post.length; ++i) cbs.post[i]()
+    return vnode
+}
+复制代码
+</code></pre></div><h4 id="补充1-samevnode函数"><a href="#补充1-samevnode函数" class="header-anchor">#</a> 补充1: sameVnode函数</h4> <div class="language- extra-class"><pre class="language-text"><code>function sameVnode(vnode1: VNode, vnode2: VNode): boolean { 通过key和sel选择器判断是否是相同节点
+    return vnode1.key === vnode2.key &amp;&amp; vnode1.sel === vnode2.sel
+}
+复制代码
+</code></pre></div><hr> <h3 id="patchvnode"><a href="#patchvnode" class="header-anchor">#</a> patchVnode</h3> <ul><li>第一阶段触发<code>prepatch</code>函数以及<code>update</code>函数(都会触发prepatch函数,两者不完全相同才会触发update函数)</li> <li>第二阶段,真正对比新旧<code>vnode</code>差异的地方</li> <li>第三阶段,触发<code>postpatch</code>函数更新节点</li></ul> <p>源码:</p> <div class="language- extra-class"><pre class="language-text"><code>function patchVnode(oldVnode: VNode, vnode: VNode, insertedVnodeQueue: VNodeQueue) {
+    const hook = vnode.data?.hook
+    hook?.prepatch?.(oldVnode, vnode)
+    const elm = vnode.elm = oldVnode.elm!
+    const oldCh = oldVnode.children as VNode[]
+    const ch = vnode.children as VNode[]
+    if (oldVnode === vnode) return
+    if (vnode.data !== undefined) {
+        for (let i = 0; i &lt; cbs.update.length; ++i) cbs.update[i](oldVnode, vnode)
+        vnode.data.hook?.update?.(oldVnode, vnode)
+    }
+    if (isUndef(vnode.text)) { // 新节点的text属性是undefined
+        if (isDef(oldCh) &amp;&amp; isDef(ch)) { // 当新旧节点都存在子节点
+            if (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue) //并且他们的子节点不相同执行updateChildren函数,后续会重点说明(核心)
+        } else if (isDef(ch)) { // 只有新节点有子节点
+            // 当旧节点有text属性就会把''赋予给真实dom的text属性
+            if (isDef(oldVnode.text)) api.setTextContent(elm, '') 
+            // 并且把新节点的所有子节点插入到真实dom中
+            addVnodes(elm, null, ch, 0, ch.length - 1, insertedVnodeQueue)
+        } else if (isDef(oldCh)) { // 清除真实dom的所有子节点
+            removeVnodes(elm, oldCh, 0, oldCh.length - 1)
+        } else if (isDef(oldVnode.text)) { // 把''赋予给真实dom的text属性
+            api.setTextContent(elm, '')
+        }
+    } else if (oldVnode.text !== vnode.text) { //若旧节点的text与新节点的text不相同
+        if (isDef(oldCh)) { // 若旧节点有子节点,就把所有的子节点删除
+            removeVnodes(elm, oldCh, 0, oldCh.length - 1)
+        }
+        api.setTextContent(elm, vnode.text!) // 把新节点的text赋予给真实dom
+    }
+    hook?.postpatch?.(oldVnode, vnode) // 更新视图
+}
+复制代码
+</code></pre></div><p>看得可能有点蒙蔽,下面再上一副思维导图:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLHNVic3kCtibTYFxoJKuJxNsibX6CrbylKsKXUUoWAwAXfyxSCapNOJJUw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <hr> <h3 id="题外话-diff算法简介"><a href="#题外话-diff算法简介" class="header-anchor">#</a> 题外话:diff算法简介</h3> <p><strong>传统diff算法</strong></p> <ul><li>虚拟DOM中的Diff算法</li> <li><code>传统算法</code>查找两颗树每一个节点的差异</li> <li>会运行n1(dom1的节点数)*n2(dom2的节点数)次方去对比,找到差异的部分再去更新</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p><strong>snabbdom的diff算法优化</strong></p> <ul><li>Snbbdom根据DOM的特点对传统的diff算法做了<code>优化</code></li> <li>DOM操作时候很少会跨级别操作节点</li> <li>只比较<code>同级别</code>的节点</li></ul> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLhTt5D51vDv7tKQJxPMIoJBiaZVnGVEyulmeDO6XoaOgg0wcAcfib0huw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLPiclzDgbxv9NeLzmfvHlj8c4nG4GyIC5ibnxSxj9iaAIibvQy6ic8kDcUdw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">src=http___img.wxcha.com_file_202004_03_1ed2e19e4f.jpg&amp;refer=http___img.wxcha.jpeg</p> <p>下面我们就会介绍<code>updateChildren</code>函数怎么去对比子节点的<code>异同</code>,也是<code>Diff算法</code>里面的一个核心以及难点;</p> <hr> <h3 id="updatechildren-核中核-判断子节点的差异"><a href="#updatechildren-核中核-判断子节点的差异" class="header-anchor">#</a> updateChildren(核中核:判断子节点的差异)</h3> <ul><li>这个函数我分为三个部分,<code>部分1:声明变量</code>,<code>部分2:同级别节点比较</code>,<code>部分3:循环结束的收尾工作</code>(见下图);</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <ul><li><p><code>同级别节点比较</code>的<code>五种</code>情况:</p></li> <li><ol><li><code>oldStartVnode/newStartVnode</code>(旧开始节点/新开始节点)相同</li> <li><code>oldEndVnode/newEndVnode</code>(旧结束节点/新结束节点)相同</li> <li><code>oldStartVnode/newEndVnode</code>(旧开始节点/新结束节点)相同</li> <li><code>oldEndVnode/newStartVnode</code>(旧结束节点/新开始节点)相同</li> <li><code>特殊情况当1,2,3,4的情况都不符合</code>的时候就会执行,在<code>oldVnodes</code>里面寻找跟<code>newStartVnode</code>一样的节点然后位移到<code>oldStartVnode</code>,若没有找到在就<code>oldStartVnode</code>创建一个</li></ol></li> <li><p>执行过程是一个循环,在每次循环里,只要执行了上述的情况的五种之一就会结束一次循环</p></li> <li><p><code>循环结束的收尾工作</code>:直到oldStartIdx&gt;oldEndIdx || newStartIdx&gt;newEndIdx(代表旧节点或者新节点已经遍历完)</p></li></ul> <p>为了更加直观的了解,我们再来看看<code>同级别节点比较</code>的<code>五种</code>情况的实现细节:</p> <h4 id="新开始节点和旧开始节点-情况1"><a href="#新开始节点和旧开始节点-情况1" class="header-anchor">#</a> 新开始节点和旧开始节点(情况1)</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGL0FukiaVosSclGTu0CVmzFnDl25vU2xDfGFqrdib1ApyMxbicfJHU7hxoQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li>若<code>情况1符合:(从新旧节点的开始节点开始对比</code>,<code>oldCh[oldStartIdx]和newCh[newStartIdx]</code>进行<code>sameVnode(key和sel相同)</code>判断是否相同节点)</li> <li>则执行<code>patchVnode</code>找出两者之间的差异,更新图;如没有差异则什么都不操作,结束一次循环</li> <li><code>oldStartIdx++/newStartIdx++</code></li></ul> <h4 id="新结束节点和旧结束节点-情况2"><a href="#新结束节点和旧结束节点-情况2" class="header-anchor">#</a> 新结束节点和旧结束节点(情况2)</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLVLrlUWMxPpwEeGcyyqNlav4kQ39b67C6udVcSBVQMUCbJ2cQuy2Mrw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li>若<code>情况1不符合</code>就判断<code>情况2</code>,若符合:(从新旧节点的结束节点开始对比,<code>oldCh[oldEndIdx]和newCh[newEndIdx]</code>对比,执行<code>sameVnode(key和sel相同)</code>判断是否相同节点)</li> <li>执行<code>patchVnode</code>找出两者之间的差异,更新视图,;如没有差异则什么都不操作,结束一次循环</li> <li><code>oldEndIdx--/newEndIdx--</code></li></ul> <h4 id="旧开始节点-新结束节点-情况3"><a href="#旧开始节点-新结束节点-情况3" class="header-anchor">#</a> 旧开始节点/新结束节点(情况3)</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLZVArY457qurQ68lYhlOoMwPsP0MH6vwhmCCqbkFA9UticROnNkicLHMw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li>若<code>情况1,2</code>都不符合,就会尝试情况3:(旧节点的开始节点与新节点的结束节点开始对比,<code>oldCh[oldStartIdx]和newCh[newEndIdx]</code>对比,执行<code>sameVnode(key和sel相同)</code>判断是否相同节点)</li> <li>执行<code>patchVnode</code>找出两者之间的差异,更新视图,如没有差异则什么都不操作,结束一次循环</li> <li><code>oldCh[oldStartIdx]对应的真实dom</code>位移到<code>oldCh[oldEndIdx]对应的真实dom</code>后</li> <li><code>oldStartIdx++/newEndIdx--</code>;</li></ul> <h4 id="旧结束节点-新开始节点-情况4"><a href="#旧结束节点-新开始节点-情况4" class="header-anchor">#</a> 旧结束节点/新开始节点(情况4)</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLrSn8AFYYhe5PkXz3mvF8vmlgMIVWMib7ia6M8RPLiaF0icOjecqDARRQrw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li>若<code>情况1,2,3</code>都不符合,就会尝试情况4:(旧节点的结束节点与新节点的开始节点开始对比,<code>oldCh[oldEndIdx]和newCh[newStartIdx]</code>对比,执行<code>sameVnode(key和sel相同)</code>判断是否相同节点)</li> <li>执行<code>patchVnode</code>找出两者之间的差异,更新视图,如没有差异则什么都不操作,结束一次循环</li> <li><code>oldCh[oldEndIdx]对应的真实dom</code>位移到<code>oldCh[oldStartIdx]对应的真实dom</code>前</li> <li><code>oldEndIdx--/newStartIdx++</code>;</li></ul> <h4 id="新开始节点-旧节点数组中寻找节点-情况5"><a href="#新开始节点-旧节点数组中寻找节点-情况5" class="header-anchor">#</a> 新开始节点/旧节点数组中寻找节点(情况5)</h4> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLDfkGugZlWV20ibb28fccQYyfnVQrKRkbI0OhQk7YWMfzGa2lhRZiatYQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li>从旧节点里面寻找,若寻找到与<code>newCh[newStartIdx]</code>相同的节点(且叫<code>对应节点[1]</code>),执行<code>patchVnode</code>找出两者之间的差异,更新视图,如没有差异则什么都不操作,结束一次循环</li> <li><code>对应节点[1]对应的真实dom</code>位移到<code>oldCh[oldStartIdx]对应的真实dom</code>前</li></ul> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLH3WaEve0S2DSdgSNRG7ZD6wEvRbGkXZzGx1MkprolMTtTzbW9UdeSg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li><code>若没有寻找到相同的节点</code>,则创建一个与<code>newCh[newStartIdx]</code>节点对应的<code>真实dom</code>插入到<code>oldCh[oldStartIdx]对应的真实dom</code>前</li> <li><code>newStartIdx++</code></li></ul> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLzpq1l65ibHAOJ2cmVFjzribYZmcS4tEFAO9Y7vLvum5w6PtZic5Fve3Fw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">379426071b8130075b11ba142f9468e2.jpeg</p> <hr> <p>下面我们再介绍一下<code>结束循环</code>的收尾工作<code>(oldStartIdx&gt;oldEndIdx || newStartIdx&gt;newEndIdx)</code>:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLmYk2PhgcCYDS65VF1IO40oePD81kk9mnXtEGzmFRSz6twwVHPNRYYQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li><code>新节点的所有子节点</code>先遍历完(<code>newStartIdx&gt;newEndIdx</code>),循环结束</li> <li><code>新节点的所有子节点</code>遍历结束就是把没有对应相同节点的<code>子节点</code>删除</li></ul> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLxpzF89kARG0zoXdXQXupc0PXWK4SyBSUib2vyLlemRV1zNHiaYRXpoDA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <ul><li><code>旧节点的所有子节点</code>先遍历完(<code>oldStartIdx&gt;oldEndIdx</code>),循环结束</li> <li><code>旧节点的所有子节点</code>遍历结束就是在多出来的<code>子节点</code>插入到<code>旧节点结束节点</code>前;(源码:<code>newCh[newEndIdx + 1].elm)</code>,就是对应的<code>旧结束节点的真实dom</code>,newEndIdx+1是因为在匹配到相同的节点需要-1,所以需要加回来就是结束节点</li></ul> <p>最后附上源码:</p> <div class="language- extra-class"><pre class="language-text"><code>function updateChildren(parentElm, oldCh, newCh, insertedVnodeQueue) {
+    let oldStartIdx = 0;                // 旧节点开始节点索引
+    let newStartIdx = 0;                // 新节点开始节点索引
+    let oldEndIdx = oldCh.length - 1;   // 旧节点结束节点索引
+    let oldStartVnode = oldCh[0];       // 旧节点开始节点
+    let oldEndVnode = oldCh[oldEndIdx]; // 旧节点结束节点
+    let newEndIdx = newCh.length - 1;   // 新节点结束节点索引
+    let newStartVnode = newCh[0];       // 新节点开始节点
+    let newEndVnode = newCh[newEndIdx]; // 新节点结束节点
+    let oldKeyToIdx;                    // 节点移动相关
+    let idxInOld;                       // 节点移动相关
+    let elmToMove;                      // 节点移动相关
+    let before;
+
+
+    // 同级别节点比较
+    while (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) {
+        if (oldStartVnode == null) {
+            oldStartVnode = oldCh[++oldStartIdx]; // Vnode might have been moved left
+        }
+        else if (oldEndVnode == null) {
+            oldEndVnode = oldCh[--oldEndIdx];
+        }
+        else if (newStartVnode == null) {
+            newStartVnode = newCh[++newStartIdx];
+        }
+        else if (newEndVnode == null) {
+            newEndVnode = newCh[--newEndIdx];
+        }
+        else if (sameVnode(oldStartVnode, newStartVnode)) { // 判断情况1
+            patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue);
+            oldStartVnode = oldCh[++oldStartIdx];
+            newStartVnode = newCh[++newStartIdx];
+        }
+        else if (sameVnode(oldEndVnode, newEndVnode)) {   // 情况2
+            patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue);
+            oldEndVnode = oldCh[--oldEndIdx];
+            newEndVnode = newCh[--newEndIdx];
+        }
+        else if (sameVnode(oldStartVnode, newEndVnode)) { // Vnode moved right情况3
+            patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue);
+            api.insertBefore(parentElm, oldStartVnode.elm, api.nextSibling(oldEndVnode.elm));
+            oldStartVnode = oldCh[++oldStartIdx];
+            newEndVnode = newCh[--newEndIdx];
+        }
+        else if (sameVnode(oldEndVnode, newStartVnode)) { // Vnode moved left情况4
+            patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue);
+            api.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm);
+            oldEndVnode = oldCh[--oldEndIdx];
+            newStartVnode = newCh[++newStartIdx];
+        }
+        else {                                             // 情况5
+            if (oldKeyToIdx === undefined) {
+                oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);
+            }
+            idxInOld = oldKeyToIdx[newStartVnode.key];
+            if (isUndef(idxInOld)) { // New element        // 创建新的节点在旧节点的新节点前
+                api.insertBefore(parentElm, createElm(newStartVnode, insertedVnodeQueue), oldStartVnode.elm);
+            }
+            else {
+                elmToMove = oldCh[idxInOld];
+                if (elmToMove.sel !== newStartVnode.sel) { // 创建新的节点在旧节点的新节点前
+                    api.insertBefore(parentElm, createElm(newStartVnode, insertedVnodeQueue), oldStartVnode.elm);
+                }
+                else {
+                                                           // 在旧节点数组中找到相同的节点就对比差异更新视图,然后移动位置
+                    patchVnode(elmToMove, newStartVnode, insertedVnodeQueue);
+                    oldCh[idxInOld] = undefined;
+                    api.insertBefore(parentElm, elmToMove.elm, oldStartVnode.elm);
+                }
+            }
+            newStartVnode = newCh[++newStartIdx];
+        }
+    }
+    // 循环结束的收尾工作
+    if (oldStartIdx &lt;= oldEndIdx || newStartIdx &lt;= newEndIdx) {
+        if (oldStartIdx &gt; oldEndIdx) {
+            // newCh[newEndIdx + 1].elm就是旧节点数组中的结束节点对应的dom元素
+            // newEndIdx+1是因为在之前成功匹配了newEndIdx需要-1
+            // newCh[newEndIdx + 1].elm,因为已经匹配过有相同的节点了,它就是等于旧节点数组中的结束节点对应的dom元素(oldCh[oldEndIdx + 1].elm)
+            before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].elm;
+            // 把新节点数组中多出来的节点插入到before前
+            addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx, insertedVnodeQueue);
+        }
+        else {
+            // 这里就是把没有匹配到相同节点的节点删除掉
+            removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
+        }
+    }
+}
+复制代码
+</code></pre></div><hr> <h4 id="key的作用"><a href="#key的作用" class="header-anchor">#</a> key的作用</h4> <ul><li>Diff操作可以<code>更加快速</code>;</li> <li>Diff操作可以更加准确;<code>(避免渲染错误)</code></li> <li><code>不推荐使用索引</code>作为key</li></ul> <p>以下我们看看这些作用的实例:</p> <h5 id="diff操作可以更加准确-避免渲染错误"><a href="#diff操作可以更加准确-避免渲染错误" class="header-anchor">#</a> Diff操作可以更加准确;<code>(避免渲染错误)</code>:</h5> <p>实例:a,b,c三个dom元素中的b,c间插入一个z元素</p> <p>没有设置key<img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLQBlov7cLbsewuYickoDtZ3FLd4nK1icFQnPib2jtradgpQcsLl8laVRibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">当设置了key:</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h5 id="diff操作可以更加准确-避免渲染错误-2"><a href="#diff操作可以更加准确-避免渲染错误-2" class="header-anchor">#</a> Diff操作可以更加准确;<code>(避免渲染错误)</code></h5> <p>实例:a,b,c三个dom元素,修改了a元素的某个属性再去在a元素前新增一个z元素</p> <p>没有设置key:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLicShV9Z6VakI8f5xOAdNRYtmlHNAmqx4UgOAWztdoicryEgImaNiaKTQQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLppGHLibOEHonGxhLfqeNKp2u4vs6vNvg9OwMrSu3cCjOpuQATp8XicMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p>因为没有设置key,默认都是undefined,所以节点都是相同的,更新了text的内容但还是沿用了之前的dom,所以实际上<code>a-&gt;z(a原本打勾的状态保留了,只改变了text),b-&gt;a,c-&gt;b,d-&gt;c</code>,遍历完毕发现还要增加一个dom,在最后新增一个text为d的dom元素</p> <p>设置了key:</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGL3bJXibeUugGXzPCEDibqhdKqWsibJMibahnicqjfOQfr8JHC5LTSEymKiaGA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p>当设置了key,a,b,c,d都有对应的key,<code>a-&gt;a,b-&gt;b,c-&gt;c,d-&gt;d</code>,内容相同无需更新,遍历结束,新增一个text为z的dom元素</p> <h5 id="不推荐使用索引作为key"><a href="#不推荐使用索引作为key" class="header-anchor">#</a> <code>不推荐使用索引</code>作为key:</h5> <p>设置索引为key:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLXyG20PYXWkPjWciaFFZPtO6nd3cia8mXE4otXqq1FeYbNb6j0VzFLwyA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <p>这明显效率不高,我们只希望找出不同的节点更新,而使用索引作为key会增加运算时间,我们可以把key设置为与节点text为一致就可以解决这个问题:</p> <p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHrBPOs1OFIWuxw354WxNWGLdzMXJFmut6AoNtXKorxW9HAbcMsctLKDrsH3z99F79KApCIGHyZ4rA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <hr> <h2 id="最后"><a href="#最后" class="header-anchor">#</a> 最后</h2> <p>如有描述错误或者不明的地方请在下方评论联系我,我会立刻更新,如有收获,请为我点个赞👍这是对我的莫大的支持,谢谢各位</p> <p>关于本文</p> <h1 id="作者-渣渣xiong"><a href="#作者-渣渣xiong" class="header-anchor">#</a> 作者：渣渣xiong</h1> <p>https://juejin.cn/post/7000266544181674014</p> <p>推荐阅读</p> <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&amp;mid=2650090299&amp;idx=1&amp;sn=d08a44bc38d31855fbd7bf9379ed6562&amp;chksm=83dbb65eb4ac3f485cbc0744b6eb10d179cfddd447a1dbe72aab97a8e323a7ea0939d315bc5e&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">66 道前端算法面试题附思路分析助你查漏补缺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">11/8/2024, 10:19:43 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/8-算法进阶/ChromeV8源码看JavaScript数组.html" class="prev">
+        前端进阶算法2：从Chrome V8源码看JavaScript数组(附赠腾讯面试题)
+      </a></span> <span class="next"><a href="/algorithm/8-算法进阶/Diff算法核心原理.html">
+        15张图，20分钟吃透Diff算法核心原理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.ae400df5.js" defer></script><script src="/assets/js/2.57da4f88.js" defer></script><script src="/assets/js/1.a76cc220.js" defer></script><script src="/assets/js/90.975b2533.js" defer></script>
+  </body>
+</html>
